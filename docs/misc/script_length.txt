@@ -1,0 +1,5 @@
+      52 .././day_01/script_day01.R
+      61 .././day_02/script_day02.R
+      95 .././day_03/script_day03.R
+     142 .././day_04/script_day04.R
+     350 total

@@ -1,0 +1,12 @@
+name: "advent-of-code"
+title: "Advent of Code"
+theme: theme.css
+description: |
+  Advent of Code
+output_dir: "docs"
+navbar:
+  left:
+    - text: "2021"
+      href: 2021.html
+output:
+  distill::distill_article
