@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 input <- read_delim(here::here("2021","day_08","input_day08.txt"), delim = "|", 
                     col_names = FALSE)
 

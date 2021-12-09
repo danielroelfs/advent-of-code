@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 data <- read_table("./2021/day_01/input_day01.txt", col_names = "depth")
 
 data %>% 

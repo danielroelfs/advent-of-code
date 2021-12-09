@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 input <- read_csv(here::here("2021","day_07","input_day07.txt"), 
                   col_names = FALSE) %>% 
   unname() %>% 

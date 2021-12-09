@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 input <- read_table(here::here("2021","day_09","input_day09.txt"), 
                     col_names = FALSE) %>%
   rename(value = X1)

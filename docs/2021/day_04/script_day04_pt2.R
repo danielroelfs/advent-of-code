@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 input_numbers <- read_csv("./2021/day_04/input_day04.txt", col_names = FALSE) %>% 
   slice(1) %>% 
   mutate(across(everything(), ~ as.numeric(.x))) %>% 

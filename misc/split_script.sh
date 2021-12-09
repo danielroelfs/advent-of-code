@@ -6,7 +6,8 @@ year=2021
 cat ./${year}/day_${day}/script_day${day}.R | \
     awk '/^#-- Libraries/,/^#-- Part 1/ { print }' | \
     sed '/^#/d' | \
-    sed '/./,$!d' > ./${year}/day_${day}/script_day${day}_pt1.R
+    sed '/./,$!d' | \
+    cat -s > ./${year}/day_${day}/script_day${day}_pt1.R
 
 cp ./${year}/day_${day}/script_day${day}_pt1.R ./${year}/day_${day}/script_day${day}_pt2.R
 

@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 commands <- read_table("./2021/day_02/input_day02.txt", 
                        col_names = c("direction","value"))
 

@@ -1,7 +1,6 @@
 library(tidyverse)
 library(showtext)
 
-
 input <- read_csv(here::here("2021", "day_05","input_day05.txt"), 
                   col_names = FALSE) %>% 
   rename(x1 = X1,

@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 input <- read_table("./2021/day_03/input_day03.txt", col_names = "full_binary")
 
 n_bits <- input %>% 
