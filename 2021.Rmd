@@ -291,6 +291,30 @@ toc()
 
 # Day 9 {.panel-name}
 
+## Part 1
+
+```{r, code=readLines("./2021/day_09/script_day09_pt1.R"), eval=FALSE}
+```
+
+```{r day09pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_09/script_day09_pt1.R")))
+toc()
+```
+
+## Part 2
+
+Got stuck here, and once I found this amazingly clever solution from [Ildikó Czeller](https://github.com/czeildi/advent-of-code/blob/main/solutions_2021/day09.R) using `{igraph}`. I wanted to know how this worked, so I applied her solution here.
+
+```{r, code=readLines("./2021/day_09/script_day09_pt2.R"), eval=FALSE}
+```
+
+```{r day09pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_09/script_day09_pt2.R")))
+toc()
+```
+
 :::
 
 ::: {.panel}
