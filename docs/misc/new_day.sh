@@ -15,8 +15,7 @@ library(tidyverse)
 
 #-- Load data ------------------------
 
-input <- read_csv(here::here(\"${year}\",\"day_${day}\",\"test_input_day${day}.txt\"),
-                  col_names = FALSE)
+input <- read_csv(here::here(\"${year}\",\"day_${day}\",\"test_input_day${day}.txt\"), col_names = FALSE)
 
 #-- Part 1 ------------------------
 

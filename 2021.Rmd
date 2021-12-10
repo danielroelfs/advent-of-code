@@ -321,6 +321,28 @@ toc()
 
 # Day 10 {.panel-name}
 
+## Part 1
+
+```{r, code=readLines("./2021/day_10/script_day10_pt1.R"), eval=FALSE}
+```
+
+```{r day10pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_10/script_day10_pt1.R")))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2021/day_10/script_day10_pt2.R"), eval=FALSE}
+```
+
+```{r day10pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_10/script_day10_pt2.R")))
+toc()
+```
+
 :::
 
 ::: {.panel}
