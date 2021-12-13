@@ -349,17 +349,45 @@ toc()
 
 # Day 11 {.panel-name}
 
+Nope, not a chance...
+
 :::
 
 ::: {.panel}
 
 # Day 12 {.panel-name}
 
+No idea, sorry!
+
 :::
 
 ::: {.panel}
 
 # Day 13 {.panel-name}
+
+## Part 1
+
+```{r, code=readLines("./2021/day_13/script_day13_pt1.R"), eval=FALSE}
+```
+
+```{r day13pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_13/script_day13_pt1.R")))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2021/day_13/script_day13_pt2.R"), eval=FALSE}
+```
+
+```{r day13pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_13/script_day13_pt2.R")))
+toc()
+```
+
+<img src="./2021/day_13/plot_day13_pt2.png" alt="plot_day13" style="width:100%;"/>
 
 :::
 

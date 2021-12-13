@@ -12,7 +12,8 @@ points <- c(")" = 3, "]" = 57, "}" = 1197, ">" = 25137) %>%
   enframe()
 
 input %>% 
-  mutate(syntax = reduce(seq(100), .init = syntax,
+  mutate(nchar = max(nchar(syntax))) %>% 
+  mutate(syntax = reduce(seq(nchar), .init = syntax,
                          ~ str_remove_all(.x, str_c(full_patterns, 
                                                     collapse = "|")))) %>% 
   mutate(symbols = str_split(syntax, "")) %>% 

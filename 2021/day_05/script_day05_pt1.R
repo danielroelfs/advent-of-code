@@ -36,12 +36,12 @@ input %>%
                            guide = guide_colorbar(title.position = "top", title.hjust = 0.5, 
                                                   barwidth = 10, barheight = 0.75, ticks = FALSE)) +
   scale_y_reverse() +
-  theme_void() + 
-  theme(text = element_text(family = "google", color = "grey90", size = 8),
-        plot.title = ggtext::element_markdown(hjust = 0.5, size = 28,
+  theme_void(base_size = 24) + 
+  theme(text = element_text(family = "google", color = "grey90"),
+        plot.title = ggtext::element_markdown(hjust = 0.5, size = 80,
                                               margin = margin(rep(5,4), unit = "pt")),
-        legend.title = ggtext::element_markdown(size = 12, margin = margin(b = -2, unit = "pt")),
-        legend.text = element_text(margin = margin(t = -2, "pt")),
+        legend.title = ggtext::element_markdown(margin = margin(b = -10, unit = "pt")),
+        legend.text = element_text(margin = margin(t = -10, "pt")),
         legend.position = "bottom",
         plot.margin = margin(rep(10,4), unit = "mm"),
         plot.background = element_rect(fill = "#0f0f23"))
