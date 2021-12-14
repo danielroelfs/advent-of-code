@@ -32,7 +32,7 @@ reduce(seq(nrow(input_folds)), ~ fold_paper(.x, input_folds, step = .y),
   mutate(dot = "#") %>% 
   ggplot(aes(x = x, y = y)) +
   geom_tile(fill = "#f2f2f2") +
-  geom_text(aes(label = dot), color = "#b3b3b3") +
+  geom_text(aes(label = dot), color = "#b3b3b3", size = 8) +
   scale_y_reverse() +
   coord_equal() + 
   theme_void() + 

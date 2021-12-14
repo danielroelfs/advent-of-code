@@ -395,6 +395,30 @@ toc()
 
 # Day 14 {.panel-name}
 
+## Part 1
+
+With some help once again from [Ildikó Czeller](https://github.com/czeildi/advent-of-code/blob/main/solutions_2021/day14.R) 🙌!
+
+```{r, code=readLines("./2021/day_14/script_day14_pt1.R"), eval=FALSE}
+```
+
+```{r day14pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_14/script_day14_pt1.R")))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2021/day_14/script_day14_pt2.R"), eval=FALSE}
+```
+
+```{r day14pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_14/script_day14_pt2.R")))
+toc()
+```
+
 :::
 
 ::: {.panel}
