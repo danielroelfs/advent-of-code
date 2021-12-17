@@ -425,17 +425,45 @@ toc()
 
 # Day 15 {.panel-name}
 
+Sorry! Guess I need to dive into `{tidygraph}` a bit more.
+
 :::
 
 ::: {.panel}
 
 # Day 16 {.panel-name}
 
+Nope, no idea!
+
 :::
 
 ::: {.panel}
 
 # Day 17 {.panel-name}
+
+## Part 1
+
+```{r, code=readLines("./2021/day_17/script_day17_pt1.R"), eval=FALSE}
+```
+
+```{r day17pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_17/script_day17_pt1.R")))
+toc()
+```
+
+## Part 2
+
+I really admire [Ildikó Czeller](https://github.com/czeildi/advent-of-code/blob/main/solutions_2021/day17.R)'s neat and tidy solution here, which (with some trial-and-error) worked beautifully!
+
+```{r, code=readLines("./2021/day_17/script_day17_pt2.R"), eval=FALSE}
+```
+
+```{r day17pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_17/script_day17_pt2.R")))
+toc()
+```
 
 :::
 

@@ -2485,7 +2485,6 @@ p a:hover {
 #panelset_day-12 {color: #D63131 !important;}
 #panelset_day-15 {color: #D63131 !important;}
 #panelset_day-16 {color: #D63131 !important;}
-#panelset_day-17 {color: #D63131 !important;}
 #panelset_day-18 {color: #D63131 !important;}
 #panelset_day-19 {color: #D63131 !important;}
 #panelset_day-20 {color: #D63131 !important;}
@@ -3688,12 +3687,74 @@ p a:hover {
 </section>
 <section id="day-15" class="panel-name panel">
 <h1 class="panel-name">Day 15</h1>
+<p>Sorry! Guess I need to dive into <code>{tidygraph}</code> a bit more.</p>
 </section>
 <section id="day-16" class="panel-name panel">
 <h1 class="panel-name">Day 16</h1>
+<p>Nope, no idea!</p>
 </section>
 <section id="day-17" class="panel-name panel">
 <h1 class="panel-name">Day 17</h1>
+<h2 id="part-1-12">Part 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+
+<span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_lines.html'>read_lines</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2021"</span>,<span class='st'>"day_17"</span>,<span class='st'>"input_day17.txt"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract_all</a></span><span class='op'>(</span><span class='st'>"-?[0-9]+"</span>, simplify <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>value <span class='op'>=</span> <span class='va'>.</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>pos <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'xmin'</span>, <span class='st'>'xmax'</span>, <span class='st'>'ymin'</span>, <span class='st'>'ymax'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>pos</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span>
+
+<span class='va'>input</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ylim <span class='op'>=</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>ymin</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>ymin</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>ylim</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 5460</code></pre>
+<pre><code>0.606 sec elapsed</code></pre>
+</div>
+<h2 id="part-2-12">Part 2</h2>
+<p>I really admire <a href="https://github.com/czeildi/advent-of-code/blob/main/solutions_2021/day17.R">Ildikó Czeller</a>’s neat and tidy solution here, which (with some trial-and-error) worked beautifully!</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+
+<span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_lines.html'>read_lines</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2021"</span>,<span class='st'>"day_17"</span>,<span class='st'>"input_day17.txt"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract_all</a></span><span class='op'>(</span><span class='st'>"-?[0-9]+"</span>, simplify <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>value <span class='op'>=</span> <span class='va'>.</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>pos <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'xmin'</span>, <span class='st'>'xmax'</span>, <span class='st'>'ymin'</span>, <span class='st'>'ymax'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>pos</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span>
+
+<span class='va'>positions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/expand.html'>crossing</a></span><span class='op'>(</span>vx <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='va'>input</span><span class='op'>[[</span><span class='st'>"xmax"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>, 
+                      vy <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>[[</span><span class='st'>"ymin"</span><span class='op'>]</span><span class='op'>]</span>, <span class='fl'>250</span><span class='op'>)</span>, 
+                      s <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>500</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>dx <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>vx</span> <span class='op'>-</span> <span class='va'>s</span>, <span class='fl'>0</span><span class='op'>)</span>,
+         dy <span class='op'>=</span> <span class='va'>vy</span> <span class='op'>-</span> <span class='va'>s</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>vx</span>, <span class='va'>vy</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cumsum.html'>cumsum</a></span><span class='op'>(</span><span class='va'>dx</span><span class='op'>)</span>,
+         y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cumsum.html'>cumsum</a></span><span class='op'>(</span><span class='va'>dy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>positions</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>&gt;=</span> <span class='va'>input</span><span class='op'>[[</span><span class='st'>"xmin"</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&amp;</span> <span class='va'>x</span> <span class='op'>&lt;=</span> <span class='va'>input</span><span class='op'>[[</span><span class='st'>"xmax"</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&amp;</span> 
+           <span class='va'>y</span> <span class='op'>&gt;=</span> <span class='va'>input</span><span class='op'>[[</span><span class='st'>"ymin"</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&amp;</span> <span class='va'>y</span> <span class='op'>&lt;=</span> <span class='va'>input</span><span class='op'>[[</span><span class='st'>"ymax"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/distinct.html'>distinct</a></span><span class='op'>(</span><span class='va'>vx</span>, <span class='va'>vy</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 3618</code></pre>
+<pre><code>8.416 sec elapsed</code></pre>
+</div>
 </section>
 <section id="day-18" class="panel-name panel">
 <h1 class="panel-name">Day 18</h1>
@@ -3720,7 +3781,7 @@ p a:hover {
 <h1 class="panel-name">Day 25</h1>
 </section>
 </div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
