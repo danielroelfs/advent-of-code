@@ -2487,12 +2487,7 @@ p a:hover {
 #panelset_day-16 {color: #D63131 !important;}
 #panelset_day-18 {color: #D63131 !important;}
 #panelset_day-19 {color: #D63131 !important;}
-#panelset_day-20 {color: #D63131 !important;}
-#panelset_day-21 {color: #D63131 !important;}
-#panelset_day-22 {color: #D63131 !important;}
-#panelset_day-23 {color: #D63131 !important;}
-#panelset_day-24 {color: #D63131 !important;}
-#panelset_day-25 {color: #D63131 !important;}</style>
+#panelset_day-20 {color: #D63131 !important;}</style>
 </div>
 <div class="panelset">
 <section id="day-1" class="panel-name panel">
@@ -3758,30 +3753,84 @@ p a:hover {
 </section>
 <section id="day-18" class="panel-name panel">
 <h1 class="panel-name">Day 18</h1>
+<p>Yeah, I’m getting out of my depth here.</p>
 </section>
 <section id="day-19" class="panel-name panel">
 <h1 class="panel-name">Day 19</h1>
+<p>Nope, sorry!</p>
 </section>
 <section id="day-20" class="panel-name panel">
 <h1 class="panel-name">Day 20</h1>
+<p>Cool puzzle, but I’m not sure how to solve it, and I don’t want to use MATLAB either.</p>
 </section>
 <section id="day-21" class="panel-name panel">
 <h1 class="panel-name">Day 21</h1>
+<h2 id="part-1-13">Part 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+
+<span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_delim</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2021"</span>,<span class='st'>"day_21"</span>,<span class='st'>"input_day21.txt"</span><span class='op'>)</span>, delim <span class='op'>=</span> <span class='st'>":"</span>, 
+                    col_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"player"</span>,<span class='st'>"start_pos"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='op'>~</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/parse_number.html'>parse_number</a></span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>start_pos</span><span class='op'>)</span>
+
+<span class='va'>scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span><span class='op'>)</span>
+<span class='va'>die_roll</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+
+<span class='va'>die_value</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>die_roll</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>value</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>die_roll</span> <span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span> <span class='fl'>100</span> <span class='op'>==</span> <span class='fl'>0</span>, <span class='fl'>100</span>, <span class='va'>die_roll</span> <span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span> <span class='fl'>100</span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>place_value</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>place_idx</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>value</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>place_idx</span> <span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span> <span class='fl'>10</span> <span class='op'>==</span> <span class='fl'>0</span>, <span class='fl'>10</span>, <span class='va'>place_idx</span> <span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span> <span class='fl'>10</span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>roll_for_player</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>player</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>die_sum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'>die_value</span><span class='op'>(</span><span class='va'>die_roll</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>die_roll</span> <span class='op'>&lt;&lt;-</span> <span class='va'>die_roll</span> <span class='op'>+</span> <span class='fl'>3</span>
+  <span class='va'>scores</span><span class='op'>[</span><span class='va'>player</span><span class='op'>]</span> <span class='op'>&lt;&lt;-</span> <span class='va'>scores</span><span class='op'>[</span><span class='va'>player</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'>place_value</span><span class='op'>(</span><span class='va'>input</span><span class='op'>[</span><span class='va'>player</span><span class='op'>]</span> <span class='op'>+</span> <span class='va'>die_sum</span><span class='op'>)</span>
+  <span class='va'>input</span><span class='op'>[</span><span class='va'>player</span><span class='op'>]</span> <span class='op'>&lt;&lt;-</span> <span class='fu'>place_value</span><span class='op'>(</span><span class='va'>input</span><span class='op'>[</span><span class='va'>player</span><span class='op'>]</span> <span class='op'>+</span> <span class='va'>die_sum</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='kw'>while</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>scores</span><span class='op'>)</span> <span class='op'>&lt;</span> <span class='fl'>1000</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'>roll_for_player</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>scores</span><span class='op'>)</span> <span class='op'>&lt;</span> <span class='fl'>1000</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='fu'>roll_for_player</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+  <span class='op'>}</span>
+<span class='op'>}</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>scores</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>die_roll</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 1002474</code></pre>
+<pre><code>0.792 sec elapsed</code></pre>
+</div>
+<h2 id="part-2-13">Part 2</h2>
+<p>Sorry, part 1 was I could manage here.</p>
 </section>
 <section id="day-22" class="panel-name panel">
 <h1 class="panel-name">Day 22</h1>
+<p>No idea!</p>
 </section>
 <section id="day-23" class="panel-name panel">
 <h1 class="panel-name">Day 23</h1>
+<p>Definitely too complicated for me at this stage.</p>
 </section>
 <section id="day-24" class="panel-name panel">
 <h1 class="panel-name">Day 24</h1>
+<p>Sorry, definitely too complex for me.</p>
 </section>
 <section id="day-25" class="panel-name panel">
 <h1 class="panel-name">Day 25</h1>
+<p>Merry Christmas! 🎄 No solution from me today either, both because of time and because of complexity. This was fun though, I’m looking forward to next year!</p>
 </section>
 </div>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -471,11 +471,15 @@ toc()
 
 # Day 18 {.panel-name}
 
+Yeah, I'm getting out of my depth here.
+
 :::
 
 ::: {.panel}
 
 # Day 19 {.panel-name}
+
+Nope, sorry! 
 
 :::
 
@@ -483,11 +487,28 @@ toc()
 
 # Day 20 {.panel-name}
 
+Cool puzzle, but I'm not sure how to solve it, and I don't want to use MATLAB either.
+
 :::
 
 ::: {.panel}
 
 # Day 21 {.panel-name}
+
+## Part 1
+
+```{r, code=readLines("./2021/day_21/script_day21_pt1.R"), eval=FALSE}
+```
+
+```{r day21pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines("./2021/day_21/script_day21_pt1.R")))
+toc()
+```
+
+## Part 2
+
+Sorry, part 1 was I could manage here.
 
 :::
 
@@ -495,11 +516,15 @@ toc()
 
 # Day 22 {.panel-name}
 
+No idea!
+
 :::
 
 ::: {.panel}
 
 # Day 23 {.panel-name}
+
+Definitely too complicated for me at this stage.
 
 :::
 
@@ -507,11 +532,15 @@ toc()
 
 # Day 24 {.panel-name}
 
+Sorry, definitely too complex for me.
+
 :::
 
 ::: {.panel}
 
 # Day 25 {.panel-name}
+
+Merry Christmas! 🎄 No solution from me today either, both because of time and because of complexity. This was fun though, I'm looking forward to next year!
 
 :::
 
