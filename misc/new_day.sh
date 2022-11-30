@@ -1,7 +1,7 @@
 #!/bin/bash
 
 day=`printf %02d $1`
-year=2021
+year=`date +"%Y"`
 
 mkdir ./${year}/day_${day}
 touch ./${year}/day_${day}/input_day${day}.txt
