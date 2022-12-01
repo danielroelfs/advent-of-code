@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$#" -lt 1 ]; then
+    echo -e "\nYou forgot to provide the day number!\n"
+    exit
+fi
+
 day=`printf %02d $1`
 year=`date +"%Y"`
 
@@ -15,7 +20,8 @@ library(tidyverse)
 
 #-- Load data ------------------------
 
-input <- read_csv(here::here(\"${year}\",\"day_${day}\",\"test_input_day${day}.txt\"), col_names = FALSE)
+input <- read_table(here::here(\"${year}\", \"day_${day}\", \"test_input_day${day}.txt\"), col_names = \"x\")
+#input <- read_table(here::here(\"${year}\", \"day_${day}\", \"input_day${day}.txt\"), col_names = \"x\")
 
 #-- Part 1 ------------------------
 
