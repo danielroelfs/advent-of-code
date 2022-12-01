@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Building site..."
+echo -e "\n\nBuilding site...\n"
 
 Rscript -e "rmarkdown::render_site()"
 
-echo "Site build!"
+echo -e "\n\nSite build successfully!\n"

@@ -64,6 +64,28 @@ htmltools::tags$style(
 
 # Day 1 {.panel-name}
 
+## Part 1
+
+```{r, code=readLines("./2022/day_01/script_day01_pt1.R"), eval=FALSE}
+```
+
+```{r day01pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_01", "script_day01_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2022/day_01/script_day01_pt2.R"), eval=FALSE}
+```
+
+```{r day01pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_01", "script_day01_pt2.R"))))
+toc()
+```
+
 :::
 
 ::: {.panel}
