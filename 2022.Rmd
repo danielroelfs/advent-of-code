@@ -92,11 +92,60 @@ toc()
 
 # Day 2 {.panel-name}
 
+Didn't have much time, so all I managed in the time was a series of `case_when()`'s. If I revisit I might use matrices instead.
+
+## Part 1
+
+```{r, code=readLines("./2022/day_02/script_day02_pt1.R"), eval=FALSE}
+```
+
+```{r day02pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_02", "script_day02_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2022/day_02/script_day02_pt2.R"), eval=FALSE}
+```
+
+```{r day02pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_02", "script_day02_pt2.R"))))
+toc()
+```
+
+
 :::
 
 ::: {.panel}
 
 # Day 3 {.panel-name}
+
+Would have made for a nice exercise in Python, but who doesn't love a good regex challenge? 😊 
+
+## Part 1
+
+```{r, code=readLines("./2022/day_03/script_day03_pt1.R"), eval=FALSE}
+```
+
+```{r day03pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_03", "script_day03_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2022/day_03/script_day03_pt2.R"), eval=FALSE}
+```
+
+```{r day03pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_03", "script_day03_pt2.R"))))
+toc()
+```
 
 :::
 

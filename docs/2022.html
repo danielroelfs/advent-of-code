@@ -2519,9 +2519,7 @@ p a:hover {
 </style>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<style>#panelset_day-2 {color: #D63131 !important;}
-#panelset_day-3 {color: #D63131 !important;}
-#panelset_day-4 {color: #D63131 !important;}
+<style>#panelset_day-4 {color: #D63131 !important;}
 #panelset_day-5 {color: #D63131 !important;}
 #panelset_day-6 {color: #D63131 !important;}
 #panelset_day-7 {color: #D63131 !important;}
@@ -2597,9 +2595,133 @@ p a:hover {
 </section>
 <section id="day-2" class="panel-name panel">
 <h1 class="panel-name">Day 2</h1>
+<p>Didn’t have much time, so all I managed in the time was a series of <code>case_when()</code>’s. If I revisit I might use matrices instead.</p>
+<h2 id="part-1-1">Part 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_table.html'>read_table</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2022"</span>, <span class='st'>"day_02"</span>, <span class='st'>"input_day02.txt"</span><span class='op'>)</span>, </span>
+<span>                    col_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>opp <span class='op'>=</span> <span class='va'>x</span>,</span>
+<span>         me <span class='op'>=</span> <span class='va'>y</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>opp_base_score <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>opp</span> <span class='op'>==</span> <span class='st'>"A"</span> <span class='op'>~</span> <span class='fl'>1</span>,</span>
+<span>                                    <span class='va'>opp</span> <span class='op'>==</span> <span class='st'>"B"</span> <span class='op'>~</span> <span class='fl'>2</span>,</span>
+<span>                                    <span class='va'>opp</span> <span class='op'>==</span> <span class='st'>"C"</span> <span class='op'>~</span> <span class='fl'>3</span><span class='op'>)</span>,</span>
+<span>         me_base_score <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>me</span> <span class='op'>==</span> <span class='st'>"X"</span> <span class='op'>~</span> <span class='fl'>1</span>,</span>
+<span>                                   <span class='va'>me</span> <span class='op'>==</span> <span class='st'>"Y"</span> <span class='op'>~</span> <span class='fl'>2</span>,</span>
+<span>                                   <span class='va'>me</span> <span class='op'>==</span> <span class='st'>"Z"</span> <span class='op'>~</span> <span class='fl'>3</span><span class='op'>)</span>,</span>
+<span>         score_diff <span class='op'>=</span> <span class='va'>me_base_score</span> <span class='op'>-</span> <span class='va'>opp_base_score</span>,</span>
+<span>         me_turn_score <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>score_diff</span> <span class='op'>==</span> <span class='op'>-</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>score_diff</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>~</span> <span class='fl'>0</span>,</span>
+<span>                                   <span class='va'>score_diff</span> <span class='op'>==</span> <span class='fl'>0</span> <span class='op'>~</span> <span class='fl'>3</span>,</span>
+<span>                                   <span class='va'>score_diff</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>|</span> <span class='va'>score_diff</span> <span class='op'>==</span> <span class='op'>-</span><span class='fl'>2</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span>,</span>
+<span>         me_game_score <span class='op'>=</span> <span class='va'>me_base_score</span> <span class='op'>+</span> <span class='va'>me_turn_score</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>total_score <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>me_game_score</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>total_score</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 14531</code></pre>
+<pre><code>0.108 sec elapsed</code></pre>
+</div>
+<h2 id="part-2-1">Part 2</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_table.html'>read_table</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2022"</span>, <span class='st'>"day_02"</span>, <span class='st'>"input_day02.txt"</span><span class='op'>)</span>, </span>
+<span>                    col_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>opp <span class='op'>=</span> <span class='va'>x</span>,</span>
+<span>         outcome <span class='op'>=</span> <span class='va'>y</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>opp_base_score <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>opp</span> <span class='op'>==</span> <span class='st'>"A"</span> <span class='op'>~</span> <span class='fl'>1</span>,</span>
+<span>                                    <span class='va'>opp</span> <span class='op'>==</span> <span class='st'>"B"</span> <span class='op'>~</span> <span class='fl'>2</span>,</span>
+<span>                                    <span class='va'>opp</span> <span class='op'>==</span> <span class='st'>"C"</span> <span class='op'>~</span> <span class='fl'>3</span><span class='op'>)</span>,</span>
+<span>         me_turn_score <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>outcome</span> <span class='op'>==</span> <span class='st'>"X"</span> <span class='op'>~</span> <span class='fl'>0</span>,</span>
+<span>                                   <span class='va'>outcome</span> <span class='op'>==</span> <span class='st'>"Y"</span> <span class='op'>~</span> <span class='fl'>3</span>,</span>
+<span>                                   <span class='va'>outcome</span> <span class='op'>==</span> <span class='st'>"Z"</span> <span class='op'>~</span> <span class='fl'>6</span><span class='op'>)</span>,</span>
+<span>         me_base_score <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>me_turn_score</span> <span class='op'>==</span> <span class='fl'>3</span> <span class='op'>~</span> <span class='va'>opp_base_score</span>,</span>
+<span>                                   <span class='va'>me_turn_score</span> <span class='op'>==</span> <span class='fl'>0</span> <span class='op'>&amp;</span> </span>
+<span>                                     <span class='va'>opp_base_score</span> <span class='op'>&gt;</span> <span class='fl'>1</span> <span class='op'>~</span> <span class='va'>opp_base_score</span> <span class='op'>-</span> <span class='fl'>1</span>,</span>
+<span>                                   <span class='va'>me_turn_score</span> <span class='op'>==</span> <span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>opp_base_score</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>~</span> <span class='fl'>3</span>,</span>
+<span>                                   <span class='va'>me_turn_score</span> <span class='op'>==</span> <span class='fl'>6</span> <span class='op'>&amp;</span> </span>
+<span>                                     <span class='va'>opp_base_score</span> <span class='op'>&lt;</span> <span class='fl'>3</span> <span class='op'>~</span> <span class='va'>opp_base_score</span> <span class='op'>+</span> <span class='fl'>1</span>,</span>
+<span>                                   <span class='va'>me_turn_score</span> <span class='op'>==</span> <span class='fl'>6</span> <span class='op'>&amp;</span> <span class='va'>opp_base_score</span> <span class='op'>==</span> <span class='fl'>3</span> <span class='op'>~</span> <span class='fl'>1</span><span class='op'>)</span>,</span>
+<span>         me_game_score <span class='op'>=</span> <span class='va'>me_turn_score</span> <span class='op'>+</span> <span class='va'>me_base_score</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>total_score <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>me_game_score</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>total_score</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 11258</code></pre>
+<pre><code>0.063 sec elapsed</code></pre>
+</div>
 </section>
 <section id="day-3" class="panel-name panel">
 <h1 class="panel-name">Day 3</h1>
+<p>Would have made for a nice exercise in Python, but who doesn’t love a good regex challenge? 😊</p>
+<h2 id="part-1-2">Part 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_table.html'>read_table</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2022"</span>, <span class='st'>"day_03"</span>, <span class='st'>"input_day03.txt"</span><span class='op'>)</span>, </span>
+<span>                    col_names <span class='op'>=</span> <span class='st'>"rucksack"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>priority_values</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>char <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='va'>LETTERS</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>priority <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>nitems <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nchar</a></span><span class='op'>(</span><span class='va'>rucksack</span><span class='op'>)</span>,</span>
+<span>         comp1 <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_sub.html'>str_sub</a></span><span class='op'>(</span><span class='va'>rucksack</span>, <span class='fl'>1</span>, <span class='va'>nitems</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span>,</span>
+<span>         comp2 <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_sub.html'>str_sub</a></span><span class='op'>(</span><span class='va'>rucksack</span>, <span class='va'>nitems</span><span class='op'>/</span><span class='fl'>2</span> <span class='op'>+</span> <span class='fl'>1</span>, <span class='va'>nitems</span><span class='op'>)</span>,</span>
+<span>         comp1_regex <span class='op'>=</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_chr</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='va'>comp1</span>, <span class='st'>""</span><span class='op'>)</span>, <span class='va'>str_c</span>, collapse <span class='op'>=</span> <span class='st'>"|"</span><span class='op'>)</span>,</span>
+<span>         common <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract</a></span><span class='op'>(</span><span class='va'>comp2</span>, <span class='va'>comp1_regex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>priority_values</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"common"</span> <span class='op'>=</span> <span class='st'>"char"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>priority</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>sum</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 7793</code></pre>
+<pre><code>0.041 sec elapsed</code></pre>
+</div>
+<h2 id="part-2-2">Part 2</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_table.html'>read_table</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2022"</span>, <span class='st'>"day_03"</span>, <span class='st'>"input_day03.txt"</span><span class='op'>)</span>, </span>
+<span>                    col_names <span class='op'>=</span> <span class='st'>"rucksack"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>priority_values</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>char <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='va'>LETTERS</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>priority <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>3</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>group</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>group_items <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_c.html'>str_c</a></span><span class='op'>(</span><span class='va'>rucksack</span>, collapse <span class='op'>=</span> <span class='st'>"-"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span><span class='va'>group_items</span>, into <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"comp1"</span>, <span class='st'>"comp2"</span>, <span class='st'>"comp3"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>comp1_regex <span class='op'>=</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_chr</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='va'>comp1</span>, <span class='st'>""</span><span class='op'>)</span>, <span class='va'>str_c</span>, collapse <span class='op'>=</span> <span class='st'>"|"</span><span class='op'>)</span>,</span>
+<span>         common_12 <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract_all</a></span><span class='op'>(</span><span class='va'>comp2</span>, <span class='va'>comp1_regex</span><span class='op'>)</span>,</span>
+<span>         comp12_regex <span class='op'>=</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_chr</a></span><span class='op'>(</span><span class='va'>common_12</span>, <span class='va'>str_c</span>, collapse <span class='op'>=</span> <span class='st'>"|"</span><span class='op'>)</span>,</span>
+<span>         common_all <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract</a></span><span class='op'>(</span><span class='va'>comp3</span>, <span class='va'>comp12_regex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>priority_values</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"common_all"</span> <span class='op'>=</span> <span class='st'>"char"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>priority</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>sum</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 2499</code></pre>
+<pre><code>0.06 sec elapsed</code></pre>
+</div>
 </section>
 <section id="day-4" class="panel-name panel">
 <h1 class="panel-name">Day 4</h1>
@@ -2668,7 +2790,7 @@ p a:hover {
 <h1 class="panel-name">Day 25</h1>
 </section>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
