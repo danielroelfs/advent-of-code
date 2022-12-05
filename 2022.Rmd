@@ -153,11 +153,57 @@ toc()
 
 # Day 4 {.panel-name}
 
+## Part 1
+
+```{r, code=readLines("./2022/day_04/script_day04_pt1.R"), eval=FALSE}
+```
+
+```{r day04pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_04", "script_day04_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2022/day_04/script_day04_pt2.R"), eval=FALSE}
+```
+
+```{r day04pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_04", "script_day04_pt2.R"))))
+toc()
+```
+
 :::
 
 ::: {.panel}
 
 # Day 5 {.panel-name}
+
+Took some help from [Anthony Durrant](https://github.com/antdurrant) here, this one was difficult!
+
+## Part 1
+
+```{r, code=readLines("./2022/day_05/script_day05_pt1.R"), eval=FALSE}
+```
+
+```{r day05pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_05", "script_day05_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2022/day_05/script_day05_pt2.R"), eval=FALSE}
+```
+
+```{r day05pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_05", "script_day05_pt2.R"))))
+toc()
+```
 
 :::
 
