@@ -211,6 +211,30 @@ toc()
 
 # Day 6 {.panel-name}
 
+Actually one of the first ones without any `{tidyverse}` functions!
+
+## Part 1
+
+```{r, code=readLines("./2022/day_06/script_day06_pt1.R"), eval=FALSE}
+```
+
+```{r day06pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_06", "script_day06_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2022/day_06/script_day06_pt2.R"), eval=FALSE}
+```
+
+```{r day06pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_06", "script_day06_pt2.R"))))
+toc()
+```
+
 :::
 
 ::: {.panel}
