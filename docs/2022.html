@@ -2519,10 +2519,7 @@ p a:hover {
 </style>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<style>#panelset_day-7 {color: #D63131 !important;}
-#panelset_day-8 {color: #D63131 !important;}
-#panelset_day-9 {color: #D63131 !important;}
-#panelset_day-10 {color: #D63131 !important;}
+<style>#panelset_day-9 {color: #D63131 !important;}
 #panelset_day-11 {color: #D63131 !important;}
 #panelset_day-12 {color: #D63131 !important;}
 #panelset_day-13 {color: #D63131 !important;}
@@ -2899,15 +2896,222 @@ p a:hover {
 </section>
 <section id="day-7" class="panel-name panel">
 <h1 class="panel-name">Day 7</h1>
+<p>First Python solution this year, with some help from <a href="https://github.com/viliampucik">Viliam Pucik</a></p>
+<h2 id="part-1-6">Part 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> accumulate</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;./2022/day_07/input_day07.txt&#39;</span>).read().splitlines()</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>dirs <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  match line.split():</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span>, <span class="st">&quot;cd&quot;</span>, <span class="st">&quot;/&quot;</span>:</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>      path <span class="op">=</span> [<span class="st">&quot;/&quot;</span>]</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span>, <span class="st">&quot;cd&quot;</span>, <span class="st">&quot;..&quot;</span>:</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>      path.pop()</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span>, <span class="st">&quot;cd&quot;</span>, <span class="bu">dir</span>:</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>      path.append(<span class="bu">dir</span> <span class="op">+</span> <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span> <span class="op">|</span> <span class="st">&quot;dir&quot;</span>, <span class="op">*</span>_:</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">continue</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    case size, _:</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> p <span class="kw">in</span> accumulate(path):</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>        dirs[p] <span class="op">+=</span> <span class="bu">int</span>(size)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>total_sizes <span class="op">=</span> <span class="bu">sum</span>(size <span class="cf">for</span> size <span class="kw">in</span> dirs.values() <span class="cf">if</span> size <span class="op">&lt;=</span> <span class="fl">1e5</span>)</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total_sizes)</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>1783610</code></pre>
+<pre><code>0.011 seconds elapsed</code></pre>
+</div>
+<h2 id="part-2-6">Part 2</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> accumulate</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;./2022/day_07/input_day07.txt&#39;</span>).read().splitlines()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>dirs <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  match line.split():</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span>, <span class="st">&quot;cd&quot;</span>, <span class="st">&quot;/&quot;</span>:</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>      path <span class="op">=</span> [<span class="st">&quot;/&quot;</span>]</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span>, <span class="st">&quot;cd&quot;</span>, <span class="st">&quot;..&quot;</span>:</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>      path.pop()</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span>, <span class="st">&quot;cd&quot;</span>, <span class="bu">dir</span>:</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>      path.append(<span class="bu">dir</span> <span class="op">+</span> <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    case <span class="st">&quot;$&quot;</span> <span class="op">|</span> <span class="st">&quot;dir&quot;</span>, <span class="op">*</span>_:</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">continue</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    case size, _:</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> p <span class="kw">in</span> accumulate(path):</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>        dirs[p] <span class="op">+=</span> <span class="bu">int</span>(size)</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>dir_to_remove <span class="op">=</span> <span class="bu">min</span>(size <span class="cf">for</span> size <span class="kw">in</span> dirs.values() <span class="cf">if</span> size <span class="op">&gt;=</span> dirs[<span class="st">&quot;/&quot;</span>] <span class="op">-</span> <span class="fl">40e6</span>)</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dir_to_remove)</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>4370655</code></pre>
+<pre><code>0.011 seconds elapsed</code></pre>
+</div>
 </section>
 <section id="day-8" class="panel-name panel">
 <h1 class="panel-name">Day 8</h1>
+<p>For-loops just feel more appropriate in Python, with help from <a href="https://github.com/nitekat1124">nitekat</a></p>
+<h2 id="part-1-7">Part 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;./2022/day_08/input_day08.txt&#39;</span>).read().splitlines()</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>trees <span class="op">=</span> [[<span class="op">*</span><span class="bu">map</span>(<span class="bu">int</span>, line)] <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> (<span class="bu">len</span>(trees[<span class="dv">0</span>]) <span class="op">+</span> <span class="bu">len</span>(trees) <span class="op">-</span> <span class="dv">2</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees[<span class="dv">0</span>]) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    tree <span class="op">=</span> trees[y][x]</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> trees[y]</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    col <span class="op">=</span> [i[x] <span class="cf">for</span> i <span class="kw">in</span> trees]</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> row[:x]</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    right <span class="op">=</span> row[x <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> col[:y]</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    bottom <span class="op">=</span> col[y <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tree <span class="op">&gt;</span> <span class="bu">min</span>(<span class="bu">max</span>(left), <span class="bu">max</span>(right), <span class="bu">max</span>(top), <span class="bu">max</span>(bottom)):</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>      n <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(n)</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>1700</code></pre>
+<pre><code>0.081 seconds elapsed</code></pre>
+</div>
+<h2 id="part-2-7">Part 2</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;./2022/day_08/input_day08.txt&#39;</span>).read().splitlines()</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>trees <span class="op">=</span> [[<span class="op">*</span><span class="bu">map</span>(<span class="bu">int</span>, line)] <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="bu">len</span>(trees[<span class="dv">0</span>])</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="bu">len</span>(trees)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees[<span class="dv">0</span>]) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> trees[y][x]</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> trees[y]</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    col <span class="op">=</span> [i[x] <span class="cf">for</span> i <span class="kw">in</span> trees]</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> row[:x][::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    right <span class="op">=</span> row[x <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> col[:y][::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    bottom <span class="op">=</span> col[y <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    left_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(left) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    left_score <span class="op">=</span> x <span class="cf">if</span> <span class="bu">len</span>(left_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> left_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>    right_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(right) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>    right_score <span class="op">=</span> w <span class="op">-</span> x <span class="op">-</span> <span class="dv">1</span> <span class="cf">if</span> <span class="bu">len</span>(right_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> right_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>    top_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(top) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>    top_score <span class="op">=</span> y <span class="cf">if</span> <span class="bu">len</span>(top_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> top_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>    bottom_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(bottom) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>    bottom_score <span class="op">=</span> h <span class="op">-</span> y <span class="op">-</span> <span class="dv">1</span> <span class="cf">if</span> <span class="bu">len</span>(bottom_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> bottom_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>    ss <span class="op">=</span> left_score <span class="op">*</span> right_score <span class="op">*</span> top_score <span class="op">*</span> bottom_score</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ss <span class="op">&gt;</span> s:</span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> ss</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>470596</code></pre>
+<pre><code>0.183 seconds elapsed</code></pre>
+</div>
 </section>
 <section id="day-9" class="panel-name panel">
 <h1 class="panel-name">Day 9</h1>
 </section>
 <section id="day-10" class="panel-name panel">
 <h1 class="panel-name">Day 10</h1>
+<h2 id="part-1-8">Part 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_table.html'>read_table</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2022"</span>, <span class='st'>"day_10"</span>, <span class='st'>"input_day10.txt"</span><span class='op'>)</span>, </span>
+<span>                    col_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"operation"</span>, <span class='st'>"argument"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>argument <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>steps <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>operation</span>, <span class='st'>"add"</span><span class='op'>)</span> <span class='op'>~</span> <span class='fl'>2</span>, </span>
+<span>                           <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>operation</span>, <span class='st'>"noop"</span><span class='op'>)</span> <span class='op'>~</span> <span class='fl'>1</span><span class='op'>)</span>,</span>
+<span>         step_num_start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/accumulate.html'>accumulate</a></span><span class='op'>(</span><span class='va'>steps</span>, <span class='va'>`+`</span>, .init <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>-</span> <span class='va'>steps</span>,</span>
+<span>         x_reg <span class='op'>=</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/cumsum.html'>cumsum</a></span><span class='op'>(</span><span class='va'>argument</span><span class='op'>)</span>,</span>
+<span>         x_reg_prev <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x_reg</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/uncount.html'>uncount</a></span><span class='op'>(</span><span class='va'>steps</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rowid_to_column</a></span><span class='op'>(</span>var <span class='op'>=</span> <span class='st'>"step_num"</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>step_num</span>, <span class='va'>x_reg_prev</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>x_reg <span class='op'>=</span> <span class='va'>x_reg_prev</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>step_num</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>40</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>total <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>step_num</span> <span class='op'>*</span> <span class='va'>x_reg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>total</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] 14060</code></pre>
+<pre><code>0.176 sec elapsed</code></pre>
+</div>
+<h2 id="part-2-8">Part 2</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_table.html'>read_table</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2022"</span>, <span class='st'>"day_10"</span>, <span class='st'>"input_day10.txt"</span><span class='op'>)</span>, </span>
+<span>                    col_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"operation"</span>, <span class='st'>"argument"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>input</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>argument <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>steps <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>operation</span>, <span class='st'>"add"</span><span class='op'>)</span> <span class='op'>~</span> <span class='fl'>2</span>, </span>
+<span>                           <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>operation</span>, <span class='st'>"noop"</span><span class='op'>)</span> <span class='op'>~</span> <span class='fl'>1</span><span class='op'>)</span>,</span>
+<span>         step_num_start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/accumulate.html'>accumulate</a></span><span class='op'>(</span><span class='va'>steps</span>, <span class='va'>`+`</span>, .init <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>-</span> <span class='va'>steps</span>,</span>
+<span>         x_reg <span class='op'>=</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/cumsum.html'>cumsum</a></span><span class='op'>(</span><span class='va'>argument</span><span class='op'>)</span>,</span>
+<span>         x_reg_prev <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x_reg</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/uncount.html'>uncount</a></span><span class='op'>(</span><span class='va'>steps</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>step_num <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>step_num</span>, <span class='va'>x_reg_prev</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>x_reg <span class='op'>=</span> <span class='va'>x_reg_prev</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>x_pos <span class='op'>=</span> <span class='op'>(</span><span class='va'>step_num</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span> <span class='fl'>40</span>,</span>
+<span>         pixel_on <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>x_pos</span> <span class='op'>-</span> <span class='va'>x_reg</span><span class='op'>)</span> <span class='op'>&lt;</span> <span class='fl'>2</span>,</span>
+<span>         pixel <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>pixel_on</span>, <span class='st'>"#"</span>, <span class='cn'>NA</span><span class='op'>)</span>,</span>
+<span>         row_num <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cumsum.html'>cumsum</a></span><span class='op'>(</span><span class='va'>x_pos</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>row_num</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/ranking.html'>row_number</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>pixel_on</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>row_num</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_tile.html'>geom_tile</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#f2f2f2"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_text</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='st'>"#"</span>, color <span class='op'>=</span> <span class='st'>"#b3b3b3"</span>, size <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_reverse</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_fixed.html'>coord_equal</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.margin <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>margin</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>4</span><span class='op'>)</span>, unit <span class='op'>=</span> <span class='st'>"mm"</span><span class='op'>)</span>,</span>
+<span>        plot.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#0f0f23"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggsave</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2022"</span>, <span class='st'>"day_10"</span>, <span class='st'>"plot_day10_pt2.png"</span><span class='op'>)</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/last_plot.html'>last_plot</a></span><span class='op'>(</span><span class='op'>)</span>, </span>
+<span>       height <span class='op'>=</span> <span class='fl'>3</span>, width <span class='op'>=</span> <span class='fl'>8</span>, dpi <span class='op'>=</span> <span class='fl'>300</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>0.295 sec elapsed</code></pre>
+</div>
+<p><img src="2022/day_10/plot_day10_pt2.png" alt="plot_day10_2022" style="width:100%;"/></p>
 </section>
 <section id="day-11" class="panel-name panel">
 <h1 class="panel-name">Day 11</h1>
@@ -2955,7 +3159,7 @@ p a:hover {
 <h1 class="panel-name">Day 25</h1>
 </section>
 </div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

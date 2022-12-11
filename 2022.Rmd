@@ -5,9 +5,18 @@ title: "My 2022 Attempts"
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(tictoc)
+library(reticulate)
+
 knitr::opts_chunk$set()
 xaringanExtra::use_panelset()
+
+use_condaenv("aoc")
 ```
+
+```{python py-setup, include=FALSE}
+import time
+```
+
 
 ```{css, echo=FALSE}
 .panel-tab {
@@ -115,7 +124,6 @@ tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_02", "script_day02_pt2.R"))))
 toc()
 ```
-
 
 :::
 
@@ -241,11 +249,59 @@ toc()
 
 # Day 7 {.panel-name}
 
+First Python solution this year, with some help from [Viliam Pucik](https://github.com/viliampucik)
+
+## Part 1
+
+```{python, code=readLines("./2022/day_07/script_day07_pt1.py"), eval=FALSE}
+```
+
+```{python day07pt1, echo=FALSE, cache=TRUE}
+start_time = time.time()
+exec(open('./2022/day_07/script_day07_pt1.py').read())
+print(f'{time.time() - start_time:.3f} seconds elapsed')
+```
+
+## Part 2
+
+```{python, code=readLines("./2022/day_07/script_day07_pt2.py"), eval=FALSE}
+```
+
+```{python day07pt2, echo=FALSE, cache=TRUE}
+start_time = time.time()
+exec(open('./2022/day_07/script_day07_pt2.py').read())
+print(f'{time.time() - start_time:.3f} seconds elapsed')
+```
+
 :::
 
 ::: {.panel}
 
 # Day 8 {.panel-name}
+
+For-loops just feel more appropriate in Python, with help from [nitekat](https://github.com/nitekat1124)
+
+## Part 1
+
+```{python, code=readLines("./2022/day_08/script_day08_pt1.py"), eval=FALSE}
+```
+
+```{python day08pt1, echo=FALSE, cache=TRUE}
+start_time = time.time()
+exec(open('./2022/day_08/script_day08_pt1.py').read())
+print(f'{time.time() - start_time:.3f} seconds elapsed')
+```
+
+## Part 2
+
+```{python, code=readLines("./2022/day_08/script_day08_pt2.py"), eval=FALSE}
+```
+
+```{python day08pt2, echo=FALSE, cache=TRUE}
+start_time = time.time()
+exec(open('./2022/day_08/script_day08_pt2.py').read())
+print(f'{time.time() - start_time:.3f} seconds elapsed')
+```
 
 :::
 
@@ -258,6 +314,30 @@ toc()
 ::: {.panel}
 
 # Day 10 {.panel-name}
+
+## Part 1
+
+```{r, code=readLines("./2022/day_10/script_day10_pt1.R"), eval=FALSE}
+```
+
+```{r day10pt1, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_10", "script_day10_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2022/day_10/script_day10_pt2.R"), eval=FALSE}
+```
+
+```{r day10pt2, echo=FALSE, cache=TRUE}
+tic()
+tmp <- eval(parse(text = readLines(here::here("2022", "day_10", "script_day10_pt2.R"))))
+toc()
+```
+
+<img src="./2022/day_10/plot_day10_pt2.png" alt="plot_day10_2022" style="width:100%;"/>
 
 :::
 
