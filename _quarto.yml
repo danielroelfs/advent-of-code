@@ -18,4 +18,5 @@ highlight-style: dracula
 
 format:
   html:
+    embed-resources: true
     theme: theme.scss
