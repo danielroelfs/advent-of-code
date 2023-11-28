@@ -1,6 +1,6 @@
 on:
     push:
-      branches: main
+      branches: prep-2023
 
 name: Render and Publish
 
