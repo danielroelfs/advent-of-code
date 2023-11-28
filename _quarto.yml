@@ -1,14 +1,20 @@
-name: "advent-of-code"
-title: "Advent of Code"
-theme: theme.css
-description: |
-  Advent of Code
-output_dir: "docs"
-navbar:
-  left:
-    - text: "2021"
-      href: 2021.html
-    - text: "2022"
-      href: 2022.html
-output:
-  distill::distill_article
+project:
+  type: website
+
+website:
+  title: "Advent of Code"
+  navbar:
+    search: false
+    left:
+      - text: "2021"
+        href: 2021.qmd
+      - text: "2022"
+        href: 2022.qmd
+      - text: "2023"
+        href: 2023.qmd
+
+highlight-style: dracula
+
+format:
+  html:
+    theme: theme.scss
