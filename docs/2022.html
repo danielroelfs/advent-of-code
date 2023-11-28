@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Advent of Code - My 2022 Attempts</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet">
+<script src="site_libs/panelset-0.2.6/panelset.js"></script>
+
+
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Advent of Code</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./2021.html" rel="" target="">
+ <span class="menu-text">2021</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./2022.html" rel="" target="" aria-current="page">
+ <span class="menu-text">2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./2023.html" rel="" target="">
+ <span class="menu-text">2023</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My 2022 Attempts</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<style type="text/css">
+.panel-tab {
+  flex: 1 0 20%;
+  text-align: center;
+}
+
+p {
+  color: #cccccc;
+}
+
+p a {
+  color: rgb(0, 153, 0);
+}
+p a:hover {
+  color: #99ff99;
+}
+</style>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<style>#panelset_day-9 {color: #D63131 !important;}
+#panelset_day-11 {color: #D63131 !important;}
+#panelset_day-12 {color: #D63131 !important;}
+#panelset_day-13 {color: #D63131 !important;}
+#panelset_day-14 {color: #D63131 !important;}
+#panelset_day-15 {color: #D63131 !important;}
+#panelset_day-16 {color: #D63131 !important;}
+#panelset_day-17 {color: #D63131 !important;}
+#panelset_day-18 {color: #D63131 !important;}
+#panelset_day-19 {color: #D63131 !important;}
+#panelset_day-20 {color: #D63131 !important;}
+#panelset_day-21 {color: #D63131 !important;}
+#panelset_day-22 {color: #D63131 !important;}
+#panelset_day-23 {color: #D63131 !important;}
+#panelset_day-24 {color: #D63131 !important;}
+#panelset_day-25 {color: #D63131 !important;}</style>
+</div>
+</div>
+<div class="panelset">
+<section id="day-1" class="level1 panel-name panel">
+<h1 class="panel-name">Day 1</h1>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_01"</span>, <span class="st">"input_day01.txt"</span>), </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col_names =</span> <span class="st">"calories"</span>, <span class="at">skip_empty_rows =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">empty =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(calories), <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">elf =</span> <span class="fu">cumsum</span>(empty)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(elf) <span class="sc">|&gt;</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_calories =</span> <span class="fu">sum</span>(calories)) <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(total_calories) <span class="sc">|&gt;</span> </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_calories) <span class="sc">|&gt;</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day01pt1_7e1f139b75a1e51107ab52d0c10ed85e">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 72602</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.356 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_01"</span>, <span class="st">"input_day01.txt"</span>), </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col_names =</span> <span class="st">"calories"</span>, <span class="at">skip_empty_rows =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">empty =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(calories), <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">elf =</span> <span class="fu">cumsum</span>(empty)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(elf) <span class="sc">|&gt;</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_calories =</span> <span class="fu">sum</span>(calories)) <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(total_calories, <span class="at">n =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_calories =</span> <span class="fu">sum</span>(total_calories)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_calories) <span class="sc">|&gt;</span> </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day01pt2_58a0c71956fc8c1944f81f4df8024356">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 207410</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.091 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-2" class="level1 panel-name panel">
+<h1 class="panel-name">Day 2</h1>
+<p>Didn’t have much time, so all I managed in the time was a series of <code>case_when()</code>’s. If I revisit I might use matrices instead.</p>
+<section id="part-1-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-1">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_02"</span>, <span class="st">"input_day02.txt"</span>), </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">opp =</span> x,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">me =</span> y) <span class="sc">|&gt;</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">opp_base_score =</span> <span class="fu">case_when</span>(opp <span class="sc">==</span> <span class="st">"A"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                                    opp <span class="sc">==</span> <span class="st">"B"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                                    opp <span class="sc">==</span> <span class="st">"C"</span> <span class="sc">~</span> <span class="dv">3</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">me_base_score =</span> <span class="fu">case_when</span>(me <span class="sc">==</span> <span class="st">"X"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                                   me <span class="sc">==</span> <span class="st">"Y"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                                   me <span class="sc">==</span> <span class="st">"Z"</span> <span class="sc">~</span> <span class="dv">3</span>),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">score_diff =</span> me_base_score <span class="sc">-</span> opp_base_score,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">me_turn_score =</span> <span class="fu">case_when</span>(score_diff <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">|</span> score_diff <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                                   score_diff <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                                   score_diff <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> score_diff <span class="sc">==</span> <span class="sc">-</span><span class="dv">2</span> <span class="sc">~</span> <span class="dv">6</span>),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">me_game_score =</span> me_base_score <span class="sc">+</span> me_turn_score) <span class="sc">|&gt;</span> </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_score =</span> <span class="fu">sum</span>(me_game_score)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_score) <span class="sc">|&gt;</span> </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day02pt1_f7516fe6bed2de9dcd236896c1d6d5f8">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14531</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.039 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-1">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_02"</span>, <span class="st">"input_day02.txt"</span>), </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">opp =</span> x,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">outcome =</span> y) <span class="sc">|&gt;</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">opp_base_score =</span> <span class="fu">case_when</span>(opp <span class="sc">==</span> <span class="st">"A"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                                    opp <span class="sc">==</span> <span class="st">"B"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                                    opp <span class="sc">==</span> <span class="st">"C"</span> <span class="sc">~</span> <span class="dv">3</span>),</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">me_turn_score =</span> <span class="fu">case_when</span>(outcome <span class="sc">==</span> <span class="st">"X"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                                   outcome <span class="sc">==</span> <span class="st">"Y"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                                   outcome <span class="sc">==</span> <span class="st">"Z"</span> <span class="sc">~</span> <span class="dv">6</span>),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">me_base_score =</span> <span class="fu">case_when</span>(me_turn_score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> opp_base_score,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                                   me_turn_score <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                                     opp_base_score <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">~</span> opp_base_score <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                                   me_turn_score <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> opp_base_score <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                                   me_turn_score <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                                     opp_base_score <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">~</span> opp_base_score <span class="sc">+</span> <span class="dv">1</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                                   me_turn_score <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> opp_base_score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">me_game_score =</span> me_turn_score <span class="sc">+</span> me_base_score) <span class="sc">|&gt;</span> </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_score =</span> <span class="fu">sum</span>(me_game_score)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_score) <span class="sc">|&gt;</span> </span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day02pt2_a614bb5d4da0c9ebe2fb0b3c8cb19f6f">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11258</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.027 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-3" class="level1 panel-name panel">
+<h1 class="panel-name">Day 3</h1>
+<p>Would have made for a nice exercise in Python, but who doesn’t love a good regex challenge? 😊</p>
+<section id="part-1-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-2">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_03"</span>, <span class="st">"input_day03.txt"</span>), </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="st">"rucksack"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>priority_values <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">char =</span> <span class="fu">c</span>(letters, LETTERS)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">priority =</span> <span class="fu">seq</span>(<span class="fu">n</span>()))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nitems =</span> <span class="fu">nchar</span>(rucksack),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">comp1 =</span> <span class="fu">str_sub</span>(rucksack, <span class="dv">1</span>, nitems<span class="sc">/</span><span class="dv">2</span>),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">comp2 =</span> <span class="fu">str_sub</span>(rucksack, nitems<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>, nitems),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">comp1_regex =</span> <span class="fu">map_chr</span>(<span class="fu">strsplit</span>(comp1, <span class="st">""</span>), str_c, <span class="at">collapse =</span> <span class="st">"|"</span>),</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">common =</span> <span class="fu">str_extract</span>(comp2, comp1_regex)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(priority_values, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"common"</span> <span class="ot">=</span> <span class="st">"char"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">sum</span>(priority)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(sum) <span class="sc">|&gt;</span> </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day03pt1_ae01d75490dc9bf061469cd54e78f96c">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7793</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.05 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-2">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_03"</span>, <span class="st">"input_day03.txt"</span>), </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="st">"rucksack"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>priority_values <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">char =</span> <span class="fu">c</span>(letters, LETTERS)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">priority =</span> <span class="fu">seq</span>(<span class="fu">n</span>()))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="fu">unique</span>(<span class="fu">n</span>())<span class="sc">/</span><span class="dv">3</span>), <span class="at">each =</span> <span class="dv">3</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">|&gt;</span> </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">group_items =</span> <span class="fu">str_c</span>(rucksack, <span class="at">collapse =</span> <span class="st">"-"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(group_items, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"comp1"</span>, <span class="st">"comp2"</span>, <span class="st">"comp3"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comp1_regex =</span> <span class="fu">map_chr</span>(<span class="fu">strsplit</span>(comp1, <span class="st">""</span>), str_c, <span class="at">collapse =</span> <span class="st">"|"</span>),</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">common_12 =</span> <span class="fu">str_extract_all</span>(comp2, comp1_regex),</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">comp12_regex =</span> <span class="fu">map_chr</span>(common_12, str_c, <span class="at">collapse =</span> <span class="st">"|"</span>),</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">common_all =</span> <span class="fu">str_extract</span>(comp3, comp12_regex)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(priority_values, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"common_all"</span> <span class="ot">=</span> <span class="st">"char"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">sum</span>(priority)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(sum) <span class="sc">|&gt;</span> </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day03pt2_b091562d6c278863eed56f856f89157c">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2499</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.06 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-4" class="level1 panel-name panel">
+<h1 class="panel-name">Day 4</h1>
+<section id="part-1-3" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-3">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_04"</span>, <span class="st">"input_day04.txt"</span>), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="st">"pairs"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(pairs, <span class="at">sep =</span> <span class="st">",|</span><span class="sc">\\</span><span class="st">-"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"section1_start"</span>,<span class="st">"section1_end"</span>, </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"section2_start"</span>, <span class="st">"section2_end"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">as.numeric</span>(.x)),</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">overlap_1_2 =</span> section1_start <span class="sc">&gt;=</span> section2_start <span class="sc">&amp;</span> </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>           section1_end <span class="sc">&lt;=</span> section2_end,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">overlap_2_1 =</span> section2_start <span class="sc">&gt;=</span> section1_start <span class="sc">&amp;</span> </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>           section2_end <span class="sc">&lt;=</span> section1_end) <span class="sc">|&gt;</span> </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(overlap_1_2 <span class="sc">|</span> overlap_2_1) <span class="sc">|&gt;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day04pt1_af2a02c15c46496d543e2b3304de5ea7">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 453</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.056 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-3" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-3">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_04"</span>, <span class="st">"input_day04.txt"</span>), </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="st">"pairs"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(pairs, <span class="at">sep =</span> <span class="st">",|</span><span class="sc">\\</span><span class="st">-"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"section1_start"</span>,<span class="st">"section1_end"</span>, </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"section2_start"</span>, <span class="st">"section2_end"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">as.numeric</span>(.x)),</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">section1 =</span> <span class="fu">map2</span>(section1_start, section1_end, <span class="sc">~</span><span class="fu">seq</span>(.x,.y)),</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">section2 =</span> <span class="fu">map2</span>(section2_start, section2_end, <span class="sc">~</span><span class="fu">seq</span>(.x,.y)),</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">intersect =</span> <span class="fu">map2</span>(section1, section2, <span class="sc">~</span> <span class="fu">intersect</span>(.x, .y)),</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">n_overlapping =</span> <span class="fu">lengths</span>(intersect)) <span class="sc">|&gt;</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_overlapping <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day04pt2_cacf98b1a70692e2e31916a657bada89">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 919</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.089 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-5" class="level1 panel-name panel">
+<h1 class="panel-name">Day 5</h1>
+<p>Took some help from <a href="https://github.com/antdurrant">Anthony Durrant</a> here, this one was difficult!</p>
+<section id="part-1-4" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-4">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>crates <span class="ot">&lt;-</span> <span class="fu">read_fwf</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_05"</span>, <span class="st">"input_day05.txt"</span>), </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col_positions =</span> <span class="fu">fwf_widths</span>(<span class="at">widths =</span> <span class="cn">NA</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(x1, <span class="st">"</span><span class="sc">\\</span><span class="st">["</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(x1,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">str_glue</span>(<span class="st">"stack_{seq(9)}"</span>), </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">4</span>, <span class="at">to =</span> <span class="dv">37</span>, <span class="at">by =</span> <span class="dv">4</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">str_extract</span>(.x, <span class="st">"[A-Z]"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.list</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> .x[<span class="fu">grepl</span>(<span class="st">"[A-Z]"</span>, .x)])</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>steps <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_05"</span>, <span class="st">"input_day05.txt"</span>), <span class="at">skip =</span> <span class="dv">10</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"action"</span>, <span class="st">"index"</span>, <span class="st">"f"</span>, <span class="st">"from"</span>, <span class="st">"t"</span>, <span class="st">"to"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(index, from, to) <span class="sc">|&gt;</span> </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(from, to), <span class="sc">~</span> <span class="fu">str_c</span>(<span class="st">"stack_"</span>, .x)))</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>rearrange_crates <span class="ot">&lt;-</span> <span class="cf">function</span>(x, steps){</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  from <span class="ot">&lt;-</span> steps<span class="sc">$</span>from</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>  to <span class="ot">&lt;-</span> steps<span class="sc">$</span>to</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> steps<span class="sc">$</span>index</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq</span>(n)) {  </span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    x[[to]] <span class="ot">&lt;-</span> <span class="fu">c</span>(x[[from]][<span class="dv">1</span>], x[[to]])</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>    x[[from]]<span class="ot">&lt;-</span> <span class="fu">tail</span>(x[[from]], <span class="fu">length</span>(x[[from]])<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(rlist<span class="sc">::</span><span class="fu">list.parse</span>(steps), rearrange_crates, <span class="at">.init =</span> crates) <span class="sc">|&gt;</span> </span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_chr</span>(<span class="sc">~</span> .x[<span class="dv">1</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">""</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day05pt1_41e76c3195eb2c411717ec04f90fdd50">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "WHTLRMZRC"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.463 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-4" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-4">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>crates <span class="ot">&lt;-</span> <span class="fu">read_fwf</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_05"</span>, <span class="st">"input_day05.txt"</span>), </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col_positions =</span> <span class="fu">fwf_widths</span>(<span class="at">widths =</span> <span class="cn">NA</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(x1, <span class="st">"</span><span class="sc">\\</span><span class="st">["</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(x1,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">str_glue</span>(<span class="st">"stack_{seq(9)}"</span>), </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">4</span>, <span class="at">to =</span> <span class="dv">37</span>, <span class="at">by =</span> <span class="dv">4</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">str_extract</span>(.x, <span class="st">"[A-Z]"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.list</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> .x[<span class="fu">grepl</span>(<span class="st">"[A-Z]"</span>, .x)])</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>steps <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_05"</span>, <span class="st">"input_day05.txt"</span>), <span class="at">skip =</span> <span class="dv">10</span>,</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"action"</span>, <span class="st">"index"</span>, <span class="st">"f"</span>, <span class="st">"from"</span>, <span class="st">"t"</span>, <span class="st">"to"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(index, from, to) <span class="sc">|&gt;</span> </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(from, to), <span class="sc">~</span> <span class="fu">str_c</span>(<span class="st">"stack_"</span>, .x)))</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>rearrange_crates_pt2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, steps){</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  from <span class="ot">&lt;-</span> steps<span class="sc">$</span>from</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  to <span class="ot">&lt;-</span> steps<span class="sc">$</span>to</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> steps<span class="sc">$</span>index</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>  x[[to]] <span class="ot">&lt;-</span> <span class="fu">c</span>(x[[from]][<span class="fu">seq</span>(n)], x[[to]])</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>  x[[from]]<span class="ot">&lt;-</span> <span class="fu">tail</span>(x[[from]], <span class="fu">length</span>(x[[from]])<span class="sc">-</span>n)</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(rlist<span class="sc">::</span><span class="fu">list.parse</span>(steps), rearrange_crates_pt2, <span class="at">.init =</span> crates) <span class="sc">|&gt;</span> </span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_chr</span>(<span class="sc">~</span> .x[<span class="dv">1</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">""</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day05pt2_063defe8a6de7044f53f1ec7e3f13e52">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "GMPMLWNMG"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.273 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-6" class="level1 panel-name panel">
+<h1 class="panel-name">Day 6</h1>
+<p>Actually one of the first ones without any <code>{tidyverse}</code> functions!</p>
+<section id="part-1-5" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-5">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">readLines</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_06"</span>, <span class="st">"input_day06.txt"</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(input, <span class="at">split =</span> <span class="st">""</span>)[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  slider<span class="sc">::</span><span class="fu">slide_lgl</span>(<span class="sc">~</span> <span class="fu">length</span>(.x) <span class="sc">==</span> <span class="dv">4</span> <span class="sc">&amp;</span> <span class="fu">length</span>(.x) <span class="sc">==</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)), </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.before =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  (\(x) {<span class="fu">which</span>(x <span class="sc">==</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]})() <span class="sc">|&gt;</span> </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day06pt1_9133bbdc9ffbd1e6a661f1019ccb87cb">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1300</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.057 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-5" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-5">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">readLines</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_06"</span>, <span class="st">"input_day06.txt"</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(input, <span class="at">split =</span> <span class="st">""</span>)[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  slider<span class="sc">::</span><span class="fu">slide_lgl</span>(<span class="sc">~</span> <span class="fu">length</span>(.x) <span class="sc">==</span> <span class="dv">14</span> <span class="sc">&amp;</span> <span class="fu">length</span>(.x) <span class="sc">==</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)), </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.before =</span> <span class="dv">13</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  (\(x) {<span class="fu">which</span>(x <span class="sc">==</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]})() <span class="sc">|&gt;</span> </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day06pt2_a78d2305936ff1e958156418903580fe">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3986</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.035 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-7" class="level1 panel-name panel">
+<h1 class="panel-name">Day 7</h1>
+<p>First Python solution this year, with some help from <a href="https://github.com/viliampucik">Viliam Pucik</a></p>
+<section id="part-1-6" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-6">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> accumulate</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">'./2022/day_07/input_day07.txt'</span>).read().splitlines()</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>dirs <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">match</span> line.split():</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span>, <span class="st">"cd"</span>, <span class="st">"/"</span>:</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>      path <span class="op">=</span> [<span class="st">"/"</span>]</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span>, <span class="st">"cd"</span>, <span class="st">".."</span>:</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>      path.pop()</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span>, <span class="st">"cd"</span>, <span class="bu">dir</span>:</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>      path.append(<span class="bu">dir</span> <span class="op">+</span> <span class="st">"/"</span>)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span> <span class="op">|</span> <span class="st">"dir"</span>, <span class="op">*</span>_:</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">continue</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> size, _:</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> p <span class="kw">in</span> accumulate(path):</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>        dirs[p] <span class="op">+=</span> <span class="bu">int</span>(size)</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>total_sizes <span class="op">=</span> <span class="bu">sum</span>(size <span class="cf">for</span> size <span class="kw">in</span> dirs.values() <span class="cf">if</span> size <span class="op">&lt;=</span> <span class="fl">1e5</span>)</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total_sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day07pt1_9da0d8c04da1168f5413197bef827a95">
+<div class="cell-output cell-output-stdout">
+<pre><code>1783610</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.017 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-6" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-6">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> accumulate</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">'./2022/day_07/input_day07.txt'</span>).read().splitlines()</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>dirs <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">match</span> line.split():</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span>, <span class="st">"cd"</span>, <span class="st">"/"</span>:</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>      path <span class="op">=</span> [<span class="st">"/"</span>]</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span>, <span class="st">"cd"</span>, <span class="st">".."</span>:</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>      path.pop()</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span>, <span class="st">"cd"</span>, <span class="bu">dir</span>:</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>      path.append(<span class="bu">dir</span> <span class="op">+</span> <span class="st">"/"</span>)</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"$"</span> <span class="op">|</span> <span class="st">"dir"</span>, <span class="op">*</span>_:</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">continue</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> size, _:</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> p <span class="kw">in</span> accumulate(path):</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>        dirs[p] <span class="op">+=</span> <span class="bu">int</span>(size)</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>dir_to_remove <span class="op">=</span> <span class="bu">min</span>(size <span class="cf">for</span> size <span class="kw">in</span> dirs.values() <span class="cf">if</span> size <span class="op">&gt;=</span> dirs[<span class="st">"/"</span>] <span class="op">-</span> <span class="fl">40e6</span>)</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dir_to_remove)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day07pt2_b9e7d0bc6cbd88084b6b041d734abc8b">
+<div class="cell-output cell-output-stdout">
+<pre><code>4370655</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.023 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-8" class="level1 panel-name panel">
+<h1 class="panel-name">Day 8</h1>
+<p>For-loops just feel more appropriate in Python, with help from <a href="https://github.com/nitekat1124">nitekat</a></p>
+<section id="part-1-7" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-7">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">'./2022/day_08/input_day08.txt'</span>).read().splitlines()</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>trees <span class="op">=</span> [[<span class="op">*</span><span class="bu">map</span>(<span class="bu">int</span>, line)] <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> (<span class="bu">len</span>(trees[<span class="dv">0</span>]) <span class="op">+</span> <span class="bu">len</span>(trees) <span class="op">-</span> <span class="dv">2</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees[<span class="dv">0</span>]) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    tree <span class="op">=</span> trees[y][x]</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> trees[y]</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    col <span class="op">=</span> [i[x] <span class="cf">for</span> i <span class="kw">in</span> trees]</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> row[:x]</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    right <span class="op">=</span> row[x <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> col[:y]</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    bottom <span class="op">=</span> col[y <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tree <span class="op">&gt;</span> <span class="bu">min</span>(<span class="bu">max</span>(left), <span class="bu">max</span>(right), <span class="bu">max</span>(top), <span class="bu">max</span>(bottom)):</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>      n <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day08pt1_d320f768e4232d91821c0bcc5600f6a1">
+<div class="cell-output cell-output-stdout">
+<pre><code>1700</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.126 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-7" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-7">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> <span class="bu">open</span>(<span class="st">'./2022/day_08/input_day08.txt'</span>).read().splitlines()</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>trees <span class="op">=</span> [[<span class="op">*</span><span class="bu">map</span>(<span class="bu">int</span>, line)] <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="bu">len</span>(trees[<span class="dv">0</span>])</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="bu">len</span>(trees)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(trees[<span class="dv">0</span>]) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> trees[y][x]</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> trees[y]</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    col <span class="op">=</span> [i[x] <span class="cf">for</span> i <span class="kw">in</span> trees]</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> row[:x][::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    right <span class="op">=</span> row[x <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> col[:y][::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    bottom <span class="op">=</span> col[y <span class="op">+</span> <span class="dv">1</span> :]</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>    left_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(left) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>    left_score <span class="op">=</span> x <span class="cf">if</span> <span class="bu">len</span>(left_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> left_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>    right_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(right) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    right_score <span class="op">=</span> w <span class="op">-</span> x <span class="op">-</span> <span class="dv">1</span> <span class="cf">if</span> <span class="bu">len</span>(right_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> right_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>    top_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(top) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>    top_score <span class="op">=</span> y <span class="cf">if</span> <span class="bu">len</span>(top_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> top_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>    bottom_blocked <span class="op">=</span> [i <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(bottom) <span class="cf">if</span> v <span class="op">-</span> t <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    bottom_score <span class="op">=</span> h <span class="op">-</span> y <span class="op">-</span> <span class="dv">1</span> <span class="cf">if</span> <span class="bu">len</span>(bottom_blocked) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> bottom_blocked[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>    ss <span class="op">=</span> left_score <span class="op">*</span> right_score <span class="op">*</span> top_score <span class="op">*</span> bottom_score</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ss <span class="op">&gt;</span> s:</span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> ss</span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day08pt2_bcf9161c3d12a8b45d41de9ede00e91d">
+<div class="cell-output cell-output-stdout">
+<pre><code>470596</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.255 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-9" class="level1 panel-name panel">
+<h1 class="panel-name">Day 9</h1>
+</section>
+<section id="day-10" class="level1 panel-name panel">
+<h1 class="panel-name">Day 10</h1>
+<section id="part-1-8" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-8">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_10"</span>, <span class="st">"input_day10.txt"</span>), </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"operation"</span>, <span class="st">"argument"</span>))</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">argument =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">steps =</span> <span class="fu">case_when</span>(<span class="fu">str_detect</span>(operation, <span class="st">"add"</span>) <span class="sc">~</span> <span class="dv">2</span>, </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">str_detect</span>(operation, <span class="st">"noop"</span>) <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">step_num_start =</span> <span class="fu">tail</span>(<span class="fu">accumulate</span>(steps, <span class="st">`</span><span class="at">+</span><span class="st">`</span>, <span class="at">.init =</span> <span class="dv">1</span>), <span class="sc">-</span><span class="dv">1</span>) <span class="sc">-</span> steps,</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">x_reg =</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fu">cumsum</span>(argument),</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">x_reg_prev =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">head</span>(x_reg, <span class="sc">-</span><span class="dv">1</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">uncount</span>(steps) <span class="sc">|&gt;</span> </span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowid_to_column</span>(<span class="at">var =</span> <span class="st">"step_num"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(step_num, x_reg_prev) <span class="sc">|&gt;</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">x_reg =</span> x_reg_prev) <span class="sc">|&gt;</span> </span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(step_num <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="fu">n</span>(), <span class="dv">40</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(step_num <span class="sc">*</span> x_reg)) <span class="sc">|&gt;</span> </span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total) <span class="sc">|&gt;</span> </span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day10pt1_cfacec08c2ee4ee4a929a800a6d4e361">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14060</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.046 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-8" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-8">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_10"</span>, <span class="st">"input_day10.txt"</span>), </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"operation"</span>, <span class="st">"argument"</span>))</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>input <span class="sc">|&gt;</span> </span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">argument =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">steps =</span> <span class="fu">case_when</span>(<span class="fu">str_detect</span>(operation, <span class="st">"add"</span>) <span class="sc">~</span> <span class="dv">2</span>, </span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">str_detect</span>(operation, <span class="st">"noop"</span>) <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">step_num_start =</span> <span class="fu">tail</span>(<span class="fu">accumulate</span>(steps, <span class="st">`</span><span class="at">+</span><span class="st">`</span>, <span class="at">.init =</span> <span class="dv">1</span>), <span class="sc">-</span><span class="dv">1</span>) <span class="sc">-</span> steps,</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">x_reg =</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fu">cumsum</span>(argument),</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">x_reg_prev =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">head</span>(x_reg, <span class="sc">-</span><span class="dv">1</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">uncount</span>(steps) <span class="sc">|&gt;</span> </span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">step_num =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">n</span>())) <span class="sc">|&gt;</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(step_num, x_reg_prev) <span class="sc">|&gt;</span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">x_reg =</span> x_reg_prev) <span class="sc">|&gt;</span> </span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x_pos =</span> (step_num <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%%</span> <span class="dv">40</span>,</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">pixel_on =</span> <span class="fu">abs</span>(x_pos <span class="sc">-</span> x_reg) <span class="sc">&lt;</span> <span class="dv">2</span>,</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">pixel =</span> <span class="fu">ifelse</span>(pixel_on, <span class="st">"#"</span>, <span class="cn">NA</span>),</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">row_num =</span> <span class="fu">cumsum</span>(x_pos <span class="sc">==</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(row_num) <span class="sc">|&gt;</span> </span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pixel_on) <span class="sc">|&gt;</span> </span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> row_num)) <span class="sc">+</span></span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">fill =</span> <span class="st">"#f2f2f2"</span>) <span class="sc">+</span></span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">label =</span> <span class="st">"#"</span>, <span class="at">color =</span> <span class="st">"#b3b3b3"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span> </span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span> </span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="fu">rep</span>(<span class="dv">10</span>,<span class="dv">4</span>), <span class="at">unit =</span> <span class="st">"mm"</span>),</span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#0f0f23"</span>))</span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2022"</span>, <span class="st">"day_10"</span>, <span class="st">"plot_day10_pt2.png"</span>), <span class="fu">last_plot</span>(), </span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">3</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2022_cache/html/day10pt2_12532d50ffb3b8142adf8e8739676376">
+<div class="cell-output cell-output-stdout">
+<pre><code>0.44 sec elapsed</code></pre>
+</div>
+</div>
+<p><img src="./2022/day_10/plot_day10_pt2.png" alt="plot_day10_2022" style="width:100%;"></p>
+</section>
+</section>
+<section id="day-11" class="level1 panel-name panel">
+<h1 class="panel-name">Day 11</h1>
+</section>
+<section id="day-12" class="level1 panel-name panel">
+<h1 class="panel-name">Day 12</h1>
+</section>
+<section id="day-13" class="level1 panel-name panel">
+<h1 class="panel-name">Day 13</h1>
+</section>
+<section id="day-14" class="level1 panel-name panel">
+<h1 class="panel-name">Day 14</h1>
+</section>
+<section id="day-15" class="level1 panel-name panel">
+<h1 class="panel-name">Day 15</h1>
+</section>
+<section id="day-16" class="level1 panel-name panel">
+<h1 class="panel-name">Day 16</h1>
+</section>
+<section id="day-17" class="level1 panel-name panel">
+<h1 class="panel-name">Day 17</h1>
+</section>
+<section id="day-18" class="level1 panel-name panel">
+<h1 class="panel-name">Day 18</h1>
+</section>
+<section id="day-19" class="level1 panel-name panel">
+<h1 class="panel-name">Day 19</h1>
+</section>
+<section id="day-20" class="level1 panel-name panel">
+<h1 class="panel-name">Day 20</h1>
+</section>
+<section id="day-21" class="level1 panel-name panel">
+<h1 class="panel-name">Day 21</h1>
+</section>
+<section id="day-22" class="level1 panel-name panel">
+<h1 class="panel-name">Day 22</h1>
+</section>
+<section id="day-23" class="level1 panel-name panel">
+<h1 class="panel-name">Day 23</h1>
+</section>
+<section id="day-24" class="level1 panel-name panel">
+<h1 class="panel-name">Day 24</h1>
+</section>
+<section id="day-25" class="level1 panel-name panel">
+<h1 class="panel-name">Day 25</h1>
+</section>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
