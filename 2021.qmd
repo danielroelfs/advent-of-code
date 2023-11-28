@@ -2,14 +2,20 @@
 title: "My 2021 Attempts"
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
+
 library(tidyverse)
 library(tictoc)
 knitr::opts_chunk$set()
 xaringanExtra::use_panelset()
 ```
 
-```{css, echo=FALSE}
+```{css}
+#| label: style
+#| echo: false
+
 .panel-tab {
   flex: 1 0 20%;
   text-align: center;
@@ -27,7 +33,10 @@ p a:hover {
 }
 ```
 
-```{r, echo=FALSE}
+```{r}
+#| label: generate-tabset
+#| echo: false
+
 part1 <- fs::dir_ls("./2021/", recurse = TRUE) %>%
   str_subset("_pt1") %>%
   str_extract(., "(?<=script_day)(.*)(?=_pt)") %>%
@@ -65,10 +74,10 @@ htmltools::tags$style(
 
 ## Part 1
 
-```{r, code=readLines("./2021/day_01/script_day01_pt1.R"), eval=FALSE}
+```{r code=readLines("./2021/day_01/script_day01_pt1.R"), eval=FALSE}
 ```
 
-```{r day01pt1, echo=FALSE, cache=TRUE}
+```{r day01pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_01/script_day01_pt1.R")))
 toc()
@@ -79,7 +88,7 @@ toc()
 ```{r, code=readLines("./2021/day_01/script_day01_pt2.R"), eval=FALSE}
 ```
 
-```{r day01pt2, echo=FALSE, cache=TRUE}
+```{r day01pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_01/script_day01_pt2.R")))
 toc()
@@ -96,7 +105,7 @@ toc()
 ```{r, code=readLines("./2021/day_02/script_day02_pt1.R"), eval=FALSE}
 ```
 
-```{r day02pt1, echo=FALSE, cache=TRUE}
+```{r day02pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_02/script_day02_pt1.R")))
 toc()
@@ -107,7 +116,7 @@ toc()
 ```{r, code=readLines("./2021/day_02/script_day02_pt2.R"), eval=FALSE}
 ```
 
-```{r day02pt2, echo=FALSE, cache=TRUE}
+```{r day02pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_02/script_day02_pt2.R")))
 toc()
@@ -124,7 +133,7 @@ toc()
 ```{r, code=readLines("./2021/day_03/script_day03_pt1.R"), eval=FALSE}
 ```
 
-```{r day03pt1, echo=FALSE, cache=TRUE}
+```{r day03pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_03/script_day03_pt1.R")))
 toc()
@@ -135,7 +144,7 @@ toc()
 ```{r, code=readLines("./2021/day_03/script_day03_pt2.R"), eval=FALSE}
 ```
 
-```{r day03pt2, echo=FALSE, cache=TRUE}
+```{r day03pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_03/script_day03_pt2.R")))
 toc()
@@ -152,7 +161,7 @@ toc()
 ```{r, code=readLines("./2021/day_04/script_day04_pt1.R"), eval=FALSE}
 ```
 
-```{r day04pt1, echo=FALSE, cache=TRUE}
+```{r day04pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_04/script_day04_pt1.R")))
 toc()
@@ -163,7 +172,7 @@ toc()
 ```{r, code=readLines("./2021/day_04/script_day04_pt2.R"), eval=FALSE}
 ```
 
-```{r day04pt2, echo=FALSE, cache=TRUE}
+```{r day04pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_04/script_day04_pt2.R")))
 toc()
@@ -180,7 +189,7 @@ toc()
 ```{r, code=readLines("./2021/day_05/script_day05_pt1.R"), eval=FALSE}
 ```
 
-```{r day05pt1, echo=FALSE, cache=TRUE}
+```{r day05pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_05/script_day05_pt1.R")))
 toc()
@@ -193,7 +202,7 @@ toc()
 ```{r, code=readLines("./2021/day_05/script_day05_pt2.R"), eval=FALSE}
 ```
 
-```{r day05pt2, echo=FALSE, cache=TRUE}
+```{r day05pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_05/script_day05_pt2.R")))
 toc()
@@ -210,7 +219,7 @@ toc()
 ```{r, code=readLines("./2021/day_06/script_day06_pt1.R"), eval=FALSE}
 ```
 
-```{r day06pt1, echo=FALSE, cache=TRUE}
+```{r day06pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_06/script_day06_pt1.R")))
 toc()
@@ -221,7 +230,7 @@ toc()
 ```{r, code=readLines("./2021/day_06/script_day06_pt2.R"), eval=FALSE}
 ```
 
-```{r day06pt2, echo=FALSE, cache=TRUE}
+```{r day06pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_06/script_day06_pt2.R")))
 toc()
@@ -238,7 +247,7 @@ toc()
 ```{r, code=readLines("./2021/day_07/script_day07_pt1.R"), eval=FALSE}
 ```
 
-```{r day07pt1, echo=FALSE, cache=TRUE}
+```{r day07pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_07/script_day07_pt1.R")))
 toc()
@@ -249,7 +258,7 @@ toc()
 ```{r, code=readLines("./2021/day_07/script_day07_pt2.R"), eval=FALSE}
 ```
 
-```{r day07pt2, echo=FALSE, cache=TRUE}
+```{r day07pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_07/script_day07_pt2.R")))
 toc()
@@ -266,7 +275,7 @@ toc()
 ```{r, code=readLines("./2021/day_08/script_day08_pt1.R"), eval=FALSE}
 ```
 
-```{r day08pt1, echo=FALSE, cache=TRUE}
+```{r day08pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_08/script_day08_pt1.R")))
 toc()
@@ -279,7 +288,7 @@ Got a lot of help from [Emil Hvitveldt](https://emilhvitfeldt.github.io/rstats-a
 ```{r, code=readLines("./2021/day_08/script_day08_pt2.R"), eval=FALSE}
 ```
 
-```{r day08pt2, echo=FALSE, cache=TRUE}
+```{r day08pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_08/script_day08_pt2.R")))
 toc()
@@ -296,7 +305,7 @@ toc()
 ```{r, code=readLines("./2021/day_09/script_day09_pt1.R"), eval=FALSE}
 ```
 
-```{r day09pt1, echo=FALSE, cache=TRUE}
+```{r day09pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_09/script_day09_pt1.R")))
 toc()
@@ -309,7 +318,7 @@ Got stuck here, and once I found this amazingly clever solution from [Ildikó Cz
 ```{r, code=readLines("./2021/day_09/script_day09_pt2.R"), eval=FALSE}
 ```
 
-```{r day09pt2, echo=FALSE, cache=TRUE}
+```{r day09pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_09/script_day09_pt2.R")))
 toc()
@@ -326,7 +335,7 @@ toc()
 ```{r, code=readLines("./2021/day_10/script_day10_pt1.R"), eval=FALSE}
 ```
 
-```{r day10pt1, echo=FALSE, cache=TRUE}
+```{r day10pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_10/script_day10_pt1.R")))
 toc()
@@ -337,7 +346,7 @@ toc()
 ```{r, code=readLines("./2021/day_10/script_day10_pt2.R"), eval=FALSE}
 ```
 
-```{r day10pt2, echo=FALSE, cache=TRUE}
+```{r day10pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_10/script_day10_pt2.R")))
 toc()
@@ -370,7 +379,7 @@ No idea, sorry!
 ```{r, code=readLines("./2021/day_13/script_day13_pt1.R"), eval=FALSE}
 ```
 
-```{r day13pt1, echo=FALSE, cache=TRUE}
+```{r day13pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_13/script_day13_pt1.R")))
 toc()
@@ -381,7 +390,7 @@ toc()
 ```{r, code=readLines("./2021/day_13/script_day13_pt2.R"), eval=FALSE}
 ```
 
-```{r day13pt2, echo=FALSE, cache=TRUE}
+```{r day13pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_13/script_day13_pt2.R")))
 toc()
@@ -402,7 +411,7 @@ With some help once again from [Ildikó Czeller](https://github.com/czeildi/adve
 ```{r, code=readLines("./2021/day_14/script_day14_pt1.R"), eval=FALSE}
 ```
 
-```{r day14pt1, echo=FALSE, cache=TRUE}
+```{r day14pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_14/script_day14_pt1.R")))
 toc()
@@ -413,7 +422,7 @@ toc()
 ```{r, code=readLines("./2021/day_14/script_day14_pt2.R"), eval=FALSE}
 ```
 
-```{r day14pt2, echo=FALSE, cache=TRUE}
+```{r day14pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_14/script_day14_pt2.R")))
 toc()
@@ -446,7 +455,7 @@ Nope, no idea!
 ```{r, code=readLines("./2021/day_17/script_day17_pt1.R"), eval=FALSE}
 ```
 
-```{r day17pt1, echo=FALSE, cache=TRUE}
+```{r day17pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_17/script_day17_pt1.R")))
 toc()
@@ -459,7 +468,7 @@ I really admire [Ildikó Czeller](https://github.com/czeildi/advent-of-code/blob
 ```{r, code=readLines("./2021/day_17/script_day17_pt2.R"), eval=FALSE}
 ```
 
-```{r day17pt2, echo=FALSE, cache=TRUE}
+```{r day17pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_17/script_day17_pt2.R")))
 toc()
@@ -500,7 +509,7 @@ Cool puzzle, but I'm not sure how to solve it, and I don't want to use MATLAB ei
 ```{r, code=readLines("./2021/day_21/script_day21_pt1.R"), eval=FALSE}
 ```
 
-```{r day21pt1, echo=FALSE, cache=TRUE}
+```{r day21pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines("./2021/day_21/script_day21_pt1.R")))
 toc()

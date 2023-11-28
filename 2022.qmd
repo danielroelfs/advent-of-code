@@ -5,12 +5,11 @@ title: "My 2022 Attempts"
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(tictoc)
-library(reticulate)
 
 knitr::opts_chunk$set()
 xaringanExtra::use_panelset()
 
-use_condaenv("aoc")
+reticulate::use_virtualenv("./.venv")
 ```
 
 ```{python py-setup, include=FALSE}
@@ -78,7 +77,7 @@ htmltools::tags$style(
 ```{r, code=readLines("./2022/day_01/script_day01_pt1.R"), eval=FALSE}
 ```
 
-```{r day01pt1, echo=FALSE, cache=TRUE}
+```{r day01pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_01", "script_day01_pt1.R"))))
 toc()
@@ -89,7 +88,7 @@ toc()
 ```{r, code=readLines("./2022/day_01/script_day01_pt2.R"), eval=FALSE}
 ```
 
-```{r day01pt2, echo=FALSE, cache=TRUE}
+```{r day01pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_01", "script_day01_pt2.R"))))
 toc()
@@ -108,7 +107,7 @@ Didn't have much time, so all I managed in the time was a series of `case_when()
 ```{r, code=readLines("./2022/day_02/script_day02_pt1.R"), eval=FALSE}
 ```
 
-```{r day02pt1, echo=FALSE, cache=TRUE}
+```{r day02pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_02", "script_day02_pt1.R"))))
 toc()
@@ -119,7 +118,7 @@ toc()
 ```{r, code=readLines("./2022/day_02/script_day02_pt2.R"), eval=FALSE}
 ```
 
-```{r day02pt2, echo=FALSE, cache=TRUE}
+```{r day02pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_02", "script_day02_pt2.R"))))
 toc()
@@ -138,7 +137,7 @@ Would have made for a nice exercise in Python, but who doesn't love a good regex
 ```{r, code=readLines("./2022/day_03/script_day03_pt1.R"), eval=FALSE}
 ```
 
-```{r day03pt1, echo=FALSE, cache=TRUE}
+```{r day03pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_03", "script_day03_pt1.R"))))
 toc()
@@ -149,7 +148,7 @@ toc()
 ```{r, code=readLines("./2022/day_03/script_day03_pt2.R"), eval=FALSE}
 ```
 
-```{r day03pt2, echo=FALSE, cache=TRUE}
+```{r day03pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_03", "script_day03_pt2.R"))))
 toc()
@@ -166,7 +165,7 @@ toc()
 ```{r, code=readLines("./2022/day_04/script_day04_pt1.R"), eval=FALSE}
 ```
 
-```{r day04pt1, echo=FALSE, cache=TRUE}
+```{r day04pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_04", "script_day04_pt1.R"))))
 toc()
@@ -177,7 +176,7 @@ toc()
 ```{r, code=readLines("./2022/day_04/script_day04_pt2.R"), eval=FALSE}
 ```
 
-```{r day04pt2, echo=FALSE, cache=TRUE}
+```{r day04pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_04", "script_day04_pt2.R"))))
 toc()
@@ -196,7 +195,7 @@ Took some help from [Anthony Durrant](https://github.com/antdurrant) here, this 
 ```{r, code=readLines("./2022/day_05/script_day05_pt1.R"), eval=FALSE}
 ```
 
-```{r day05pt1, echo=FALSE, cache=TRUE}
+```{r day05pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_05", "script_day05_pt1.R"))))
 toc()
@@ -207,7 +206,7 @@ toc()
 ```{r, code=readLines("./2022/day_05/script_day05_pt2.R"), eval=FALSE}
 ```
 
-```{r day05pt2, echo=FALSE, cache=TRUE}
+```{r day05pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_05", "script_day05_pt2.R"))))
 toc()
@@ -226,7 +225,7 @@ Actually one of the first ones without any `{tidyverse}` functions!
 ```{r, code=readLines("./2022/day_06/script_day06_pt1.R"), eval=FALSE}
 ```
 
-```{r day06pt1, echo=FALSE, cache=TRUE}
+```{r day06pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_06", "script_day06_pt1.R"))))
 toc()
@@ -237,7 +236,7 @@ toc()
 ```{r, code=readLines("./2022/day_06/script_day06_pt2.R"), eval=FALSE}
 ```
 
-```{r day06pt2, echo=FALSE, cache=TRUE}
+```{r day06pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_06", "script_day06_pt2.R"))))
 toc()
@@ -256,7 +255,7 @@ First Python solution this year, with some help from [Viliam Pucik](https://gith
 ```{python, code=readLines("./2022/day_07/script_day07_pt1.py"), eval=FALSE}
 ```
 
-```{python day07pt1, echo=FALSE, cache=TRUE}
+```{python day07pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 start_time = time.time()
 exec(open('./2022/day_07/script_day07_pt1.py').read())
 print(f'{time.time() - start_time:.3f} seconds elapsed')
@@ -267,7 +266,7 @@ print(f'{time.time() - start_time:.3f} seconds elapsed')
 ```{python, code=readLines("./2022/day_07/script_day07_pt2.py"), eval=FALSE}
 ```
 
-```{python day07pt2, echo=FALSE, cache=TRUE}
+```{python day07pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 start_time = time.time()
 exec(open('./2022/day_07/script_day07_pt2.py').read())
 print(f'{time.time() - start_time:.3f} seconds elapsed')
@@ -286,7 +285,7 @@ For-loops just feel more appropriate in Python, with help from [nitekat](https:/
 ```{python, code=readLines("./2022/day_08/script_day08_pt1.py"), eval=FALSE}
 ```
 
-```{python day08pt1, echo=FALSE, cache=TRUE}
+```{python day08pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 start_time = time.time()
 exec(open('./2022/day_08/script_day08_pt1.py').read())
 print(f'{time.time() - start_time:.3f} seconds elapsed')
@@ -297,7 +296,7 @@ print(f'{time.time() - start_time:.3f} seconds elapsed')
 ```{python, code=readLines("./2022/day_08/script_day08_pt2.py"), eval=FALSE}
 ```
 
-```{python day08pt2, echo=FALSE, cache=TRUE}
+```{python day08pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 start_time = time.time()
 exec(open('./2022/day_08/script_day08_pt2.py').read())
 print(f'{time.time() - start_time:.3f} seconds elapsed')
@@ -320,7 +319,7 @@ print(f'{time.time() - start_time:.3f} seconds elapsed')
 ```{r, code=readLines("./2022/day_10/script_day10_pt1.R"), eval=FALSE}
 ```
 
-```{r day10pt1, echo=FALSE, cache=TRUE}
+```{r day10pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_10", "script_day10_pt1.R"))))
 toc()
@@ -331,7 +330,7 @@ toc()
 ```{r, code=readLines("./2022/day_10/script_day10_pt2.R"), eval=FALSE}
 ```
 
-```{r day10pt2, echo=FALSE, cache=TRUE}
+```{r day10pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 tic()
 tmp <- eval(parse(text = readLines(here::here("2022", "day_10", "script_day10_pt2.R"))))
 toc()

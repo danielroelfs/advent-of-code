@@ -36,7 +36,7 @@ input <- read_table(here::here(\"${year}\", \"day_${day}\", \"test_input_day${da
 
 echo """# Advent of Code - Day ${1}
 
-[link to the challenge](https://adventofcode.com/2021/day/${1})
+[link to the challenge](https://adventofcode.com/${year}/day/${1})
 
 """ > ./${year}/day_${day}/README.md
 

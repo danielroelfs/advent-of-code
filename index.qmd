@@ -2,24 +2,22 @@
 title: "Advent of Code"
 description: |
   My solutions for [Advent of Code](https://adventofcode.com)
-site: distill::distill_website
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: knitr-opts
+#| include: false
+
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{css, echo=FALSE}
-p a {
-  color: rgb(0, 153, 0);
-}
-p a:hover {
-  color: #99ff99;
-}
-```
+<br>
+<br>
+<br>
 
 [2021](2021.html)
 [2022](2022.html)
+[2023](2023.html)
 
 <br>
 <br>
