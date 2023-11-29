@@ -172,30 +172,6 @@
       ],
       "Hash": "40415719b5a479b87949f3aa0aee737c"
     },
-    "bookdown": {
-      "Package": "bookdown",
-      "Version": "0.36",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "htmltools",
-        "jquerylib",
-        "knitr",
-        "rmarkdown",
-        "tinytex",
-        "xfun",
-        "yaml"
-      ],
-      "Hash": "ad8c9846c4aaa18381781a37271e7f40"
-    },
-    "brio": {
-      "Package": "brio",
-      "Version": "1.1.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "976cf154dfb043c012d87cddd8bca363"
-    },
     "broom": {
       "Package": "broom",
       "Version": "1.0.5",
@@ -350,6 +326,16 @@
       ],
       "Hash": "e8a1e41acf02548751f45c718d55aa6a"
     },
+    "curl": {
+      "Package": "curl",
+      "Version": "5.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "9123f3ef96a2c1a93927d828b2fe7d4c"
+    },
     "data.table": {
       "Package": "data.table",
       "Version": "1.14.8",
@@ -389,20 +375,6 @@
       ],
       "Hash": "59351f28a81f0742720b85363c4fdd61"
     },
-    "desc": {
-      "Package": "desc",
-      "Version": "1.4.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "R6",
-        "cli",
-        "rprojroot",
-        "utils"
-      ],
-      "Hash": "6b9602c7ebbe87101a9c8edb6e8b6d21"
-    },
     "digest": {
       "Package": "digest",
       "Version": "0.6.33",
@@ -413,57 +385,6 @@
         "utils"
       ],
       "Hash": "b18a9cf3c003977b0cc49d5e76ebe48d"
-    },
-    "distill": {
-      "Package": "distill",
-      "Version": "1.6",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "base64enc",
-        "bookdown",
-        "digest",
-        "downlit",
-        "htmltools",
-        "jsonlite",
-        "knitr",
-        "lubridate",
-        "mime",
-        "openssl",
-        "png",
-        "rmarkdown",
-        "rprojroot",
-        "rstudioapi",
-        "stats",
-        "stringr",
-        "tools",
-        "utils",
-        "whisker",
-        "xfun",
-        "xml2",
-        "yaml"
-      ],
-      "Hash": "7c4fcd4e0cf2992fd7a7832e0d83cb7a"
-    },
-    "downlit": {
-      "Package": "downlit",
-      "Version": "0.4.3",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "brio",
-        "desc",
-        "digest",
-        "evaluate",
-        "fansi",
-        "memoise",
-        "rlang",
-        "vctrs",
-        "withr",
-        "yaml"
-      ],
-      "Hash": "14fa1f248b60ed67e1f5418391a17b14"
     },
     "dplyr": {
       "Package": "dplyr",
@@ -712,6 +633,7 @@
         "R",
         "cellranger",
         "cli",
+        "curl",
         "gargle",
         "glue",
         "googledrive",
@@ -738,6 +660,7 @@
       "Requirements": [
         "R",
         "Rcpp",
+        "curl",
         "grDevices",
         "grid",
         "jpeg",
@@ -845,6 +768,7 @@
       "Requirements": [
         "R",
         "R6",
+        "curl",
         "jsonlite",
         "mime",
         "openssl"
@@ -1864,13 +1788,6 @@
         "R"
       ],
       "Hash": "fea474d578b1cbcb696ae6ac8bdcc439"
-    },
-    "whisker": {
-      "Package": "whisker",
-      "Version": "0.4.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c6abfa47a46d281a7d5159d0a8891e88"
     },
     "withr": {
       "Package": "withr",
