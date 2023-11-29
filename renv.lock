@@ -350,16 +350,6 @@
       ],
       "Hash": "e8a1e41acf02548751f45c718d55aa6a"
     },
-    "curl": {
-      "Package": "curl",
-      "Version": "5.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "9123f3ef96a2c1a93927d828b2fe7d4c"
-    },
     "data.table": {
       "Package": "data.table",
       "Version": "1.14.8",
@@ -722,7 +712,6 @@
         "R",
         "cellranger",
         "cli",
-        "curl",
         "gargle",
         "glue",
         "googledrive",
@@ -749,7 +738,6 @@
       "Requirements": [
         "R",
         "Rcpp",
-        "curl",
         "grDevices",
         "grid",
         "jpeg",
@@ -857,7 +845,6 @@
       "Requirements": [
         "R",
         "R6",
-        "curl",
         "jsonlite",
         "mime",
         "openssl"
