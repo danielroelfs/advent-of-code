@@ -327,5 +327,103 @@
     "title": "Advent of Code",
     "section": "",
     "text": "2021 2022 2023\n      Website design by Emil Hvitveldt"
+  },
+  {
+    "objectID": "2023.html#part-1",
+    "href": "2023.html#part-1",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport pandas as pd\nimport re\n\ninput = pd.read_table(\"2023/day_01/test_input_day01.txt\", names=[\"string\"])\ninput = pd.read_table(\"2023/day_01/input_day01.txt\", names=[\"string\"])\n\ndef day1(input, pt2=False):\n    if pt2:\n        input[\"string\"] = input[\"string\"].apply(lambda k: _translate(k))\n\n    input[\"first_num\"] = input[\"string\"].apply(lambda k: re.search(r\"\\d+\", k).group())\n    input[\"first_num\"] = input[\"first_num\"].str[0]\n    input[\"last_num\"] = input[\"string\"].apply(\n        lambda k: re.search(r\"\\d+\", k[::-1]).group()\n    )\n    input[\"last_num\"] = input[\"last_num\"].str[0]\n    input[\"value\"] = input[\"first_num\"] + input[\"last_num\"]\n\n    return input[\"value\"].astype(int).sum()\n\n\nprint(day1(input, pt2=False))\n\n\n\n55017\n\n\n0.968 seconds elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2",
+    "href": "2023.html#part-2",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport pandas as pd\nimport re\n\ninput = pd.read_table(\"2023/day_01/test_input_day01.txt\", names=[\"string\"])\ninput = pd.read_table(\"2023/day_01/input_day01.txt\", names=[\"string\"])\n\nmapping = {\n    \"one\": \"1\",\n    \"two\": \"2\",\n    \"three\": \"3\",\n    \"four\": \"4\",\n    \"five\": \"5\",\n    \"six\": \"6\",\n    \"seven\": \"7\",\n    \"eight\": \"8\",\n    \"nine\": \"9\",\n}\n\n\ndef _translate(s):\n    for word in mapping:\n        s = s.replace(word, word[0] + mapping[word] + word[~0])\n    return s\n\n\ndef day1(input, pt2=False):\n    if pt2:\n        input[\"string\"] = input[\"string\"].apply(lambda k: _translate(k))\n\n    input[\"first_num\"] = input[\"string\"].apply(lambda k: re.search(r\"\\d+\", k).group())\n    input[\"first_num\"] = input[\"first_num\"].str[0]\n    input[\"last_num\"] = input[\"string\"].apply(\n        lambda k: re.search(r\"\\d+\", k[::-1]).group()\n    )\n    input[\"last_num\"] = input[\"last_num\"].str[0]\n    input[\"value\"] = input[\"first_num\"] + input[\"last_num\"]\n\n    return input[\"value\"].astype(int).sum()\n\n\nprint(day1(input, pt2=True))\n\n\n\n53539\n\n\n0.028 seconds elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-1",
+    "href": "2023.html#part-1-1",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_02\", \"input_day02.txt\"), \n                    col_names = c(\"x\", \"y\"))\n\ninput |&gt; \n  rename(opp = x,\n         me = y) |&gt; \n  mutate(opp_base_score = case_when(opp == \"A\" ~ 1,\n                                    opp == \"B\" ~ 2,\n                                    opp == \"C\" ~ 3),\n         me_base_score = case_when(me == \"X\" ~ 1,\n                                   me == \"Y\" ~ 2,\n                                   me == \"Z\" ~ 3),\n         score_diff = me_base_score - opp_base_score,\n         me_turn_score = case_when(score_diff == -1 | score_diff == 2 ~ 0,\n                                   score_diff == 0 ~ 3,\n                                   score_diff == 1 | score_diff == -2 ~ 6),\n         me_game_score = me_base_score + me_turn_score) |&gt; \n  summarise(total_score = sum(me_game_score)) |&gt; \n  pull(total_score) |&gt; \n  print()\n\n\n\n[1] 14531\n\n\n0.192 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-1",
+    "href": "2023.html#part-2-1",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_02\", \"input_day02.txt\"), \n                    col_names = c(\"x\", \"y\"))\n\ninput |&gt; \n  rename(opp = x,\n         outcome = y) |&gt; \n  mutate(opp_base_score = case_when(opp == \"A\" ~ 1,\n                                    opp == \"B\" ~ 2,\n                                    opp == \"C\" ~ 3),\n         me_turn_score = case_when(outcome == \"X\" ~ 0,\n                                   outcome == \"Y\" ~ 3,\n                                   outcome == \"Z\" ~ 6),\n         me_base_score = case_when(me_turn_score == 3 ~ opp_base_score,\n                                   me_turn_score == 0 & \n                                     opp_base_score &gt; 1 ~ opp_base_score - 1,\n                                   me_turn_score == 0 & opp_base_score == 1 ~ 3,\n                                   me_turn_score == 6 & \n                                     opp_base_score &lt; 3 ~ opp_base_score + 1,\n                                   me_turn_score == 6 & opp_base_score == 3 ~ 1),\n         me_game_score = me_turn_score + me_base_score) |&gt; \n  summarise(total_score = sum(me_game_score)) |&gt; \n  pull(total_score) |&gt; \n  print()\n\n\n\n[1] 11258\n\n\n0.039 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-2",
+    "href": "2023.html#part-1-2",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_03\", \"input_day03.txt\"), \n                    col_names = \"rucksack\")\n\npriority_values &lt;- tibble(char = c(letters, LETTERS)) |&gt; \n  mutate(priority = seq(n()))\n\ninput |&gt; \n  mutate(nitems = nchar(rucksack),\n         comp1 = str_sub(rucksack, 1, nitems/2),\n         comp2 = str_sub(rucksack, nitems/2 + 1, nitems),\n         comp1_regex = map_chr(strsplit(comp1, \"\"), str_c, collapse = \"|\"),\n         common = str_extract(comp2, comp1_regex)) |&gt; \n  left_join(priority_values, by = c(\"common\" = \"char\")) |&gt; \n  summarise(sum = sum(priority)) |&gt; \n  pull(sum) |&gt; \n  print()\n\n\n\n[1] 7793\n\n\n0.061 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-2",
+    "href": "2023.html#part-2-2",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_03\", \"input_day03.txt\"), \n                    col_names = \"rucksack\")\n\npriority_values &lt;- tibble(char = c(letters, LETTERS)) |&gt; \n  mutate(priority = seq(n()))\n\ninput |&gt; \n  mutate(group = rep(seq(unique(n())/3), each = 3)) |&gt; \n  group_by(group) |&gt; \n  summarise(group_items = str_c(rucksack, collapse = \"-\")) |&gt; \n  separate(group_items, into = c(\"comp1\", \"comp2\", \"comp3\")) |&gt; \n  mutate(comp1_regex = map_chr(strsplit(comp1, \"\"), str_c, collapse = \"|\"),\n         common_12 = str_extract_all(comp2, comp1_regex),\n         comp12_regex = map_chr(common_12, str_c, collapse = \"|\"),\n         common_all = str_extract(comp3, comp12_regex)) |&gt; \n  left_join(priority_values, by = c(\"common_all\" = \"char\")) |&gt; \n  summarise(sum = sum(priority)) |&gt; \n  pull(sum) |&gt; \n  print()\n\n\n\n[1] 2499\n\n\n0.061 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-3",
+    "href": "2023.html#part-1-3",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_04\", \"input_day04.txt\"), \n                    col_names = \"pairs\")\n\ninput |&gt; \n  separate(pairs, sep = \",|\\\\-\", into = c(\"section1_start\",\"section1_end\", \n                                      \"section2_start\", \"section2_end\")) |&gt; \n  mutate(across(everything(), ~ as.numeric(.x)),\n         overlap_1_2 = section1_start &gt;= section2_start & \n           section1_end &lt;= section2_end,\n         overlap_2_1 = section2_start &gt;= section1_start & \n           section2_end &lt;= section1_end) |&gt; \n  filter(overlap_1_2 | overlap_2_1) |&gt;\n  nrow() |&gt; \n  print()\n\n\n\n[1] 453\n\n\n0.061 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-3",
+    "href": "2023.html#part-2-3",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_04\", \"input_day04.txt\"), \n                    col_names = \"pairs\")\n\ninput |&gt; \n  separate(pairs, sep = \",|\\\\-\", into = c(\"section1_start\",\"section1_end\", \n                                      \"section2_start\", \"section2_end\")) |&gt; \n  mutate(across(everything(), ~ as.numeric(.x)),\n         section1 = map2(section1_start, section1_end, ~seq(.x,.y)),\n         section2 = map2(section2_start, section2_end, ~seq(.x,.y)),\n         intersect = map2(section1, section2, ~ intersect(.x, .y)),\n         n_overlapping = lengths(intersect)) |&gt;\n  filter(n_overlapping &gt; 0) |&gt; \n  nrow() |&gt; \n  print()\n\n\n\n[1] 919\n\n\n0.086 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-4",
+    "href": "2023.html#part-1-4",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nlibrary(tidyverse)\n\ncrates &lt;- read_fwf(here::here(\"2022\", \"day_05\", \"input_day05.txt\"), \n                   col_positions = fwf_widths(widths = NA)) |&gt; \n  janitor::clean_names() |&gt; \n  filter(str_detect(x1, \"\\\\[\")) |&gt; \n  separate(x1,\n           into = str_glue(\"stack_{seq(9)}\"), \n           sep = c(seq(from = 4, to = 37, by = 4))) |&gt; \n  mutate(across(everything(), ~ str_extract(.x, \"[A-Z]\"))) |&gt; \n  as.list() |&gt; \n  map(~ .x[grepl(\"[A-Z]\", .x)])\n\nsteps &lt;- read_delim(here::here(\"2022\", \"day_05\", \"input_day05.txt\"), skip = 10,\n                    col_names = c(\"action\", \"index\", \"f\", \"from\", \"t\", \"to\")) |&gt; \n  select(index, from, to) |&gt; \n  mutate(across(c(from, to), ~ str_c(\"stack_\", .x)))\n\nrearrange_crates &lt;- function(x, steps){\n  from &lt;- steps$from\n  to &lt;- steps$to\n  n &lt;- steps$index\n  \n  for(i in seq(n)) {  \n    x[[to]] &lt;- c(x[[from]][1], x[[to]])\n    x[[from]]&lt;- tail(x[[from]], length(x[[from]])-1)\n  }\n  return(x)\n}\n\nreduce(rlist::list.parse(steps), rearrange_crates, .init = crates) |&gt; \n  map_chr(~ .x[1]) |&gt; \n  paste(collapse = \"\") |&gt; \n  print()\n\n\n\n[1] \"WHTLRMZRC\"\n\n\n0.747 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-4",
+    "href": "2023.html#part-2-4",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nlibrary(tidyverse)\n\ncrates &lt;- read_fwf(here::here(\"2022\", \"day_05\", \"input_day05.txt\"), \n                   col_positions = fwf_widths(widths = NA)) |&gt; \n  janitor::clean_names() |&gt; \n  filter(str_detect(x1, \"\\\\[\")) |&gt; \n  separate(x1,\n           into = str_glue(\"stack_{seq(9)}\"), \n           sep = c(seq(from = 4, to = 37, by = 4))) |&gt; \n  mutate(across(everything(), ~ str_extract(.x, \"[A-Z]\"))) |&gt; \n  as.list() |&gt; \n  map(~ .x[grepl(\"[A-Z]\", .x)])\n\nsteps &lt;- read_delim(here::here(\"2022\", \"day_05\", \"input_day05.txt\"), skip = 10,\n                    col_names = c(\"action\", \"index\", \"f\", \"from\", \"t\", \"to\")) |&gt; \n  select(index, from, to) |&gt; \n  mutate(across(c(from, to), ~ str_c(\"stack_\", .x)))\n\nrearrange_crates_pt2 &lt;- function(x, steps){\n  from &lt;- steps$from\n  to &lt;- steps$to\n  n &lt;- steps$index\n  \n  x[[to]] &lt;- c(x[[from]][seq(n)], x[[to]])\n  x[[from]]&lt;- tail(x[[from]], length(x[[from]])-n)\n  return(x)\n}\n\nreduce(rlist::list.parse(steps), rearrange_crates_pt2, .init = crates) |&gt; \n  map_chr(~ .x[1]) |&gt; \n  paste(collapse = \"\") |&gt; \n  print()\n\n\n\n[1] \"GMPMLWNMG\"\n\n\n0.23 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-5",
+    "href": "2023.html#part-1-5",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\ninput &lt;- readLines(here::here(\"2022\", \"day_06\", \"input_day06.txt\"))\n\nstrsplit(input, split = \"\")[[1]] |&gt; \n  slider::slide_lgl(~ length(.x) == 4 & length(.x) == length(unique(.x)), \n                    .before = 3) |&gt; \n  (\\(x) {which(x == TRUE)[1]})() |&gt; \n  print()\n\n\n\n[1] 1300\n\n\n0.09 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-5",
+    "href": "2023.html#part-2-5",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\ninput &lt;- readLines(here::here(\"2022\", \"day_06\", \"input_day06.txt\"))\n\nstrsplit(input, split = \"\")[[1]] |&gt; \n  slider::slide_lgl(~ length(.x) == 14 & length(.x) == length(unique(.x)), \n                    .before = 13) |&gt; \n  (\\(x) {which(x == TRUE)[1]})() |&gt; \n  print()\n\n\n\n[1] 3986\n\n\n0.065 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-6",
+    "href": "2023.html#part-1-6",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nfrom collections import defaultdict\nfrom itertools import accumulate\n\nlines = open('./2022/day_07/input_day07.txt').read().splitlines()\n\ndirs = defaultdict(int)\n\nfor line in lines:\n  match line.split():\n    case \"$\", \"cd\", \"/\":\n      path = [\"/\"]\n    case \"$\", \"cd\", \"..\":\n      path.pop()\n    case \"$\", \"cd\", dir:\n      path.append(dir + \"/\")\n    case \"$\" | \"dir\", *_:\n      continue\n    case size, _:\n      for p in accumulate(path):\n        dirs[p] += int(size)\n\ntotal_sizes = sum(size for size in dirs.values() if size &lt;= 1e5)\nprint(total_sizes)\n\n\n\n1783610\n\n\n0.020 seconds elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-6",
+    "href": "2023.html#part-2-6",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nfrom collections import defaultdict\nfrom itertools import accumulate\n\nlines = open('./2022/day_07/input_day07.txt').read().splitlines()\n\ndirs = defaultdict(int)\n\nfor line in lines:\n  match line.split():\n    case \"$\", \"cd\", \"/\":\n      path = [\"/\"]\n    case \"$\", \"cd\", \"..\":\n      path.pop()\n    case \"$\", \"cd\", dir:\n      path.append(dir + \"/\")\n    case \"$\" | \"dir\", *_:\n      continue\n    case size, _:\n      for p in accumulate(path):\n        dirs[p] += int(size)\n\ndir_to_remove = min(size for size in dirs.values() if size &gt;= dirs[\"/\"] - 40e6)\nprint(dir_to_remove)\n\n\n\n4370655\n\n\n0.016 seconds elapsed"
   }
 ]
