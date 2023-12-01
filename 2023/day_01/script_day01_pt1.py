@@ -1,7 +1,6 @@
 import pandas as pd
 import re
 
-input = pd.read_table("2023/day_01/test_input_day01.txt", names=["string"])
 input = pd.read_table("2023/day_01/input_day01.txt", names=["string"])
 
 def day1(input, pt2=False):

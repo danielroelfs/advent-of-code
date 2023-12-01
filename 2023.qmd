@@ -71,7 +71,7 @@ htmltools::tags$style(
 
 # Day 1 {.panel-name}
 
-Good exercise in working with strings! The overlapping strings ("eightwo") were a nice touch.
+Good exercise in working with strings! The overlapping strings (e.g. "eightwo") were a nice touch.
 
 ## Part 1
 

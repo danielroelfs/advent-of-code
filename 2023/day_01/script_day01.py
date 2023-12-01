@@ -7,7 +7,7 @@ import re
 
 # -- Load data ------------------------
 
-input = pd.read_table("2023/day_01/test_input_day01.txt", names=["string"])
+# input = pd.read_table("2023/day_01/test_input_day01.txt", names=["string"])
 input = pd.read_table("2023/day_01/input_day01.txt", names=["string"])
 
 # -- Part 1 ------------------------
