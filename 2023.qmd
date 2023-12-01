@@ -1,8 +1,14 @@
 ---
 title: "My 2023 Attempts"
+execute:
+  message: false
+  warning: false
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
+
 library(tidyverse)
 library(tictoc)
 
@@ -12,12 +18,18 @@ xaringanExtra::use_panelset()
 reticulate::use_virtualenv("./.venv")
 ```
 
-```{python py-setup, include=FALSE}
+```{python}
+#| label: py-setup
+#| include: false
+
 import time
 ```
 
 
-```{css, echo=FALSE}
+```{css}
+#| label: style
+#| echo: false
+
 .panel-tab {
   flex: 1 0 20%;
   text-align: center;
@@ -35,7 +47,10 @@ p a:hover {
 }
 ```
 
-```{r, echo=FALSE}
+```{r}
+#| label: nav-table
+#| echo: false
+
 part1 <- fs::dir_ls("./2023/", recurse = TRUE) |>
   str_subset("_pt1") |>
   str_extract("(?<=script_day)(.*)(?=_pt)") |>
@@ -71,14 +86,20 @@ htmltools::tags$style(
 
 # Day 1 {.panel-name}
 
-Good exercise in working with strings! The overlapping strings (e.g. "eightwo") were a nice touch.
+Nice exercise in working with strings! The overlapping strings (e.g. "eightwo") were a nice touch.
 
 ## Part 1
 
-```{python, code=readLines("./2023/day_01/script_day01_pt1.py"), eval=FALSE}
+```{python, code=readLines("./2023/day_01/script_day01_pt1.py")}
+#| label: code-day01pt1
+#| eval: false
 ```
 
-```{python day01pt1, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+```{python}
+#| label: day01pt1
+#| echo: false
+#| cache: true
+
 start_time = time.time()
 exec(open('./2023/day_01/script_day01_pt1.py').read())
 print(f'{time.time() - start_time:.3f} seconds elapsed')
@@ -86,10 +107,16 @@ print(f'{time.time() - start_time:.3f} seconds elapsed')
 
 ## Part 2
 
-```{python, code=readLines("./2023/day_01/script_day01_pt2.py"), eval=FALSE}
+```{python, code=readLines("./2023/day_01/script_day01_pt2.py")}
+#| label: code-day01pt2
+#| eval: false
 ```
 
-```{python day01pt2, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+```{python}
+#| label: day01pt2
+#| echo: false
+#| cache: true
+
 start_time = time.time()
 exec(open('./2023/day_01/script_day01_pt2.py').read())
 print(f'{time.time() - start_time:.3f} seconds elapsed')

@@ -4,8 +4,8 @@ project:
 
 website:
   title: "Advent of Code"
+  search: false
   navbar:
-    search: false
     left:
       - text: "2021"
         href: 2021.qmd
