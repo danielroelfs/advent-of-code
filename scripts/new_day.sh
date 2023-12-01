@@ -5,6 +5,13 @@ if [ "$#" -lt 1 ]; then
     exit
 fi
 
+if [ "$#" -lt 2 ]; then
+    echo -e "\nI'm assuming you're planning to do this in R\n"
+    suffix=`echo R`
+else
+    suffix=${2}
+fi
+
 day=`printf %02d $1`
 year=`date +"%Y"`
 
@@ -14,29 +21,27 @@ touch ./${year}/day_${day}/test_input_day${day}.txt
 
 echo """### ADVENT OF CODE - DAY ${1} ########################
 
-#-- Libraries -------------------------
+# -- Libraries -------------------------
 
 library(tidyverse)
 
-#-- Load data ------------------------
+# -- Load data ------------------------
 
 input <- read_table(here::here(\"${year}\", \"day_${day}\", \"test_input_day${day}.txt\"), col_names = \"x\")
 #input <- read_table(here::here(\"${year}\", \"day_${day}\", \"input_day${day}.txt\"), col_names = \"x\")
 
-#-- Part 1 ------------------------
+# -- Part 1 ------------------------
 
 # 
 
 
-#-- Part 2 ------------------------
+# -- Part 2 ------------------------
 
 # 
 
-""" > ./${year}/day_${day}/script_day${day}.R
+""" > ./${year}/day_${day}/script_day${day}.${suffix}
 
 echo """# Advent of Code - Day ${1}
 
-[link to the challenge](https://adventofcode.com/2021/day/${1})
-
-""" > ./${year}/day_${day}/README.md
+[link to the challenge](https://adventofcode.com/${year}/day/${1})""" > ./${year}/day_${day}/README.md
 

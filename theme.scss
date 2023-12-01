@@ -1,0 +1,86 @@
+
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+
+/*-- scss:defaults --*/
+$title-size:      50px;
+$body-size:       1rem;
+$code-size:       90%;
+$fig-cap-size:    80%;
+$title-color:     #eeeeee;
+$text-color:      #cccccc;
+$link-color:      #00cc00;
+$link-hover-col:  #99ff99;
+$bg-color:        #0f0f23;
+$heading-font:    'Source Code Pro' !default;
+$body-font:       'Source Code Pro' !default;
+$code-font:       'Source Code Pro' !default;
+
+/*-- scss:rules --*/
+html {
+  font-size: 24px;
+}
+
+body, .navbar, div.cell-output > pre > code {
+  font-family: $body-font;
+  color: $text-color;
+  background-color: $bg-color;
+}
+
+h1, h2, h3 {
+  color: $title-color;
+}
+
+h1 {
+  font-size: 3rem;
+  padding: 2rem 0 2rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  padding: 2rem 0 2rem 0;
+  border: none;
+}
+
+#title-block-header.quarto-title-block.default .description > p {
+  font-size: 1.2rem;
+}
+
+div.sourceCode > pre > code {
+  font-family: $code-font;
+  font-size: 0.9rem;
+}
+
+/* links */
+p a {
+  color: $link-color;
+}
+p a:hover {
+  color: $link-hover-col;
+}
+
+/* navbar */
+div.navbar-brand-container > a > span,
+#navbarCollapse > ul > li > a > span {
+  color: $link-color;
+  text-shadow: 0 0 2px $link-color, 0 0 5px $link-color;
+}
+
+div.navbar-brand-container > a > span:hover,
+#navbarCollapse > ul > li > a > span:hover {
+  color: $link-hover-col;
+  text-shadow: 0 0 2px $link-hover-col, 0 0 5px $link-hover-col;
+}
+
+/* tabset */
+
+.panelset .panel-tabs .panel-tab.panel-tab-active {
+  color: $link-color !important;
+}
+
+.panelset .panel-tabs .panel-tab > a {
+ color: $text-color !important;
+}
+
+.panelset .panel-tabs .panel-tab:hover {
+  color: $link-color !important;
+}

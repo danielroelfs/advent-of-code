@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Advent of Code"
+  navbar:
+    search: false
+    left:
+      - text: "2021"
+        href: 2021.qmd
+      - text: "2022"
+        href: 2022.qmd
+      - text: "2023"
+        href: 2023.qmd
+
+highlight-style: dracula
+
+format:
+  html:
+    embed-resources: true
+    theme: theme.scss
