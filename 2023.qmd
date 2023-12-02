@@ -101,8 +101,8 @@ Nice exercise in working with strings! The overlapping strings (e.g. "eightwo") 
 #| cache: true
 
 start_time = time.time()
-exec(open('./2023/day_01/script_day01_pt1.py').read())
-print(f'{time.time() - start_time:.3f} seconds elapsed')
+exec(open("./2023/day_01/script_day01_pt1.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
 ```
 
 ## Part 2
@@ -118,8 +118,8 @@ print(f'{time.time() - start_time:.3f} seconds elapsed')
 #| cache: true
 
 start_time = time.time()
-exec(open('./2023/day_01/script_day01_pt2.py').read())
-print(f'{time.time() - start_time:.3f} seconds elapsed')
+exec(open("./2023/day_01/script_day01_pt2.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
 ```
 
 :::
@@ -127,6 +127,42 @@ print(f'{time.time() - start_time:.3f} seconds elapsed')
 ::: {.panel}
 
 # Day 2 {.panel-name}
+
+Perfect exercise for `{tidyverse}`, not so much for Python or pandas. The parsing was hard, but got some inspiration from [David Robinson](https://fosstodon.org/@drob) there.
+
+## Part 1
+
+```{r, code=readLines("./2023/day_02/script_day02_pt1.R")}
+#| label: code-day02pt1
+#| eval: false
+```
+
+```{r}
+#| label: day02pt1
+#| echo: false
+#| cache: true
+
+tic()#| 
+tmp <- eval(parse(text = readLines(here::here("2023", "day_02", "script_day02_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2023/day_02/script_day02_pt2.R")}
+#| label: code-day02pt2
+#| eval: false
+```
+
+```{r}
+#| label: day02pt2
+#| echo: false
+#| cache: true
+
+tic()#| 
+tmp <- eval(parse(text = readLines(here::here("2023", "day_02", "script_day02_pt2.R"))))
+toc()
+```
 
 :::
 

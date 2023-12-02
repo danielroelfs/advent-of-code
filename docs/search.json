@@ -333,13 +333,27 @@
     "href": "2023.html#part-1",
     "title": "My 2023 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport pandas as pd\nimport re\n\ninput = pd.read_table(\"2023/day_01/input_day01.txt\", names=[\"string\"])\n\ndef day1(input, pt2=False):\n    if pt2:\n        input[\"string\"] = input[\"string\"].apply(lambda k: _translate(k))\n\n    input[\"first_num\"] = input[\"string\"].apply(lambda k: re.search(r\"\\d+\", k).group())\n    input[\"first_num\"] = input[\"first_num\"].str[0]\n    input[\"last_num\"] = input[\"string\"].apply(\n        lambda k: re.search(r\"\\d+\", k[::-1]).group()\n    )\n    input[\"last_num\"] = input[\"last_num\"].str[0]\n    input[\"value\"] = input[\"first_num\"] + input[\"last_num\"]\n\n    return input[\"value\"].astype(int).sum()\n\n\nprint(day1(input, pt2=False))\n\n\n\n55017\n\n\n6.095 seconds elapsed"
+    "text": "Part 1\n\nimport pandas as pd\nimport re\n\ninput = pd.read_table(\"2023/day_01/input_day01.txt\", names=[\"string\"])\n\ndef day1(input, pt2=False):\n    if pt2:\n        input[\"string\"] = input[\"string\"].apply(lambda k: _translate(k))\n\n    input[\"first_num\"] = input[\"string\"].apply(lambda k: re.search(r\"\\d+\", k).group())\n    input[\"first_num\"] = input[\"first_num\"].str[0]\n    input[\"last_num\"] = input[\"string\"].apply(\n        lambda k: re.search(r\"\\d+\", k[::-1]).group()\n    )\n    input[\"last_num\"] = input[\"last_num\"].str[0]\n    input[\"value\"] = input[\"first_num\"] + input[\"last_num\"]\n\n    return input[\"value\"].astype(int).sum()\n\n\nprint(day1(input, pt2=False))\n\n\n\n55017\n\n\n3.652 seconds elapsed"
   },
   {
     "objectID": "2023.html#part-2",
     "href": "2023.html#part-2",
     "title": "My 2023 Attempts",
     "section": "Part 2",
-    "text": "Part 2\n\nimport pandas as pd\nimport re\n\ninput = pd.read_table(\"2023/day_01/input_day01.txt\", names=[\"string\"])\n\nmapping = {\n    \"one\": \"1\",\n    \"two\": \"2\",\n    \"three\": \"3\",\n    \"four\": \"4\",\n    \"five\": \"5\",\n    \"six\": \"6\",\n    \"seven\": \"7\",\n    \"eight\": \"8\",\n    \"nine\": \"9\",\n}\n\n\ndef _translate(s):\n    for word in mapping:\n        s = s.replace(word, word[0] + mapping[word] + word[~0])\n    return s\n\n\ndef day1(input, pt2=False):\n    if pt2:\n        input[\"string\"] = input[\"string\"].apply(lambda k: _translate(k))\n\n    input[\"first_num\"] = input[\"string\"].apply(lambda k: re.search(r\"\\d+\", k).group())\n    input[\"first_num\"] = input[\"first_num\"].str[0]\n    input[\"last_num\"] = input[\"string\"].apply(\n        lambda k: re.search(r\"\\d+\", k[::-1]).group()\n    )\n    input[\"last_num\"] = input[\"last_num\"].str[0]\n    input[\"value\"] = input[\"first_num\"] + input[\"last_num\"]\n\n    return input[\"value\"].astype(int).sum()\n\n\nprint(day1(input, pt2=True))\n\n\n\n53539\n\n\n0.026 seconds elapsed"
+    "text": "Part 2\n\nimport pandas as pd\nimport re\n\ninput = pd.read_table(\"2023/day_01/input_day01.txt\", names=[\"string\"])\n\nmapping = {\n    \"one\": \"1\",\n    \"two\": \"2\",\n    \"three\": \"3\",\n    \"four\": \"4\",\n    \"five\": \"5\",\n    \"six\": \"6\",\n    \"seven\": \"7\",\n    \"eight\": \"8\",\n    \"nine\": \"9\",\n}\n\n\ndef _translate(s):\n    for word in mapping:\n        s = s.replace(word, word[0] + mapping[word] + word[~0])\n    return s\n\n\ndef day1(input, pt2=False):\n    if pt2:\n        input[\"string\"] = input[\"string\"].apply(lambda k: _translate(k))\n\n    input[\"first_num\"] = input[\"string\"].apply(lambda k: re.search(r\"\\d+\", k).group())\n    input[\"first_num\"] = input[\"first_num\"].str[0]\n    input[\"last_num\"] = input[\"string\"].apply(\n        lambda k: re.search(r\"\\d+\", k[::-1]).group()\n    )\n    input[\"last_num\"] = input[\"last_num\"].str[0]\n    input[\"value\"] = input[\"first_num\"] + input[\"last_num\"]\n\n    return input[\"value\"].astype(int).sum()\n\n\nprint(day1(input, pt2=True))\n\n\n\n53539\n\n\n0.024 seconds elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-1",
+    "href": "2023.html#part-1-1",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nlibrary(tidyverse)\n\ninput &lt;- read_delim(here::here(\"2023\", \"day_02\", \"input_day02.txt\"),\n  delim = \":\", col_names = c(\"game\", \"result\")\n)\n\ninput_parsed &lt;- input |&gt;\n  mutate(\n    result = str_trim(result),\n    game = parse_number(game),\n    cubes = str_extract_all(result, \"\\\\d+ [a-z]+\")\n  ) |&gt;\n  unnest(cubes) |&gt;\n  separate(cubes, c(\"number\", \"color\"), sep = \" \", convert = TRUE)\n\nmax_number &lt;- tribble(\n  ~color, ~max_value,\n  \"red\", 12,\n  \"green\", 13,\n  \"blue\", 14\n)\n\ninput_parsed |&gt;\n  inner_join(max_number, by = \"color\") |&gt;\n  group_by(game) |&gt;\n  filter(!any(number &gt; max_value)) |&gt;\n  distinct(game) |&gt;\n  pull(game) |&gt;\n  sum() |&gt;\n  print()\n\n\n\n[1] 2331\n\n\n0.346 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-1",
+    "href": "2023.html#part-2-1",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_delim(here::here(\"2023\", \"day_02\", \"input_day02.txt\"),\n  delim = \":\", col_names = c(\"game\", \"result\")\n)\n\ninput_parsed &lt;- input |&gt;\n  mutate(\n    result = str_trim(result),\n    game = parse_number(game),\n    cubes = str_extract_all(result, \"\\\\d+ [a-z]+\")\n  ) |&gt;\n  unnest(cubes) |&gt;\n  separate(cubes, c(\"number\", \"color\"), sep = \" \", convert = TRUE)\n\ninput_parsed |&gt;\n  inner_join(max_number, by = \"color\") |&gt;\n  group_by(game, color) |&gt;\n  summarise(number = max(number)) |&gt;\n  summarise(power = prod(number)) |&gt;\n  pull(power) |&gt;\n  sum() |&gt;\n  print()\n\n\n\n[1] 71585\n\n\n0.113 sec elapsed"
   }
 ]
