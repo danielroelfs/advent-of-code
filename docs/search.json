@@ -355,5 +355,19 @@
     "title": "My 2023 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_delim(here::here(\"2023\", \"day_02\", \"input_day02.txt\"),\n  delim = \":\", col_names = c(\"game\", \"result\")\n)\n\ninput_parsed &lt;- input |&gt;\n  mutate(\n    result = str_trim(result),\n    game = parse_number(game),\n    cubes = str_extract_all(result, \"\\\\d+ [a-z]+\")\n  ) |&gt;\n  unnest(cubes) |&gt;\n  separate(cubes, c(\"number\", \"color\"), sep = \" \", convert = TRUE)\n\ninput_parsed |&gt;\n  inner_join(max_number, by = \"color\") |&gt;\n  group_by(game, color) |&gt;\n  summarise(number = max(number)) |&gt;\n  summarise(power = prod(number)) |&gt;\n  pull(power) |&gt;\n  sum() |&gt;\n  print()\n\n\n\n[1] 71585\n\n\n0.113 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-2",
+    "href": "2023.html#part-1-2",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2023\", \"day_03\", \"input_day03.txt\"), \"r\").read().splitlines()\n\ndef part1(input):\n    padding = \".\" * len(input[0])\n    padded = [padding] + input\n    parts = []\n\n    for i in range(len(input)):\n        for match in re.finditer(r\"\\d+\", input[i]):\n            start, end = match.span()\n            start, end = max(start - 1, 0), min(end + 1, len(input[i]))\n            region = \"\".join([row[start:end] for row in padded[i : i + 3]])\n            if re.search(r\"[^.0-9]\", region):\n                parts.append(int(match.group(0)))\n\n    return sum(parts)\n\n\nprint(part1(input))\n\n\n\n538046\n\n\n0.014 seconds elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-2",
+    "href": "2023.html#part-2-2",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2023\", \"day_03\", \"input_day03.txt\"), \"r\").read().splitlines()\n\ndef part2(input):\n    padding = \".\" * len(input[0])\n    padded = [padding] + input\n    gear_ratios = []\n\n    for i in range(len(input)):\n        for gear in re.finditer(r\"\\*\", input[i]):\n            numbers = []\n            for row in padded[i : i + 3]:\n                for n in re.finditer(r\"\\d+\", row):\n                    lower, upper = n.span()\n                    if lower - 1 &lt;= gear.start() &lt;= upper:\n                        numbers.append(int(n.group(0)))\n            if len(numbers) == 2:\n                gear_ratios.append(numbers[0] * numbers[1])\n\n    return sum(gear_ratios)\n\n\nprint(part2(input))\n\n\n\n81709807\n\n\n0.016 seconds elapsed"
   }
 ]

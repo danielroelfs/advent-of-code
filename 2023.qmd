@@ -170,6 +170,42 @@ toc()
 
 # Day 3 {.panel-name}
 
+Really not good at these grid searches, used the solution by [Jared Summers](https://github.com/rabuf) in the hope I could learn
+
+## Part 1
+
+```{python, code=readLines("./2023/day_03/script_day03_pt1.py")}
+#| label: code-day03pt1
+#| eval: false
+```
+
+```{python}
+#| label: day03pt1
+#| echo: false
+#| cache: true
+
+start_time = time.time()
+exec(open("./2023/day_03/script_day03_pt1.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
+## Part 2
+
+```{python, code=readLines("./2023/day_03/script_day03_pt2.py")}
+#| label: code-day03pt2
+#| eval: false
+```
+
+```{python}
+#| label: day03pt2
+#| echo: false
+#| cache: true
+
+start_time = time.time()
+exec(open("./2023/day_03/script_day03_pt2.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
 :::
 
 ::: {.panel}

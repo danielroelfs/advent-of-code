@@ -3911,8 +3911,7 @@ color: #99ff99;
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<style>#panelset_day-3 {color: #D63131 !important;}
-#panelset_day-4 {color: #D63131 !important;}
+<style>#panelset_day-4 {color: #D63131 !important;}
 #panelset_day-5 {color: #D63131 !important;}
 #panelset_day-6 {color: #D63131 !important;}
 #panelset_day-7 {color: #D63131 !important;}
@@ -4113,6 +4112,80 @@ color: #99ff99;
 </section>
 <section id="day-3" class="level1 panel-name panel">
 <h1 class="panel-name">Day 3</h1>
+<p>Really not good at these grid searches, used the solution by <a href="https://github.com/rabuf">Jared Summers</a> in the hope I could learn</p>
+<section id="part-1-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-2">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">&quot;2023&quot;</span>, <span class="st">&quot;day_03&quot;</span>, <span class="st">&quot;input_day03.txt&quot;</span>), <span class="st">&quot;r&quot;</span>).read().splitlines()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    padding <span class="op">=</span> <span class="st">&quot;.&quot;</span> <span class="op">*</span> <span class="bu">len</span>(<span class="bu">input</span>[<span class="dv">0</span>])</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    padded <span class="op">=</span> [padding] <span class="op">+</span> <span class="bu">input</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    parts <span class="op">=</span> []</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(<span class="bu">input</span>)):</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> match <span class="kw">in</span> re.finditer(<span class="vs">r&quot;\d+&quot;</span>, <span class="bu">input</span>[i]):</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>            start, end <span class="op">=</span> match.span()</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            start, end <span class="op">=</span> <span class="bu">max</span>(start <span class="op">-</span> <span class="dv">1</span>, <span class="dv">0</span>), <span class="bu">min</span>(end <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(<span class="bu">input</span>[i]))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            region <span class="op">=</span> <span class="st">&quot;&quot;</span>.join([row[start:end] <span class="cf">for</span> row <span class="kw">in</span> padded[i : i <span class="op">+</span> <span class="dv">3</span>]])</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> re.search(<span class="vs">r&quot;[^.0-9]&quot;</span>, region):</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                parts.append(<span class="bu">int</span>(match.group(<span class="dv">0</span>)))</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(parts)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2023_cache/html/day03pt1_277517f3983d1de21845243ebe5d5936">
+<div class="cell-output cell-output-stdout">
+<pre><code>538046</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.014 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-2">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">&quot;2023&quot;</span>, <span class="st">&quot;day_03&quot;</span>, <span class="st">&quot;input_day03.txt&quot;</span>), <span class="st">&quot;r&quot;</span>).read().splitlines()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    padding <span class="op">=</span> <span class="st">&quot;.&quot;</span> <span class="op">*</span> <span class="bu">len</span>(<span class="bu">input</span>[<span class="dv">0</span>])</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    padded <span class="op">=</span> [padding] <span class="op">+</span> <span class="bu">input</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    gear_ratios <span class="op">=</span> []</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(<span class="bu">input</span>)):</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> gear <span class="kw">in</span> re.finditer(<span class="vs">r&quot;\*&quot;</span>, <span class="bu">input</span>[i]):</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            numbers <span class="op">=</span> []</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> row <span class="kw">in</span> padded[i : i <span class="op">+</span> <span class="dv">3</span>]:</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> n <span class="kw">in</span> re.finditer(<span class="vs">r&quot;\d+&quot;</span>, row):</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>                    lower, upper <span class="op">=</span> n.span()</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> lower <span class="op">-</span> <span class="dv">1</span> <span class="op">&lt;=</span> gear.start() <span class="op">&lt;=</span> upper:</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>                        numbers.append(<span class="bu">int</span>(n.group(<span class="dv">0</span>)))</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">len</span>(numbers) <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>                gear_ratios.append(numbers[<span class="dv">0</span>] <span class="op">*</span> numbers[<span class="dv">1</span>])</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(gear_ratios)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="2023_cache/html/day03pt2_8d1bb148a82248ea8b55c3d7a8e4973b">
+<div class="cell-output cell-output-stdout">
+<pre><code>81709807</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.016 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-4" class="level1 panel-name panel">
 <h1 class="panel-name">Day 4</h1>
