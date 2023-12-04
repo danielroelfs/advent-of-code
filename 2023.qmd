@@ -212,6 +212,40 @@ print(f"{time.time() - start_time:.3f} seconds elapsed")
 
 # Day 4 {.panel-name}
 
+## Part 1
+
+```{r, code=readLines("./2023/day_04/script_day04_pt1.R")}
+#| label: code-day04pt1
+#| eval: false
+```
+
+```{r}
+#| label: day04pt1
+#| echo: false
+#| cache: true
+
+tic()#| 
+tmp <- eval(parse(text = readLines(here::here("2023", "day_04", "script_day04_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2023/day_04/script_day04_pt2.R")}
+#| label: code-day04pt2
+#| eval: false
+```
+
+```{r}
+#| label: day04pt2
+#| echo: false
+#| cache: true
+
+tic()#| 
+tmp <- eval(parse(text = readLines(here::here("2023", "day_04", "script_day04_pt2.R"))))
+toc()
+```
+
 :::
 
 ::: {.panel}

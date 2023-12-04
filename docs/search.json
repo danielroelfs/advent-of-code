@@ -369,5 +369,19 @@
     "title": "My 2023 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2023\", \"day_03\", \"input_day03.txt\"), \"r\").read().splitlines()\n\ndef part2(input):\n    padding = \".\" * len(input[0])\n    padded = [padding] + input\n    gear_ratios = []\n\n    for i in range(len(input)):\n        for gear in re.finditer(r\"\\*\", input[i]):\n            numbers = []\n            for row in padded[i : i + 3]:\n                for n in re.finditer(r\"\\d+\", row):\n                    lower, upper = n.span()\n                    if lower - 1 &lt;= gear.start() &lt;= upper:\n                        numbers.append(int(n.group(0)))\n            if len(numbers) == 2:\n                gear_ratios.append(numbers[0] * numbers[1])\n\n    return sum(gear_ratios)\n\n\nprint(part2(input))\n\n\n\n81709807\n\n\n0.016 seconds elapsed"
+  },
+  {
+    "objectID": "2023.html#part-1-3",
+    "href": "2023.html#part-1-3",
+    "title": "My 2023 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nlibrary(tidyverse)\n\ninput &lt;- read_delim(here::here(\"2023\", \"day_04\", \"input_day04.txt\"),\n  delim = \":\",\n  col_names = c(\"card\", \"numbers\")\n) |&gt;\n  mutate(numbers = str_trim(numbers))\n\ninput |&gt;\n  separate_wider_delim(\n    numbers,\n    delim = \"|\", names = c(\"winning\", \"hand\")\n  ) |&gt;\n  mutate(\n    across(everything(), str_trim),\n    across(everything(), ~ str_extract_all(.x, \"\\\\d+\")),\n    match = map2(winning, hand, intersect),\n    n_match = lengths(match)\n  ) |&gt;\n  filter(n_match &gt; 0) |&gt;\n  summarise(\n    points = sum(2^(n_match - 1))\n  ) |&gt;\n  pull(points) |&gt;\n  print()\n\n\n\n[1] 27059\n\n\n0.38 sec elapsed"
+  },
+  {
+    "objectID": "2023.html#part-2-3",
+    "href": "2023.html#part-2-3",
+    "title": "My 2023 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_delim(here::here(\"2023\", \"day_04\", \"input_day04.txt\"),\n  delim = \":\",\n  col_names = c(\"card\", \"numbers\")\n) |&gt;\n  mutate(numbers = str_trim(numbers))\n\ndata_games &lt;- input |&gt;\n  separate_wider_delim(\n    numbers,\n    delim = \"|\", names = c(\"winning\", \"hand\")\n  ) |&gt;\n  mutate(\n    across(everything(), str_trim),\n    across(everything(), ~ str_extract_all(.x, \"\\\\d+\")),\n    card = as.numeric(unlist(card)),\n    match = map2(winning, hand, intersect),\n    n_match = lengths(match)\n  ) |&gt;\n  rowwise() |&gt;\n  mutate(copies = ifelse(n_match &gt; 0, list(card + seq(n_match)), NA)) |&gt;\n  ungroup()\n\n\ncards &lt;- data_games |&gt; pull(card)\ncollect_scratchcards &lt;- list()\nwhile (!is.null(cards)) {\n  collect_scratchcards &lt;- append(collect_scratchcards, list(cards))\n  cards &lt;- data_games$copies[cards] |&gt; unlist()\n}\n\nprint(unlist(collect_scratchcards) |&gt; length())\n\n\n\n[1] 5744979\n\n\n0.964 sec elapsed"
   }
 ]
