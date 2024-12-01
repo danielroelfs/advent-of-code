@@ -4,14 +4,14 @@
     "href": "2024.html#part-1",
     "title": "My 2024 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\nimport pandas as pd\n\ninput = pd.read_csv(\n    os.path.join(\"2024\", \"day_01\", \"input_day01.txt\"), sep=\"   \", header=None\n)\ninput.columns = [\"l1\", \"l2\"]\n\n\ndef part1(input):\n    l1 = list(input[\"l1\"])\n    l1.sort()\n    l2 = list(input[\"l2\"])\n    l2.sort()\n\n    df_lists = pd.DataFrame({\"l1\": l1, \"l2\": l2})\n    df_lists[\"diff\"] = abs(df_lists[\"l2\"] - df_lists[\"l1\"])\n\n    return df_lists[\"diff\"].sum()\n\n\nprint(part1(input))\n\n\n\n1258579\n\n\n0.574 seconds elapsed"
+    "text": "Part 1\n\nimport os\nimport pandas as pd\n\ninput = pd.read_csv(\n    os.path.join(\"2024\", \"day_01\", \"input_day01.txt\"), sep=\"   \", header=None\n)\ninput.columns = [\"l1\", \"l2\"]\n\ndef part1(input):\n    l1 = list(input[\"l1\"])\n    l1.sort()\n    l2 = list(input[\"l2\"])\n    l2.sort()\n\n    df_lists = pd.DataFrame({\"l1\": l1, \"l2\": l2})\n    df_lists[\"diff\"] = abs(df_lists[\"l2\"] - df_lists[\"l1\"])\n\n    return df_lists[\"diff\"].sum()\n\n\nprint(part1(input))\n\n\n\n1258579\n\n\n0.574 seconds elapsed"
   },
   {
     "objectID": "2024.html#part-2",
     "href": "2024.html#part-2",
     "title": "My 2024 Attempts",
     "section": "Part 2",
-    "text": "Part 2\n\nimport os\nimport pandas as pd\n\ninput = pd.read_csv(\n    os.path.join(\"2024\", \"day_01\", \"input_day01.txt\"), sep=\"   \", header=None\n)\ninput.columns = [\"l1\", \"l2\"]\n\n\ndef part2(input):\n    l1 = list(input[\"l1\"])\n    l2 = list(input[\"l2\"])\n\n    count_array = []\n    for value in l1:\n        count_array.append(value * l2.count(value))\n\n    return sum(count_array)\n\n\nprint(part2(input))\n\n\n\n23981443\n\n\n0.020 seconds elapsed"
+    "text": "Part 2\n\nimport os\nimport pandas as pd\n\ninput = pd.read_csv(\n    os.path.join(\"2024\", \"day_01\", \"input_day01.txt\"), sep=\"   \", header=None\n)\ninput.columns = [\"l1\", \"l2\"]\n\ndef part2(input):\n    l1 = list(input[\"l1\"])\n    l2 = list(input[\"l2\"])\n\n    count_array = []\n    for value in l1:\n        count_array.append(value * l2.count(value))\n\n    return sum(count_array)\n\n\nprint(part2(input))\n\n\n\n23981443\n\n\n0.020 seconds elapsed"
   },
   {
     "objectID": "2023.html#part-1",
@@ -74,7 +74,7 @@
     "href": "index.html",
     "title": "Advent of Code",
     "section": "",
-    "text": "2021 2022 2023\n      Website design by Emil Hvitveldt"
+    "text": "2021 2022 2023 2024\n      Website design by Emil Hvitveldt"
   },
   {
     "objectID": "2021.html#part-1",

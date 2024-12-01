@@ -4,7 +4,9 @@ project:
 
 website:
   title: "Advent of Code"
+  favicon: favicon.ico
   search: false
+  
   navbar:
     left:
       - text: "2021"
