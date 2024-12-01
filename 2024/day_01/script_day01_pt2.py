@@ -6,7 +6,6 @@ input = pd.read_csv(
 )
 input.columns = ["l1", "l2"]
 
-
 def part2(input):
     l1 = list(input["l1"])
     l2 = list(input["l2"])
