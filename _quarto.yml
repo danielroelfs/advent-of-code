@@ -13,6 +13,8 @@ website:
         href: 2022.qmd
       - text: "2023"
         href: 2023.qmd
+      - text: "2024"
+        href: 2024.qmd
 
 highlight-style: dracula
 
