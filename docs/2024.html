@@ -178,8 +178,7 @@ p a:hover {
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<style>#panelset_day-2 {color: #D63131 !important;}
-#panelset_day-3 {color: #D63131 !important;}
+<style>#panelset_day-3 {color: #D63131 !important;}
 #panelset_day-4 {color: #D63131 !important;}
 #panelset_day-5 {color: #D63131 !important;}
 #panelset_day-6 {color: #D63131 !important;}
@@ -277,6 +276,78 @@ p a:hover {
 </section>
 <section id="day-2" class="level1 panel-name panel">
 <h1 class="panel-name">Day 2</h1>
+<section id="part-1-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-1">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_02"</span>, <span class="st">"input_day02.txt"</span>)).read().split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> [[<span class="bu">int</span>(level) <span class="cf">for</span> level <span class="kw">in</span> report.split(<span class="st">" "</span>)] <span class="cf">for</span> report <span class="kw">in</span> <span class="bu">input</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_if_save(report):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    increasing <span class="op">=</span> [report[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">-</span> report[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(report) <span class="op">-</span> <span class="dv">1</span>)]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">set</span>(increasing) <span class="op">&lt;=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>} <span class="kw">or</span> <span class="bu">set</span>(increasing) <span class="op">&lt;=</span> {<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">3</span>}:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    n_safe <span class="op">=</span> <span class="bu">sum</span>([check_if_save(report) <span class="cf">for</span> report <span class="kw">in</span> <span class="bu">input</span>])</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_safe</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>213</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.016 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-1">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_02"</span>, <span class="st">"input_day02.txt"</span>)).read().split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> [[<span class="bu">int</span>(level) <span class="cf">for</span> level <span class="kw">in</span> report.split(<span class="st">" "</span>)] <span class="cf">for</span> report <span class="kw">in</span> <span class="bu">input</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_if_save(report):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    increasing <span class="op">=</span> [report[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">-</span> report[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(report) <span class="op">-</span> <span class="dv">1</span>)]</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">set</span>(increasing) <span class="op">&lt;=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>} <span class="kw">or</span> <span class="bu">set</span>(increasing) <span class="op">&lt;=</span> {<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">3</span>}:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    n_safe <span class="op">=</span> <span class="bu">sum</span>(</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">any</span>(</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                [</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                    check_if_save(report[:i] <span class="op">+</span> report[i <span class="op">+</span> <span class="dv">1</span> :])</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(report))</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                ]</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> report <span class="kw">in</span> <span class="bu">input</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_safe</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>285</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.023 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-3" class="level1 panel-name panel">
 <h1 class="panel-name">Day 3</h1>

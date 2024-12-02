@@ -1,6 +1,6 @@
 default: render
 
-date := `date '+%Y%m%d-%H%M'`
+current := `date '+%Y'`
 
 test:
 	quarto --version
@@ -8,5 +8,8 @@ test:
 preview:
 	quarto preview --port 3685
 
-render:
+render-all:
 	quarto render
+
+render:
+	quarto render ${current}.qmd
