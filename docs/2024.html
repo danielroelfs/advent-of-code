@@ -178,8 +178,7 @@ p a:hover {
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<style>#panelset_day-3 {color: #D63131 !important;}
-#panelset_day-4 {color: #D63131 !important;}
+<style>#panelset_day-4 {color: #D63131 !important;}
 #panelset_day-5 {color: #D63131 !important;}
 #panelset_day-6 {color: #D63131 !important;}
 #panelset_day-7 {color: #D63131 !important;}
@@ -351,6 +350,71 @@ p a:hover {
 </section>
 <section id="day-3" class="level1 panel-name panel">
 <h1 class="panel-name">Day 3</h1>
+<section id="part-1-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-2">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_03"</span>, <span class="st">"input_day03.txt"</span>)).read()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_multiplications(<span class="bu">input</span>):</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    mul_strings <span class="op">=</span> re.findall(<span class="vs">r"mul\(\d+,\d+\)"</span>, <span class="bu">input</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    mul_vals <span class="op">=</span> [[<span class="bu">int</span>(s) <span class="cf">for</span> s <span class="kw">in</span> re.findall(<span class="vs">r"\d+"</span>, mul)] <span class="cf">for</span> mul <span class="kw">in</span> mul_strings]</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    mults <span class="op">=</span> [math.prod(x) <span class="cf">for</span> x <span class="kw">in</span> mul_vals]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    mult_sum <span class="op">=</span> <span class="bu">sum</span>(mults)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mult_sum</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    mult_sum <span class="op">=</span> get_multiplications(<span class="bu">input</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mult_sum</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>167090022</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.011 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-2">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_03"</span>, <span class="st">"input_day03.txt"</span>)).read()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_multiplications(<span class="bu">input</span>):</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    mul_strings <span class="op">=</span> re.findall(<span class="vs">r"mul\(\d+,\d+\)"</span>, <span class="bu">input</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    mul_vals <span class="op">=</span> [[<span class="bu">int</span>(s) <span class="cf">for</span> s <span class="kw">in</span> re.findall(<span class="vs">r"\d+"</span>, mul)] <span class="cf">for</span> mul <span class="kw">in</span> mul_strings]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    mults <span class="op">=</span> [math.prod(x) <span class="cf">for</span> x <span class="kw">in</span> mul_vals]</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    mult_sum <span class="op">=</span> <span class="bu">sum</span>(mults)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mult_sum</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    input_cleaned <span class="op">=</span> <span class="st">" "</span>.join(sec.split(<span class="st">"don't()"</span>)[<span class="dv">0</span>] <span class="cf">for</span> sec <span class="kw">in</span> <span class="bu">input</span>.split(<span class="st">"do()"</span>))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    mult_sum <span class="op">=</span> get_multiplications(input_cleaned)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mult_sum</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>89823704</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.010 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-4" class="level1 panel-name panel">
 <h1 class="panel-name">Day 4</h1>
