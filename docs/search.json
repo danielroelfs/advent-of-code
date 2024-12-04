@@ -32,7 +32,7 @@
     "href": "2024.html#part-1-2",
     "title": "My 2024 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part1(input):\n    mult_sum = get_multiplications(input)\n    return mult_sum\n\n\nprint(part1(input))\n\n\n\n167090022\n\n\n0.013 seconds elapsed"
+    "text": "Part 1\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part1(input):\n    mult_sum = get_multiplications(input)\n    return mult_sum\n\n\nprint(part1(input))\n\n\n\n167090022\n\n\n0.022 seconds elapsed"
   },
   {
     "objectID": "2024.html#part-2-2",
@@ -40,6 +40,20 @@
     "title": "My 2024 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part2(input):\n    input_cleaned = \" \".join(sec.split(\"don't()\")[0] for sec in input.split(\"do()\"))\n    mult_sum = get_multiplications(input_cleaned)\n    return mult_sum\n\n\nprint(part2(input))\n\n\n\n89823704\n\n\n0.009 seconds elapsed"
+  },
+  {
+    "objectID": "2024.html#part-1-3",
+    "href": "2024.html#part-1-3",
+    "title": "My 2024 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2024\", \"day_04\", \"input_day04.txt\")).read()\ninput = input.split(\"\\n\")\n\ndef match(matrix, pattern, width):\n    matches = 0\n    for i in range(len(matrix) - width + 1):\n        for j in range(len(matrix[i]) - width + 1):\n            block = \"\".join(matrix[i + x][j : j + width] for x in range(width))\n            matches += bool(re.match(pattern, block))\n\n    return matches\n\ndef part1(input):\n    word_n = 0\n    for rotation in range(4):\n        word_n += sum(row.count(\"XMAS\") for row in input)\n        word_n += match(input, r\"X.{4}M.{4}A.{4}S\", 4)\n\n        input = [\"\".join(row[::-1]) for row in zip(*input)]\n\n    return word_n\n\n\nprint(part1(input))\n\n\n\n2591\n\n\n0.137 seconds elapsed"
+  },
+  {
+    "objectID": "2024.html#part-2-3",
+    "href": "2024.html#part-2-3",
+    "title": "My 2024 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2024\", \"day_04\", \"input_day04.txt\")).read()\ninput = input.split(\"\\n\")\n\ndef match(matrix, pattern, width):\n    matches = 0\n    for i in range(len(matrix) - width + 1):\n        for j in range(len(matrix[i]) - width + 1):\n            block = \"\".join(matrix[i + x][j : j + width] for x in range(width))\n            matches += bool(re.match(pattern, block))\n\n    return matches\n\ndef part2(input):\n    word_n = 0\n    for rotation in range(4):\n        word_n += match(input, r\"M.M.A.S.S\", 3)\n\n        input = [\"\".join(row[::-1]) for row in zip(*input)]\n\n    return word_n\n\n\nprint(part2(input))\n\n\n\n1880\n\n\n0.120 seconds elapsed"
   },
   {
     "objectID": "2023.html#part-1",
