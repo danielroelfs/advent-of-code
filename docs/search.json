@@ -28,6 +28,20 @@
     "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2024\", \"day_02\", \"input_day02.txt\")).read().split(\"\\n\")\ninput = [[int(level) for level in report.split(\" \")] for report in input]\n\ndef check_if_save(report):\n    increasing = [report[i + 1] - report[i] for i in range(len(report) - 1)]\n    if set(increasing) &lt;= {1, 2, 3} or set(increasing) &lt;= {-1, -2, -3}:\n        return True\n    else:\n        return False\n\ndef part2(input):\n    n_safe = sum(\n        [\n            any(\n                [\n                    check_if_save(report[:i] + report[i + 1 :])\n                    for i in range(len(report))\n                ]\n            )\n            for report in input\n        ]\n    )\n    return n_safe\n\n\nprint(part2(input))\n\n\n\n285\n\n\n0.023 seconds elapsed"
   },
   {
+    "objectID": "2024.html#part-1-2",
+    "href": "2024.html#part-1-2",
+    "title": "My 2024 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part1(input):\n    mult_sum = get_multiplications(input)\n    return mult_sum\n\n\nprint(part1(input))\n\n\n\n167090022\n\n\n0.013 seconds elapsed"
+  },
+  {
+    "objectID": "2024.html#part-2-2",
+    "href": "2024.html#part-2-2",
+    "title": "My 2024 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part2(input):\n    input_cleaned = \" \".join(sec.split(\"don't()\")[0] for sec in input.split(\"do()\"))\n    mult_sum = get_multiplications(input_cleaned)\n    return mult_sum\n\n\nprint(part2(input))\n\n\n\n89823704\n\n\n0.009 seconds elapsed"
+  },
+  {
     "objectID": "2023.html#part-1",
     "href": "2023.html#part-1",
     "title": "My 2023 Attempts",
@@ -411,19 +425,5 @@
     "title": "My 2022 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_10\", \"input_day10.txt\"), \n                    col_names = c(\"operation\", \"argument\"))\n\ninput |&gt; \n  replace_na(list(argument = 0)) |&gt; \n  mutate(steps = case_when(str_detect(operation, \"add\") ~ 2, \n                           str_detect(operation, \"noop\") ~ 1),\n         step_num_start = tail(accumulate(steps, `+`, .init = 1), -1) - steps,\n         x_reg = 1 + cumsum(argument),\n         x_reg_prev = c(1, head(x_reg, -1))) |&gt; \n  uncount(steps) |&gt; \n  mutate(step_num = seq(1, n())) |&gt;\n  select(step_num, x_reg_prev) |&gt;\n  rename(x_reg = x_reg_prev) |&gt; \n  mutate(x_pos = (step_num - 1) %% 40,\n         pixel_on = abs(x_pos - x_reg) &lt; 2,\n         pixel = ifelse(pixel_on, \"#\", NA),\n         row_num = cumsum(x_pos == 0)) |&gt; \n  group_by(row_num) |&gt; \n  mutate(x = row_number()) |&gt; \n  filter(pixel_on) |&gt; \n  ggplot(aes(x = x, y = row_num)) +\n  geom_tile(fill = \"#f2f2f2\") +\n  geom_text(label = \"#\", color = \"#b3b3b3\", size = 4) +\n  scale_y_reverse() +\n  coord_equal() + \n  theme_void() + \n  theme(plot.margin = margin(rep(10,4), unit = \"mm\"),\n        plot.background = element_rect(fill = \"#0f0f23\"))\n\nggsave(here::here(\"2022\", \"day_10\", \"plot_day10_pt2.png\"), last_plot(), \n       height = 3, width = 8, dpi = 300)\n\n\n\n0.342 sec elapsed"
-  },
-  {
-    "objectID": "2024.html#part-1-2",
-    "href": "2024.html#part-1-2",
-    "title": "My 2024 Attempts",
-    "section": "Part 1",
-    "text": "Part 1\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part1(input):\n    mult_sum = get_multiplications(input)\n    return mult_sum\n\n\nprint(part1(input))\n\n\n\n167090022\n\n\n0.011 seconds elapsed"
-  },
-  {
-    "objectID": "2024.html#part-2-2",
-    "href": "2024.html#part-2-2",
-    "title": "My 2024 Attempts",
-    "section": "Part 2",
-    "text": "Part 2\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part2(input):\n    input_cleaned = \" \".join(sec.split(\"don't()\")[0] for sec in input.split(\"do()\"))\n    mult_sum = get_multiplications(input_cleaned)\n    return mult_sum\n\n\nprint(part2(input))\n\n\n\n89823704\n\n\n0.010 seconds elapsed"
   }
 ]

@@ -206,6 +206,8 @@ print(f"{time.time() - start_time:.3f} seconds elapsed")
 
 # Day 4 {.panel-name}
 
+Nope, not today
+
 :::
 
 ::: {.panel}
