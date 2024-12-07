@@ -6,8 +6,8 @@ if [ "$#" -lt 1 ]; then
 fi
 
 if [ "$#" -lt 2 ]; then
-    echo -e "\nI'm assuming you're planning to do this in R\n"
-    suffix=`echo R`
+    echo -e "\nI'm assuming you're planning to do this in Python\n"
+    suffix=`echo py`
 else
     suffix=${2}
 fi
@@ -23,12 +23,11 @@ echo """### ADVENT OF CODE - DAY ${1} ########################
 
 # -- Libraries -------------------------
 
-library(tidyverse)
+import os
 
 # -- Load data ------------------------
 
-input <- read_table(here::here(\"${year}\", \"day_${day}\", \"test_input_day${day}.txt\"), col_names = \"x\")
-#input <- read_table(here::here(\"${year}\", \"day_${day}\", \"input_day${day}.txt\"), col_names = \"x\")
+input = open(os.path.join(\"2024\", \"day_${day}\", \"input_day${day}.txt\")).read()
 
 # -- Part 1 ------------------------
 
