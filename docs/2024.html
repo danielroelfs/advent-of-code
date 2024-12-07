@@ -180,7 +180,6 @@ p a:hover {
 <div class="cell-output-display">
 <style>#panelset_day-5 {color: #D63131 !important;}
 #panelset_day-6 {color: #D63131 !important;}
-#panelset_day-7 {color: #D63131 !important;}
 #panelset_day-8 {color: #D63131 !important;}
 #panelset_day-9 {color: #D63131 !important;}
 #panelset_day-10 {color: #D63131 !important;}
@@ -377,7 +376,7 @@ p a:hover {
 <pre><code>167090022</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.022 seconds elapsed</code></pre>
+<pre><code>0.012 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -453,7 +452,7 @@ p a:hover {
 <pre><code>2591</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.137 seconds elapsed</code></pre>
+<pre><code>0.138 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -492,7 +491,7 @@ p a:hover {
 <pre><code>1880</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.120 seconds elapsed</code></pre>
+<pre><code>0.132 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -505,6 +504,82 @@ p a:hover {
 </section>
 <section id="day-7" class="level1 panel-name panel">
 <h1 class="panel-name">Day 7</h1>
+<section id="part-1-4" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-4">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> operator <span class="im">import</span> add, mul</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_07"</span>, <span class="st">"input_day07.txt"</span>)).read()</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> [<span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, re.findall(<span class="vs">r"(\d+)"</span>, x))) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>.splitlines()]</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_equation(equation, operators):</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    test_val, nums <span class="op">=</span> equation[<span class="dv">0</span>], equation[<span class="dv">1</span>:]</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ops <span class="kw">in</span> product(operators, repeat<span class="op">=</span>(<span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span>)):</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> k, x: x[<span class="dv">0</span>](k, x[<span class="dv">1</span>]), <span class="bu">zip</span>(ops, nums[<span class="dv">1</span>:]), nums[<span class="dv">0</span>]) <span class="op">==</span> test_val:</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    cal_result <span class="op">=</span> <span class="bu">sum</span>(eq[<span class="dv">0</span>] <span class="cf">for</span> eq <span class="kw">in</span> <span class="bu">input</span> <span class="cf">if</span> check_equation(eq, (add, mul)))</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cal_result</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>7885693428401</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.398 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-4" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-4">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> operator <span class="im">import</span> add, mul</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_07"</span>, <span class="st">"input_day07.txt"</span>)).read()</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> [<span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, re.findall(<span class="vs">r"(\d+)"</span>, x))) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>.splitlines()]</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_equation(equation, operators):</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    test_val, nums <span class="op">=</span> equation[<span class="dv">0</span>], equation[<span class="dv">1</span>:]</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ops <span class="kw">in</span> product(operators, repeat<span class="op">=</span>(<span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span>)):</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> k, x: x[<span class="dv">0</span>](k, x[<span class="dv">1</span>]), <span class="bu">zip</span>(ops, nums[<span class="dv">1</span>:]), nums[<span class="dv">0</span>]) <span class="op">==</span> test_val:</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _concat(a, b):</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    a <span class="op">*=</span> <span class="dv">10</span> <span class="op">**</span> <span class="bu">len</span>(<span class="bu">str</span>(b))</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    cal_result <span class="op">=</span> <span class="bu">sum</span>(eq[<span class="dv">0</span>] <span class="cf">for</span> eq <span class="kw">in</span> <span class="bu">input</span> <span class="cf">if</span> check_equation(eq, (add, mul, _concat)))</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cal_result</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>348360680516005</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>24.673 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-8" class="level1 panel-name panel">
 <h1 class="panel-name">Day 8</h1>
