@@ -6,8 +6,8 @@ if [ "$#" -lt 1 ]; then
 fi
 
 if [ "$#" -lt 2 ]; then
-    echo -e "\nI'm assuming you wrote this in R\n"
-    suffix=`echo R`
+    echo -e "\nI'm assuming you wrote this in Python\n"
+    suffix=`echo py`
 else
     suffix=${2}
 fi
