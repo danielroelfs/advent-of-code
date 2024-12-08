@@ -32,28 +32,56 @@
     "href": "2024.html#part-1-2",
     "title": "My 2024 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part1(input):\n    mult_sum = get_multiplications(input)\n    return mult_sum\n\n\nprint(part1(input))\n\n\n\n167090022\n\n\n0.012 seconds elapsed"
+    "text": "Part 1\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part1(input):\n    mult_sum = get_multiplications(input)\n    return mult_sum\n\n\nprint(part1(input))\n\n\n\n167090022\n\n\n0.014 seconds elapsed"
   },
   {
     "objectID": "2024.html#part-2-2",
     "href": "2024.html#part-2-2",
     "title": "My 2024 Attempts",
     "section": "Part 2",
-    "text": "Part 2\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part2(input):\n    input_cleaned = \" \".join(sec.split(\"don't()\")[0] for sec in input.split(\"do()\"))\n    mult_sum = get_multiplications(input_cleaned)\n    return mult_sum\n\n\nprint(part2(input))\n\n\n\n89823704\n\n\n0.009 seconds elapsed"
+    "text": "Part 2\n\nimport os\nimport re\nimport math\n\ninput = open(os.path.join(\"2024\", \"day_03\", \"input_day03.txt\")).read()\n\ndef get_multiplications(input):\n    mul_strings = re.findall(r\"mul\\(\\d+,\\d+\\)\", input)\n    mul_vals = [[int(s) for s in re.findall(r\"\\d+\", mul)] for mul in mul_strings]\n    mults = [math.prod(x) for x in mul_vals]\n    mult_sum = sum(mults)\n    return mult_sum\n\ndef part2(input):\n    input_cleaned = \" \".join(sec.split(\"don't()\")[0] for sec in input.split(\"do()\"))\n    mult_sum = get_multiplications(input_cleaned)\n    return mult_sum\n\n\nprint(part2(input))\n\n\n\n89823704\n\n\n0.011 seconds elapsed"
   },
   {
     "objectID": "2024.html#part-1-3",
     "href": "2024.html#part-1-3",
     "title": "My 2024 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2024\", \"day_04\", \"input_day04.txt\")).read()\ninput = input.split(\"\\n\")\n\ndef match(matrix, pattern, width):\n    matches = 0\n    for i in range(len(matrix) - width + 1):\n        for j in range(len(matrix[i]) - width + 1):\n            block = \"\".join(matrix[i + x][j : j + width] for x in range(width))\n            matches += bool(re.match(pattern, block))\n\n    return matches\n\ndef part1(input):\n    word_n = 0\n    for rotation in range(4):\n        word_n += sum(row.count(\"XMAS\") for row in input)\n        word_n += match(input, r\"X.{4}M.{4}A.{4}S\", 4)\n\n        input = [\"\".join(row[::-1]) for row in zip(*input)]\n\n    return word_n\n\n\nprint(part1(input))\n\n\n\n2591\n\n\n0.138 seconds elapsed"
+    "text": "Part 1\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2024\", \"day_04\", \"input_day04.txt\")).read()\ninput = input.split(\"\\n\")\n\ndef match(matrix, pattern, width):\n    matches = 0\n    for i in range(len(matrix) - width + 1):\n        for j in range(len(matrix[i]) - width + 1):\n            block = \"\".join(matrix[i + x][j : j + width] for x in range(width))\n            matches += bool(re.match(pattern, block))\n\n    return matches\n\ndef part1(input):\n    word_n = 0\n    for rotation in range(4):\n        word_n += sum(row.count(\"XMAS\") for row in input)\n        word_n += match(input, r\"X.{4}M.{4}A.{4}S\", 4)\n\n        input = [\"\".join(row[::-1]) for row in zip(*input)]\n\n    return word_n\n\n\nprint(part1(input))\n\n\n\n2591\n\n\n0.143 seconds elapsed"
   },
   {
     "objectID": "2024.html#part-2-3",
     "href": "2024.html#part-2-3",
     "title": "My 2024 Attempts",
     "section": "Part 2",
-    "text": "Part 2\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2024\", \"day_04\", \"input_day04.txt\")).read()\ninput = input.split(\"\\n\")\n\ndef match(matrix, pattern, width):\n    matches = 0\n    for i in range(len(matrix) - width + 1):\n        for j in range(len(matrix[i]) - width + 1):\n            block = \"\".join(matrix[i + x][j : j + width] for x in range(width))\n            matches += bool(re.match(pattern, block))\n\n    return matches\n\ndef part2(input):\n    word_n = 0\n    for rotation in range(4):\n        word_n += match(input, r\"M.M.A.S.S\", 3)\n\n        input = [\"\".join(row[::-1]) for row in zip(*input)]\n\n    return word_n\n\n\nprint(part2(input))\n\n\n\n1880\n\n\n0.132 seconds elapsed"
+    "text": "Part 2\n\nimport os\nimport re\n\ninput = open(os.path.join(\"2024\", \"day_04\", \"input_day04.txt\")).read()\ninput = input.split(\"\\n\")\n\ndef match(matrix, pattern, width):\n    matches = 0\n    for i in range(len(matrix) - width + 1):\n        for j in range(len(matrix[i]) - width + 1):\n            block = \"\".join(matrix[i + x][j : j + width] for x in range(width))\n            matches += bool(re.match(pattern, block))\n\n    return matches\n\ndef part2(input):\n    word_n = 0\n    for rotation in range(4):\n        word_n += match(input, r\"M.M.A.S.S\", 3)\n\n        input = [\"\".join(row[::-1]) for row in zip(*input)]\n\n    return word_n\n\n\nprint(part2(input))\n\n\n\n1880\n\n\n0.127 seconds elapsed"
+  },
+  {
+    "objectID": "2024.html#part-1-4",
+    "href": "2024.html#part-1-4",
+    "title": "My 2024 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\nimport re\nfrom functools import reduce\nfrom itertools import product\nfrom operator import add, mul\n\ninput = open(os.path.join(\"2024\", \"day_07\", \"input_day07.txt\")).read()\ninput = [list(map(int, re.findall(r\"(\\d+)\", x))) for x in input.splitlines()]\n\ndef check_equation(equation, operators):\n    test_val, nums = equation[0], equation[1:]\n    for ops in product(operators, repeat=(len(nums) - 1)):\n        if reduce(lambda k, x: x[0](k, x[1]), zip(ops, nums[1:]), nums[0]) == test_val:\n            return True\n    return False\n\ndef part1(input):\n    cal_result = sum(eq[0] for eq in input if check_equation(eq, (add, mul)))\n    return cal_result\n\n\nprint(part1(input))\n\n\n\n7885693428401\n\n\n0.405 seconds elapsed"
+  },
+  {
+    "objectID": "2024.html#part-2-4",
+    "href": "2024.html#part-2-4",
+    "title": "My 2024 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\nimport re\nfrom functools import reduce\nfrom itertools import product\nfrom operator import add, mul\n\ninput = open(os.path.join(\"2024\", \"day_07\", \"input_day07.txt\")).read()\ninput = [list(map(int, re.findall(r\"(\\d+)\", x))) for x in input.splitlines()]\n\ndef check_equation(equation, operators):\n    test_val, nums = equation[0], equation[1:]\n    for ops in product(operators, repeat=(len(nums) - 1)):\n        if reduce(lambda k, x: x[0](k, x[1]), zip(ops, nums[1:]), nums[0]) == test_val:\n            return True\n    return False\n\ndef _concat(a, b):\n    a *= 10 ** len(str(b))\n    return a + b\n\n\ndef part2(input):\n    cal_result = sum(eq[0] for eq in input if check_equation(eq, (add, mul, _concat)))\n\n    return cal_result\n\n\nprint(part2(input))\n\n\n\n348360680516005\n\n\n27.656 seconds elapsed"
+  },
+  {
+    "objectID": "2024.html#part-1-5",
+    "href": "2024.html#part-1-5",
+    "title": "My 2024 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2024\", \"day_08\", \"input_day08.txt\")).read().splitlines()\ninput = [list(line) for line in input]\n\ndef get_pair_antinodes_pt1(antinodes, n, m, x_i, y_i, x_j, y_j):\n    dx = x_j - x_i\n    dy = y_j - y_i\n    if x_i - dx &gt;= 0 and y_i - dy &gt;= 0 and y_i - dy &lt; m:\n        antinodes.add((x_i - dx, y_i - dy))\n    if x_j + dx &lt; n and y_j + dy &lt; m and y_j + dy &gt;= 0:\n        antinodes.add((x_j + dx, y_j + dy))\n\n\ndef part1(input):\n    n = len(input)\n    m = len(input[0])\n    antinodes = set()\n\n    antenna_locations = {}\n    for i in range(n):\n        for j in range(m):\n            if input[i][j] != \".\":\n                c = input[i][j]\n                antenna_locations[c] = antenna_locations.get(c, []) + [(i, j)]\n    for freq, antenna in antenna_locations.items():\n        if len(antenna) &lt; 2:\n            continue\n        for i in range(len(antenna) - 1):\n            for j in range(i + 1, len(antenna)):\n                x_i, y_i = antenna[i]\n                x_j, y_j = antenna[j]\n                get_pair_antinodes_pt1(antinodes, n, m, x_i, y_i, x_j, y_j)\n    return len(antinodes)\n\n\nprint(part1(input))\n\n\n\n308\n\n\n0.011 seconds elapsed"
+  },
+  {
+    "objectID": "2024.html#part-2-5",
+    "href": "2024.html#part-2-5",
+    "title": "My 2024 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2024\", \"day_08\", \"input_day08.txt\")).read().splitlines()\ninput = [list(line) for line in input]\n\ndef get_pair_antinodes_pt2(antinodes, n, m, x_i, y_i, x_j, y_j):\n    dx = x_j - x_i\n    dy = y_j - y_i\n    multiplier = 0\n    while (\n        x_i - multiplier * dx &gt;= 0\n        and y_i - multiplier * dy &gt;= 0\n        and y_i - multiplier * dy &lt; m\n    ):\n        antinodes_new = antinodes.add((x_i - multiplier * dx, y_i - multiplier * dy))\n        multiplier += 1\n    multiplier = 0\n    while (\n        x_j + multiplier * dx &lt; n\n        and y_j + multiplier * dy &lt; m\n        and y_j + multiplier * dy &gt;= 0\n    ):\n        antinodes_new = antinodes.add((x_j + multiplier * dx, y_j + multiplier * dy))\n        multiplier += 1\n\n    return antinodes_new\n\n\ndef part2(input):\n    n = len(input)\n    m = len(input[0])\n    antinodes = set()\n\n    antenna_locations = {}\n    for i in range(n):\n        for j in range(m):\n            if input[i][j] != \".\":\n                c = input[i][j]\n                antenna_locations[c] = antenna_locations.get(c, []) + [(i, j)]\n    for freq, antenna in antenna_locations.items():\n        if len(antenna) &lt; 2:\n            continue\n        for i in range(len(antenna) - 1):\n            for j in range(i + 1, len(antenna)):\n                x_i, y_i = antenna[i]\n                x_j, y_j = antenna[j]\n                get_pair_antinodes_pt2(antinodes, n, m, x_i, y_i, x_j, y_j)\n    return len(antinodes)\n\n\nprint(part2(input))\n\n\n\n1147\n\n\n0.009 seconds elapsed"
   },
   {
     "objectID": "2023.html#part-1",
@@ -439,19 +467,5 @@
     "title": "My 2022 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nlibrary(tidyverse)\n\ninput &lt;- read_table(here::here(\"2022\", \"day_10\", \"input_day10.txt\"), \n                    col_names = c(\"operation\", \"argument\"))\n\ninput |&gt; \n  replace_na(list(argument = 0)) |&gt; \n  mutate(steps = case_when(str_detect(operation, \"add\") ~ 2, \n                           str_detect(operation, \"noop\") ~ 1),\n         step_num_start = tail(accumulate(steps, `+`, .init = 1), -1) - steps,\n         x_reg = 1 + cumsum(argument),\n         x_reg_prev = c(1, head(x_reg, -1))) |&gt; \n  uncount(steps) |&gt; \n  mutate(step_num = seq(1, n())) |&gt;\n  select(step_num, x_reg_prev) |&gt;\n  rename(x_reg = x_reg_prev) |&gt; \n  mutate(x_pos = (step_num - 1) %% 40,\n         pixel_on = abs(x_pos - x_reg) &lt; 2,\n         pixel = ifelse(pixel_on, \"#\", NA),\n         row_num = cumsum(x_pos == 0)) |&gt; \n  group_by(row_num) |&gt; \n  mutate(x = row_number()) |&gt; \n  filter(pixel_on) |&gt; \n  ggplot(aes(x = x, y = row_num)) +\n  geom_tile(fill = \"#f2f2f2\") +\n  geom_text(label = \"#\", color = \"#b3b3b3\", size = 4) +\n  scale_y_reverse() +\n  coord_equal() + \n  theme_void() + \n  theme(plot.margin = margin(rep(10,4), unit = \"mm\"),\n        plot.background = element_rect(fill = \"#0f0f23\"))\n\nggsave(here::here(\"2022\", \"day_10\", \"plot_day10_pt2.png\"), last_plot(), \n       height = 3, width = 8, dpi = 300)\n\n\n\n0.342 sec elapsed"
-  },
-  {
-    "objectID": "2024.html#part-1-4",
-    "href": "2024.html#part-1-4",
-    "title": "My 2024 Attempts",
-    "section": "Part 1",
-    "text": "Part 1\n\nimport os\nimport re\nfrom functools import reduce\nfrom itertools import product\nfrom operator import add, mul\n\ninput = open(os.path.join(\"2024\", \"day_07\", \"input_day07.txt\")).read()\ninput = [list(map(int, re.findall(r\"(\\d+)\", x))) for x in input.splitlines()]\n\ndef check_equation(equation, operators):\n    test_val, nums = equation[0], equation[1:]\n    for ops in product(operators, repeat=(len(nums) - 1)):\n        if reduce(lambda k, x: x[0](k, x[1]), zip(ops, nums[1:]), nums[0]) == test_val:\n            return True\n    return False\n\ndef part1(input):\n    cal_result = sum(eq[0] for eq in input if check_equation(eq, (add, mul)))\n    return cal_result\n\n\nprint(part1(input))\n\n\n\n7885693428401\n\n\n0.398 seconds elapsed"
-  },
-  {
-    "objectID": "2024.html#part-2-4",
-    "href": "2024.html#part-2-4",
-    "title": "My 2024 Attempts",
-    "section": "Part 2",
-    "text": "Part 2\n\nimport os\nimport re\nfrom functools import reduce\nfrom itertools import product\nfrom operator import add, mul\n\ninput = open(os.path.join(\"2024\", \"day_07\", \"input_day07.txt\")).read()\ninput = [list(map(int, re.findall(r\"(\\d+)\", x))) for x in input.splitlines()]\n\ndef check_equation(equation, operators):\n    test_val, nums = equation[0], equation[1:]\n    for ops in product(operators, repeat=(len(nums) - 1)):\n        if reduce(lambda k, x: x[0](k, x[1]), zip(ops, nums[1:]), nums[0]) == test_val:\n            return True\n    return False\n\ndef _concat(a, b):\n    a *= 10 ** len(str(b))\n    return a + b\n\n\ndef part2(input):\n    cal_result = sum(eq[0] for eq in input if check_equation(eq, (add, mul, _concat)))\n\n    return cal_result\n\n\nprint(part2(input))\n\n\n\n348360680516005\n\n\n24.673 seconds elapsed"
   }
 ]

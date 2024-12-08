@@ -180,7 +180,6 @@ p a:hover {
 <div class="cell-output-display">
 <style>#panelset_day-5 {color: #D63131 !important;}
 #panelset_day-6 {color: #D63131 !important;}
-#panelset_day-8 {color: #D63131 !important;}
 #panelset_day-9 {color: #D63131 !important;}
 #panelset_day-10 {color: #D63131 !important;}
 #panelset_day-11 {color: #D63131 !important;}
@@ -376,7 +375,7 @@ p a:hover {
 <pre><code>167090022</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.012 seconds elapsed</code></pre>
+<pre><code>0.014 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -409,7 +408,7 @@ p a:hover {
 <pre><code>89823704</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.009 seconds elapsed</code></pre>
+<pre><code>0.011 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -452,7 +451,7 @@ p a:hover {
 <pre><code>2591</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.138 seconds elapsed</code></pre>
+<pre><code>0.143 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -491,7 +490,7 @@ p a:hover {
 <pre><code>1880</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.132 seconds elapsed</code></pre>
+<pre><code>0.127 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -535,7 +534,7 @@ p a:hover {
 <pre><code>7885693428401</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.398 seconds elapsed</code></pre>
+<pre><code>0.405 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -576,13 +575,127 @@ p a:hover {
 <pre><code>348360680516005</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>24.673 seconds elapsed</code></pre>
+<pre><code>27.656 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="day-8" class="level1 panel-name panel">
 <h1 class="panel-name">Day 8</h1>
+<section id="part-1-5" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-5">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_08"</span>, <span class="st">"input_day08.txt"</span>)).read().splitlines()</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> [<span class="bu">list</span>(line) <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">input</span>]</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_pair_antinodes_pt1(antinodes, n, m, x_i, y_i, x_j, y_j):</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    dx <span class="op">=</span> x_j <span class="op">-</span> x_i</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    dy <span class="op">=</span> y_j <span class="op">-</span> y_i</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x_i <span class="op">-</span> dx <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> y_i <span class="op">-</span> dy <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> y_i <span class="op">-</span> dy <span class="op">&lt;</span> m:</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>        antinodes.add((x_i <span class="op">-</span> dx, y_i <span class="op">-</span> dy))</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x_j <span class="op">+</span> dx <span class="op">&lt;</span> n <span class="kw">and</span> y_j <span class="op">+</span> dy <span class="op">&lt;</span> m <span class="kw">and</span> y_j <span class="op">+</span> dy <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>        antinodes.add((x_j <span class="op">+</span> dx, y_j <span class="op">+</span> dy))</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(<span class="bu">input</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">len</span>(<span class="bu">input</span>[<span class="dv">0</span>])</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    antinodes <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    antenna_locations <span class="op">=</span> {}</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">input</span>[i][j] <span class="op">!=</span> <span class="st">"."</span>:</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>                c <span class="op">=</span> <span class="bu">input</span>[i][j]</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>                antenna_locations[c] <span class="op">=</span> antenna_locations.get(c, []) <span class="op">+</span> [(i, j)]</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> freq, antenna <span class="kw">in</span> antenna_locations.items():</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(antenna) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(antenna) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(antenna)):</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>                x_i, y_i <span class="op">=</span> antenna[i]</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>                x_j, y_j <span class="op">=</span> antenna[j]</span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>                get_pair_antinodes_pt1(antinodes, n, m, x_i, y_i, x_j, y_j)</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(antinodes)</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>308</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.011 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-5" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-5">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_08"</span>, <span class="st">"input_day08.txt"</span>)).read().splitlines()</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> [<span class="bu">list</span>(line) <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">input</span>]</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_pair_antinodes_pt2(antinodes, n, m, x_i, y_i, x_j, y_j):</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    dx <span class="op">=</span> x_j <span class="op">-</span> x_i</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    dy <span class="op">=</span> y_j <span class="op">-</span> y_i</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    multiplier <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        x_i <span class="op">-</span> multiplier <span class="op">*</span> dx <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">and</span> y_i <span class="op">-</span> multiplier <span class="op">*</span> dy <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">and</span> y_i <span class="op">-</span> multiplier <span class="op">*</span> dy <span class="op">&lt;</span> m</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    ):</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>        antinodes_new <span class="op">=</span> antinodes.add((x_i <span class="op">-</span> multiplier <span class="op">*</span> dx, y_i <span class="op">-</span> multiplier <span class="op">*</span> dy))</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>        multiplier <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    multiplier <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>        x_j <span class="op">+</span> multiplier <span class="op">*</span> dx <span class="op">&lt;</span> n</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">and</span> y_j <span class="op">+</span> multiplier <span class="op">*</span> dy <span class="op">&lt;</span> m</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">and</span> y_j <span class="op">+</span> multiplier <span class="op">*</span> dy <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    ):</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>        antinodes_new <span class="op">=</span> antinodes.add((x_j <span class="op">+</span> multiplier <span class="op">*</span> dx, y_j <span class="op">+</span> multiplier <span class="op">*</span> dy))</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>        multiplier <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> antinodes_new</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(<span class="bu">input</span>)</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">len</span>(<span class="bu">input</span>[<span class="dv">0</span>])</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    antinodes <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>    antenna_locations <span class="op">=</span> {}</span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">input</span>[i][j] <span class="op">!=</span> <span class="st">"."</span>:</span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a>                c <span class="op">=</span> <span class="bu">input</span>[i][j]</span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a>                antenna_locations[c] <span class="op">=</span> antenna_locations.get(c, []) <span class="op">+</span> [(i, j)]</span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> freq, antenna <span class="kw">in</span> antenna_locations.items():</span>
+<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(antenna) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(antenna) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(antenna)):</span>
+<span id="cb34-45"><a href="#cb34-45" aria-hidden="true" tabindex="-1"></a>                x_i, y_i <span class="op">=</span> antenna[i]</span>
+<span id="cb34-46"><a href="#cb34-46" aria-hidden="true" tabindex="-1"></a>                x_j, y_j <span class="op">=</span> antenna[j]</span>
+<span id="cb34-47"><a href="#cb34-47" aria-hidden="true" tabindex="-1"></a>                get_pair_antinodes_pt2(antinodes, n, m, x_i, y_i, x_j, y_j)</span>
+<span id="cb34-48"><a href="#cb34-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(antinodes)</span>
+<span id="cb34-49"><a href="#cb34-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-50"><a href="#cb34-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-51"><a href="#cb34-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>1147</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.009 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-9" class="level1 panel-name panel">
 <h1 class="panel-name">Day 9</h1>
