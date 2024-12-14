@@ -406,6 +406,42 @@ print(f"{time.time() - start_time:.3f} seconds elapsed")
 
 # Day 14 {.panel-name}
 
+## Part 1
+
+```{r, code=readLines("./2024/day_14/script_day14_pt1.R")}
+#| label: code-day14pt1
+#| eval: false
+```
+
+```{r}
+#| label: day14pt1
+#| echo: false
+#| cache: true
+
+tic()
+tmp <- eval(parse(text = readLines(here::here("2024", "day_14", "script_day14_pt1.R"))))
+toc()
+```
+
+## Part 2
+
+```{r, code=readLines("./2024/day_14/script_day14_pt2.R")}
+#| label: code-day14pt2
+#| eval: false
+```
+
+```{r}
+#| label: day14pt2
+#| echo: false
+#| cache: true
+
+tic()
+tmp <- eval(parse(text = readLines(here::here("2024", "day_14", "script_day14_pt2.R"))))
+toc()
+```
+
+![](2024/day_14/plot_day14_pt2.png){width=100%}
+
 :::
 
 ::: {.panel}

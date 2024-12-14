@@ -184,7 +184,6 @@ p a:hover {
 #panelset_day-10 {color: #D63131 !important;}
 #panelset_day-12 {color: #D63131 !important;}
 #panelset_day-13 {color: #D63131 !important;}
-#panelset_day-14 {color: #D63131 !important;}
 #panelset_day-15 {color: #D63131 !important;}
 #panelset_day-16 {color: #D63131 !important;}
 #panelset_day-17 {color: #D63131 !important;}
@@ -231,7 +230,7 @@ p a:hover {
 <pre><code>1258579</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.574 seconds elapsed</code></pre>
+<pre><code>1.434 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -264,7 +263,7 @@ p a:hover {
 <pre><code>23981443</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.020 seconds elapsed</code></pre>
+<pre><code>0.023 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -298,7 +297,7 @@ p a:hover {
 <pre><code>213</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.016 seconds elapsed</code></pre>
+<pre><code>0.014 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -339,7 +338,7 @@ p a:hover {
 <pre><code>285</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.023 seconds elapsed</code></pre>
+<pre><code>0.035 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -407,7 +406,7 @@ p a:hover {
 <pre><code>89823704</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.009 seconds elapsed</code></pre>
+<pre><code>0.020 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -450,7 +449,7 @@ p a:hover {
 <pre><code>2591</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.138 seconds elapsed</code></pre>
+<pre><code>0.150 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -489,7 +488,7 @@ p a:hover {
 <pre><code>1880</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.126 seconds elapsed</code></pre>
+<pre><code>0.131 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -533,7 +532,7 @@ p a:hover {
 <pre><code>7885693428401</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.384 seconds elapsed</code></pre>
+<pre><code>0.398 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -574,7 +573,7 @@ p a:hover {
 <pre><code>348360680516005</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>25.644 seconds elapsed</code></pre>
+<pre><code>28.438 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -691,7 +690,7 @@ p a:hover {
 <pre><code>1147</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.010 seconds elapsed</code></pre>
+<pre><code>0.014 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -751,7 +750,7 @@ p a:hover {
 <pre><code>189547</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.015 seconds elapsed</code></pre>
+<pre><code>0.013 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -804,7 +803,7 @@ p a:hover {
 <pre><code>224577979481346</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.144 seconds elapsed</code></pre>
+<pre><code>0.160 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -817,6 +816,157 @@ p a:hover {
 </section>
 <section id="day-14" class="level1 panel-name panel">
 <h1 class="panel-name">Day 14</h1>
+<section id="part-1-7" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-7">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2024"</span>, <span class="st">"day_14"</span>, <span class="st">"input_day14.txt"</span>),</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">" "</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"pos"</span>, <span class="st">"vel"</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> input <span class="sc">|&gt;</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">starts =</span> <span class="fu">str_extract_all</span>(pos, <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>),</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">velocities =</span> <span class="fu">str_extract_all</span>(vel, <span class="st">"-?</span><span class="sc">\\</span><span class="st">d+"</span>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>starts <span class="ot">&lt;-</span> input <span class="sc">|&gt;</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(starts) <span class="sc">|&gt;</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(as.numeric)</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>velocities <span class="ot">&lt;-</span> input <span class="sc">|&gt;</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(velocities) <span class="sc">|&gt;</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(as.numeric)</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>dims <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">103</span>)</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>safety_factor <span class="ot">&lt;-</span> <span class="cf">function</span>(starts, velocities, dims, times) {</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>  end_pos <span class="ot">&lt;-</span> <span class="fu">map2</span>(</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>    starts,</span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>    velocities,</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>    \(x, y, dims, times) (x <span class="sc">+</span> y <span class="sc">*</span> times) <span class="sc">%%</span> dims,</span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">dims =</span> dims,</span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> times</span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do.call</span>(rbind, end_pos) <span class="sc">|&gt;</span></span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>(<span class="at">.name_repair =</span> <span class="st">"unique"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">x =</span> <span class="st">"...1"</span>, <span class="at">y =</span> <span class="st">"...2"</span>)</span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a><span class="fu">safety_factor</span>(starts, velocities, dims, <span class="at">times =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">quadrant =</span> <span class="fu">case_when</span>(</span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>      x <span class="sc">&lt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&lt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>      x <span class="sc">&lt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&gt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>      x <span class="sc">&gt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&lt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>      x <span class="sc">&gt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&gt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(quadrant)) <span class="sc">|&gt;</span></span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(quadrant) <span class="sc">|&gt;</span></span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n) <span class="sc">|&gt;</span></span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prod</span>() <span class="sc">|&gt;</span></span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 215987200</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.377 sec elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-7" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-7">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2024"</span>, <span class="st">"day_14"</span>, <span class="st">"input_day14.txt"</span>),</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">" "</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"pos"</span>, <span class="st">"vel"</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> input <span class="sc">|&gt;</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">starts =</span> <span class="fu">str_extract_all</span>(pos, <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>),</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">velocities =</span> <span class="fu">str_extract_all</span>(vel, <span class="st">"-?</span><span class="sc">\\</span><span class="st">d+"</span>)</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>starts <span class="ot">&lt;-</span> input <span class="sc">|&gt;</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(starts) <span class="sc">|&gt;</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(as.numeric)</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>velocities <span class="ot">&lt;-</span> input <span class="sc">|&gt;</span></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(velocities) <span class="sc">|&gt;</span></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(as.numeric)</span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>dims <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">103</span>)</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>second_range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">8000</span>, <span class="dv">8100</span>)</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>safety_factors <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>  second_range,</span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">safety_factor</span>(starts, velocities, dims, <span class="at">times =</span> .x) <span class="sc">|&gt;</span></span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">second =</span> .x,</span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">quadrant =</span> <span class="fu">case_when</span>(</span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>        x <span class="sc">&lt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&lt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>        x <span class="sc">&lt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&gt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>        x <span class="sc">&gt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&lt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>        x <span class="sc">&gt;</span> (dims[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">&amp;</span> y <span class="sc">&gt;</span> (dims[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a>min_iterations <span class="ot">&lt;-</span> safety_factors <span class="sc">|&gt;</span></span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(second) <span class="sc">|&gt;</span></span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_x =</span> <span class="fu">var</span>(x),</span>
+<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_y =</span> <span class="fu">var</span>(y)</span>
+<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(var_x, var_y) <span class="sc">|&gt;</span></span>
+<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(second)</span>
+<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(min_iterations)</span>
+<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a>safety_factors <span class="sc">|&gt;</span></span>
+<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(second <span class="sc">==</span> min_iterations) <span class="sc">|&gt;</span></span>
+<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb46-58"><a href="#cb46-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb46-59"><a href="#cb46-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb46-60"><a href="#cb46-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb46-61"><a href="#cb46-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb46-62"><a href="#cb46-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">4</span>), <span class="at">unit =</span> <span class="st">"mm"</span>),</span>
+<span id="cb46-63"><a href="#cb46-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb46-64"><a href="#cb46-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#0f0f23"</span>,</span>
+<span id="cb46-65"><a href="#cb46-65" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">"transparent"</span></span>
+<span id="cb46-66"><a href="#cb46-66" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb46-67"><a href="#cb46-67" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-68"><a href="#cb46-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-69"><a href="#cb46-69" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb46-70"><a href="#cb46-70" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"2024"</span>, <span class="st">"day_14"</span>, <span class="st">"plot_day14_pt2.png"</span>),</span>
+<span id="cb46-71"><a href="#cb46-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_plot</span>(),</span>
+<span id="cb46-72"><a href="#cb46-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">dpi =</span> <span class="dv">300</span>, <span class="at">bg =</span> <span class="st">"transparent"</span></span>
+<span id="cb46-73"><a href="#cb46-73" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8050</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.68 sec elapsed</code></pre>
+</div>
+</div>
+<p><img src="2024/day_14/plot_day14_pt2.png" class="img-fluid" style="width:100.0%"></p>
+</section>
 </section>
 <section id="day-15" class="level1 panel-name panel">
 <h1 class="panel-name">Day 15</h1>
