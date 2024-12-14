@@ -354,6 +354,40 @@ print(f"{time.time() - start_time:.3f} seconds elapsed")
 
 # Day 11 {.panel-name}
 
+## Part 1
+
+```{python, code=readLines("./2024/day_11/script_day11_pt1.py")}
+#| label: code-day11pt1
+#| eval: false
+```
+
+```{python}
+#| label: day11pt1
+#| echo: false
+#| cache: false
+
+start_time = time.time()
+exec(open("./2024/day_11/script_day11_pt1.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
+## Part 2
+
+```{python, code=readLines("./2024/day_11/script_day11_pt2.py")}
+#| label: code-day11pt2
+#| eval: false
+```
+
+```{python}
+#| label: day11pt2
+#| echo: false
+#| cache: false
+
+start_time = time.time()
+exec(open("./2024/day_11/script_day11_pt2.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
 :::
 
 ::: {.panel}

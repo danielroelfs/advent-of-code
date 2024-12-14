@@ -182,7 +182,6 @@ p a:hover {
 #panelset_day-6 {color: #D63131 !important;}
 #panelset_day-9 {color: #D63131 !important;}
 #panelset_day-10 {color: #D63131 !important;}
-#panelset_day-11 {color: #D63131 !important;}
 #panelset_day-12 {color: #D63131 !important;}
 #panelset_day-13 {color: #D63131 !important;}
 #panelset_day-14 {color: #D63131 !important;}
@@ -375,7 +374,7 @@ p a:hover {
 <pre><code>167090022</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.014 seconds elapsed</code></pre>
+<pre><code>0.012 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -408,7 +407,7 @@ p a:hover {
 <pre><code>89823704</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.011 seconds elapsed</code></pre>
+<pre><code>0.009 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -451,7 +450,7 @@ p a:hover {
 <pre><code>2591</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.143 seconds elapsed</code></pre>
+<pre><code>0.138 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -490,7 +489,7 @@ p a:hover {
 <pre><code>1880</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.127 seconds elapsed</code></pre>
+<pre><code>0.126 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -534,7 +533,7 @@ p a:hover {
 <pre><code>7885693428401</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.405 seconds elapsed</code></pre>
+<pre><code>0.384 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -575,7 +574,7 @@ p a:hover {
 <pre><code>348360680516005</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>27.656 seconds elapsed</code></pre>
+<pre><code>25.644 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -692,7 +691,7 @@ p a:hover {
 <pre><code>1147</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.009 seconds elapsed</code></pre>
+<pre><code>0.010 seconds elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -705,6 +704,110 @@ p a:hover {
 </section>
 <section id="day-11" class="level1 panel-name panel">
 <h1 class="panel-name">Day 11</h1>
+<section id="part-1-6" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-6">Part 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> cache</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_11"</span>, <span class="st">"input_day11.txt"</span>)).read().split()</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="at">@cache</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_state(n):</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="dv">1</span>]</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    string_num <span class="op">=</span> <span class="bu">str</span>(n)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(string_num) <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>        mid <span class="op">=</span> <span class="bu">len</span>(string_num) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="bu">int</span>(string_num[:mid]), <span class="bu">int</span>(string_num[mid:])]</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    new_state <span class="op">=</span> [n <span class="op">*</span> <span class="dv">2024</span>]</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_state</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="at">@cache</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> stone_count(stone, blinks_left):</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> blinks_left <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>    new_stone_state <span class="op">=</span> calculate_state(stone)</span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>    new_stone_count <span class="op">=</span> <span class="bu">sum</span>(stone_count(num, blinks_left <span class="op">-</span> <span class="dv">1</span>) <span class="cf">for</span> num <span class="kw">in</span> new_stone_state)</span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_stone_count</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1():</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>    n_blinks <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>    total_stones <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>    stones <span class="op">=</span> <span class="bu">list</span>(<span class="bu">int</span>(stone) <span class="cf">for</span> stone <span class="kw">in</span> <span class="bu">input</span>)</span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> stone <span class="kw">in</span> stones:</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>        total_stones <span class="op">+=</span> stone_count(stone, n_blinks)</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total_stones</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>189547</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.015 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-6" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-6">Part 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> cache</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2024"</span>, <span class="st">"day_11"</span>, <span class="st">"input_day11.txt"</span>)).read().split()</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="at">@cache</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_state(n):</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="dv">1</span>]</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    string_num <span class="op">=</span> <span class="bu">str</span>(n)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(string_num) <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>        mid <span class="op">=</span> <span class="bu">len</span>(string_num) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="bu">int</span>(string_num[:mid]), <span class="bu">int</span>(string_num[mid:])]</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    new_state <span class="op">=</span> [n <span class="op">*</span> <span class="dv">2024</span>]</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_state</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="at">@cache</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> stone_count(stone, blinks_left):</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> blinks_left <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>    new_stone_state <span class="op">=</span> calculate_state(stone)</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>    new_stone_count <span class="op">=</span> <span class="bu">sum</span>(stone_count(num, blinks_left <span class="op">-</span> <span class="dv">1</span>) <span class="cf">for</span> num <span class="kw">in</span> new_stone_state)</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_stone_count</span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2():</span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>    n_blinks <span class="op">=</span> <span class="dv">75</span></span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>    stones <span class="op">=</span> <span class="bu">list</span>(<span class="bu">int</span>(stone) <span class="cf">for</span> stone <span class="kw">in</span> <span class="bu">input</span>)</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>    total_stones <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> stone <span class="kw">in</span> stones:</span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>        total_stones <span class="op">+=</span> stone_count(stone, n_blinks)</span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total_stones</span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>224577979481346</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.144 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-12" class="level1 panel-name panel">
 <h1 class="panel-name">Day 12</h1>
