@@ -448,6 +448,23 @@ toc()
 
 # Day 15 {.panel-name}
 
+## Part 1
+
+```{python, code=readLines("./2024/day_15/script_day15_pt1.py")}
+#| label: code-day15pt1
+#| eval: false
+```
+
+```{python}
+#| label: day15pt1
+#| echo: false
+#| cache: false
+
+start_time = time.time()
+exec(open("./2024/day_15/script_day15_pt1.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
 :::
 
 ::: {.panel}

@@ -40,7 +40,7 @@ def stone_count(stone, blinks_left):
 # How many stones will you have after blinking 25 times?
 
 
-def part1():
+def part1(input):
     n_blinks = 25
     total_stones = 0
     stones = list(int(stone) for stone in input)
@@ -49,7 +49,7 @@ def part1():
     return total_stones
 
 
-print(part1())
+print(part1(input))
 
 
 # -- Part 2 ------------------------
@@ -57,7 +57,7 @@ print(part1())
 # How many stones would you have after blinking a total of 75 times?
 
 
-def part2():
+def part2(input):
     n_blinks = 75
     stones = list(int(stone) for stone in input)
 
@@ -68,4 +68,4 @@ def part2():
     return total_stones
 
 
-print(part2())
+print(part2(input))
