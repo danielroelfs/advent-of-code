@@ -6,8 +6,8 @@ def part1(input):
     id_ranges = [[int(x) for x in strings.split("-")] for strings in input]
 
     valid_ids = []
-    for min, max in id_ranges:
-        values_in_range = [str(x) for x in list(range(min, max + 1))]
+    for min_val, max_val in id_ranges:
+        values_in_range = [str(x) for x in list(range(min_val, max_val + 1))]
         valid_ids = valid_ids + [
             x for x in values_in_range if x[: int(len(x) / 2)] == x[int(len(x) / 2) :]
         ]
