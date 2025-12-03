@@ -522,13 +522,27 @@
     "href": "2025.html#part-1-1",
     "title": "My 2025 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part1(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min, max in id_ranges:\n        values_in_range = [str(x) for x in list(range(min, max + 1))]\n        valid_ids = valid_ids + [\n            x for x in values_in_range if x[: int(len(x) / 2)] == x[int(len(x) / 2) :]\n        ]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part1(input))\n\n\n\n44854383294\n\n\n0.310 seconds elapsed"
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part1(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min_val, max_val in id_ranges:\n        values_in_range = [str(x) for x in list(range(min_val, max_val + 1))]\n        valid_ids = valid_ids + [\n            x for x in values_in_range if x[: int(len(x) / 2)] == x[int(len(x) / 2) :]\n        ]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part1(input))\n\n\n\n44854383294\n\n\n0.310 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-2-1",
     "href": "2025.html#part-2-1",
     "title": "My 2025 Attempts",
     "section": "Part 2",
-    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part2(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min, max in id_ranges:\n        values_in_range = [str(x) for x in list(range(min, max + 1))]\n        valid_ids = valid_ids + [x for x in values_in_range if x in (x * 2)[1:-1]]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part2(input))\n\n\n\n55647141923\n\n\n0.238 seconds elapsed"
+    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part2(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min_val, max_val in id_ranges:\n        values_in_range = [str(x) for x in list(range(min_val, max_val + 1))]\n        valid_ids = valid_ids + [x for x in values_in_range if x in (x * 2)[1:-1]]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part2(input))\n\n\n\n55647141923\n\n\n0.238 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-1-2",
+    "href": "2025.html#part-1-2",
+    "title": "My 2025 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_03\", \"input_day03.txt\")).read().splitlines()\n\ndef part1(input):\n    total_joltage = 0\n    for bank in input:\n        list_of_digits = [int(x) for x in bank]\n\n        max_joltage = 0\n        for i in range(len(list_of_digits)):\n            for j in range(i + 1, len(list_of_digits)):\n                max_joltage = max(\n                    max_joltage, 10 * list_of_digits[i] + list_of_digits[j]\n                )\n\n        total_joltage += max_joltage\n\n    return total_joltage\n\n\nprint(part1(input))\n\n\n\n17179\n\n\n0.029 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-2-2",
+    "href": "2025.html#part-2-2",
+    "title": "My 2025 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_03\", \"input_day03.txt\")).read().splitlines()\n\ndef part2(input):\n    total_joltage = 0\n    for bank in input:\n        list_of_digits = [int(x) for x in bank]\n\n        joltage = [[0 for _ in range(12 + 1)] for _ in range(len(list_of_digits) + 1)]\n\n        for i in range(len(list_of_digits)):\n            for j in range(12 + 1):\n                joltage[i + 1][j] = max(joltage[i + 1][j], joltage[i][j])\n                if j &lt; 12:\n                    joltage[i + 1][j + 1] = max(\n                        joltage[i + 1][j + 1], 10 * joltage[i][j] + list_of_digits[i]\n                    )\n\n            total_joltage += joltage[len(list_of_digits)][12]\n\n    return total_joltage\n\n\nprint(part2(input))\n\n\n\n170025781683941\n\n\n0.038 seconds elapsed"
   }
 ]
