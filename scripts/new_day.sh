@@ -15,7 +15,7 @@ fi
 day=`printf %02d $1`
 year=`date +"%Y"`
 
-mkdir ./${year}/day_${day}
+mkdir -p ./${year}/day_${day}
 touch ./${year}/day_${day}/input_day${day}.txt
 touch ./${year}/day_${day}/test_input_day${day}.txt
 
@@ -27,7 +27,7 @@ import os
 
 # -- Load data ------------------------
 
-input = open(os.path.join(\"2024\", \"day_${day}\", \"input_day${day}.txt\")).read()
+input = open(os.path.join(\"${year}\", \"day_${day}\", \"input_day${day}.txt\")).read()
 
 # -- Part 1 ------------------------
 

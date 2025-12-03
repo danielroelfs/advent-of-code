@@ -68,11 +68,11 @@ htmltools::tags$style(
   str_c(collapse = "\n",
     c(
       glue::glue(
-        "#panelset_day-[one_done] {color: #EBB626 !important;}",
+        "#panelset_001_day-[one_done] {color: #EBB626 !important;}",
         .open = "[", .close = "]"
       ),
       glue::glue(
-        "#panelset_day-[none_done] {color: #D63131 !important;}",
+        "#panelset_001_day-[none_done] {color: #D63131 !important;}",
         .open = "[", .close = "]"
       )
     )

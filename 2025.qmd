@@ -1,0 +1,191 @@
+---
+title: "My 2025 Attempts"
+execute:
+  message: false
+  warning: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(stringr)
+library(tictoc)
+
+knitr::opts_chunk$set()
+xaringanExtra::use_panelset()
+
+reticulate::use_virtualenv("./.venv")
+```
+
+```{python}
+#| label: py-setup
+#| include: false
+
+import time
+```
+
+
+```{css}
+#| label: style
+#| echo: false
+
+.panel-tab {
+  flex: 1 0 20%;
+  text-align: center;
+}
+
+p {
+  color: #cccccc;
+}
+
+p a {
+  color: rgb(0, 153, 0);
+}
+p a:hover {
+  color: #99ff99;
+}
+```
+
+```{r}
+#| label: nav-table
+#| echo: false
+
+part1 <- fs::dir_ls("./2025/", recurse = TRUE) |>
+  str_subset("_pt1") |>
+  str_extract("(?<=script_day)(.*)(?=_pt)") |>
+  as.numeric()
+
+part2 <- fs::dir_ls("./2025/", recurse = TRUE) |>
+  str_subset("_pt2") |>
+  str_extract("(?<=script_day)(.*)(?=_pt)") |>
+  as.numeric()
+
+one_done <- setdiff(setdiff(seq(12), part2), setdiff(seq(12), part1))
+none_done <- intersect(setdiff(seq(12), part2), setdiff(seq(12), part1))
+
+htmltools::tags$style(
+  str_c(collapse = "\n",
+    c(
+      glue::glue(
+        "#panelset_001_day-[one_done] {color: #EBB626 !important;}",
+        .open = "[", .close = "]"
+      ),
+      glue::glue(
+        "#panelset_001_day-[none_done] {color: #D63131 !important;}",
+        .open = "[", .close = "]"
+      )
+    )
+  )
+)
+```
+
+:::: {.panelset}
+
+::: {.panel}
+
+# Day 1 {.panel-name}
+
+## Part 1
+
+```{python, code=readLines("./2025/day_01/script_day01_pt1.py")}
+#| label: code-day01pt1
+#| eval: false
+```
+
+```{python}
+#| label: day01pt1
+#| echo: false
+#| cache: true
+
+start_time = time.time()
+exec(open("./2025/day_01/script_day01_pt1.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
+## Part 2
+
+```{python, code=readLines("./2025/day_01/script_day01_pt2.py")}
+#| label: code-day01pt2
+#| eval: false
+```
+
+```{python}
+#| label: day01pt2
+#| echo: false
+#| cache: true
+
+start_time = time.time()
+exec(open("./2025/day_01/script_day01_pt2.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
+:::
+
+::: {.panel}
+
+# Day 2 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 3 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 4 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 5 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 6 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 7 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 8 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 9 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 10 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 11 {.panel-name}
+
+:::
+
+::: {.panel}
+
+# Day 12 {.panel-name}
+
+:::
+
+::::

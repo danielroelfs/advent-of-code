@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="My solutions for Advent of Code">
 
-<title>Advent of Code</title>
+<title>My 2025 Attempts – Advent of Code</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -54,6 +88,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/panelset-0.3.0/panelset.css" rel="stylesheet">
+<script src="site_libs/panelset-0.3.0/panelset.js"></script>
 
 
 </head>
@@ -93,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">2024</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./2025.html"> 
+    <a class="nav-link active" href="./2025.html" aria-current="page"> 
 <span class="menu-text">2025</span></a>
   </li>  
 </ul>
@@ -113,14 +149,9 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Advent of Code</h1>
+<h1 class="title">My 2025 Attempts</h1>
 </div>
 
-<div>
-  <div class="description">
-    <p>My solutions for <a href="https://adventofcode.com">Advent of Code</a></p>
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -135,9 +166,152 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br> <br> <br></p>
-<p><a href="2021.html">2021</a> <a href="2022.html">2022</a> <a href="2023.html">2023</a> <a href="2024.html">2024</a> <a href="2025.html">2025</a></p>
-<p><br> <br> <br> <br> <br> <br> Website design by <a href="https://github.com/emilhvitfeldt/rstats-adventofcode">Emil Hvitveldt</a></p>
+<div class="cell">
+<style type="text/css">
+.panel-tab {
+  flex: 1 0 20%;
+  text-align: center;
+}
+
+p {
+  color: #cccccc;
+}
+
+p a {
+  color: rgb(0, 153, 0);
+}
+p a:hover {
+  color: #99ff99;
+}
+</style>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<style>#panelset_001_day-2 {color: #D63131 !important;}
+#panelset_001_day-3 {color: #D63131 !important;}
+#panelset_001_day-4 {color: #D63131 !important;}
+#panelset_001_day-5 {color: #D63131 !important;}
+#panelset_001_day-6 {color: #D63131 !important;}
+#panelset_001_day-7 {color: #D63131 !important;}
+#panelset_001_day-8 {color: #D63131 !important;}
+#panelset_001_day-9 {color: #D63131 !important;}
+#panelset_001_day-10 {color: #D63131 !important;}
+#panelset_001_day-11 {color: #D63131 !important;}
+#panelset_001_day-12 {color: #D63131 !important;}</style>
+</div>
+</div>
+<div class="panelset">
+<section id="day-1" class="level1 panel-name panel">
+<h1 class="panel-name">Day 1</h1>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_01"</span>, <span class="st">"input_day01.txt"</span>)).read().splitlines()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span> <span class="op">=</span> [x.replace(<span class="st">"L"</span>, <span class="st">"-"</span>) <span class="cf">if</span> <span class="st">"L"</span> <span class="kw">in</span> x <span class="cf">else</span> x.replace(<span class="st">"R"</span>, <span class="st">"+"</span>) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    rotations <span class="op">=</span> <span class="dv">50</span> <span class="op">+</span> np.cumsum([<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    dial_number <span class="op">=</span> [</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        x <span class="op">-</span> (<span class="bu">int</span>(x <span class="op">/</span> <span class="dv">100</span>) <span class="op">*</span> <span class="dv">100</span>) <span class="cf">if</span> (np.<span class="bu">abs</span>(x) <span class="op">&gt;</span> <span class="dv">99</span>) <span class="cf">else</span> x <span class="cf">for</span> x <span class="kw">in</span> rotations</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    n_zero <span class="op">=</span> <span class="bu">int</span>(<span class="bu">sum</span>([x <span class="op">+</span> <span class="dv">1</span> <span class="cf">for</span> x <span class="kw">in</span> dial_number <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span>]))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_zero</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>1195</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.005 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_01"</span>, <span class="st">"input_day01.txt"</span>)).read().splitlines()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    instruction <span class="op">=</span> [</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">int</span>(x.replace(<span class="st">"L"</span>, <span class="st">"-"</span>)) <span class="cf">if</span> <span class="st">"L"</span> <span class="kw">in</span> x <span class="cf">else</span> <span class="bu">int</span>(x.replace(<span class="st">"R"</span>, <span class="st">"+"</span>))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    dial_number <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    n_zero <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> instruction:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            n_zero <span class="op">+=</span> (dial_number <span class="op">+</span> np.<span class="bu">abs</span>(x)) <span class="op">//</span> <span class="dv">100</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            dial_number <span class="op">=</span> (dial_number <span class="op">+</span> np.<span class="bu">abs</span>(x)) <span class="op">%</span> <span class="dv">100</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> dial_number <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                n_zero <span class="op">+=</span> np.<span class="bu">abs</span>(x) <span class="op">//</span> <span class="dv">100</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> np.<span class="bu">abs</span>(x) <span class="op">&gt;=</span> dial_number:</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                n_zero <span class="op">+=</span> (np.<span class="bu">abs</span>(x) <span class="op">-</span> dial_number) <span class="op">//</span> <span class="dv">100</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            dial_number <span class="op">=</span> (dial_number <span class="op">-</span> np.<span class="bu">abs</span>(x)) <span class="op">%</span> <span class="dv">100</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(n_zero)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>6770</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.006 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="day-2" class="level1 panel-name panel">
+<h1 class="panel-name">Day 2</h1>
+</section>
+<section id="day-3" class="level1 panel-name panel">
+<h1 class="panel-name">Day 3</h1>
+</section>
+<section id="day-4" class="level1 panel-name panel">
+<h1 class="panel-name">Day 4</h1>
+</section>
+<section id="day-5" class="level1 panel-name panel">
+<h1 class="panel-name">Day 5</h1>
+</section>
+<section id="day-6" class="level1 panel-name panel">
+<h1 class="panel-name">Day 6</h1>
+</section>
+<section id="day-7" class="level1 panel-name panel">
+<h1 class="panel-name">Day 7</h1>
+</section>
+<section id="day-8" class="level1 panel-name panel">
+<h1 class="panel-name">Day 8</h1>
+</section>
+<section id="day-9" class="level1 panel-name panel">
+<h1 class="panel-name">Day 9</h1>
+</section>
+<section id="day-10" class="level1 panel-name panel">
+<h1 class="panel-name">Day 10</h1>
+</section>
+<section id="day-11" class="level1 panel-name panel">
+<h1 class="panel-name">Day 11</h1>
+</section>
+<section id="day-12" class="level1 panel-name panel">
+<h1 class="panel-name">Day 12</h1>
+</section>
+</div>
 
 
 
