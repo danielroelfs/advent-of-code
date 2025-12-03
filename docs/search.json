@@ -516,5 +516,19 @@
     "title": "My 2025 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nimport os\nimport numpy as np\n\ninput = open(os.path.join(\"2025\", \"day_01\", \"input_day01.txt\")).read().splitlines()\n\ndef part2(input):\n    instruction = [\n        int(x.replace(\"L\", \"-\")) if \"L\" in x else int(x.replace(\"R\", \"+\"))\n        for x in input\n    ]\n\n    dial_number = 50\n    n_zero = 0\n    for x in instruction:\n        if x &gt; 0:\n            n_zero += (dial_number + np.abs(x)) // 100\n            dial_number = (dial_number + np.abs(x)) % 100\n        else:\n            if dial_number == 0:\n                n_zero += np.abs(x) // 100\n            elif np.abs(x) &gt;= dial_number:\n                n_zero += (np.abs(x) - dial_number) // 100 + 1\n            dial_number = (dial_number - np.abs(x)) % 100\n\n    return int(n_zero)\n\n\nprint(part2(input))\n\n\n\n6770\n\n\n0.006 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-1-1",
+    "href": "2025.html#part-1-1",
+    "title": "My 2025 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part1(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min, max in id_ranges:\n        values_in_range = [str(x) for x in list(range(min, max + 1))]\n        valid_ids = valid_ids + [\n            x for x in values_in_range if x[: int(len(x) / 2)] == x[int(len(x) / 2) :]\n        ]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part1(input))\n\n\n\n44854383294\n\n\n0.310 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-2-1",
+    "href": "2025.html#part-2-1",
+    "title": "My 2025 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part2(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min, max in id_ranges:\n        values_in_range = [str(x) for x in list(range(min, max + 1))]\n        valid_ids = valid_ids + [x for x in values_in_range if x in (x * 2)[1:-1]]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part2(input))\n\n\n\n55647141923\n\n\n0.238 seconds elapsed"
   }
 ]

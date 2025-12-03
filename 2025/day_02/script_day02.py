@@ -1,0 +1,51 @@
+### ADVENT OF CODE - DAY 2 ########################
+
+# -- Libraries -------------------------
+
+import os
+
+# -- Load data ------------------------
+
+input = open(os.path.join("2025", "day_02", "input_day02.txt")).read().split(",")
+
+# -- Part 1 ------------------------
+
+# What do you get if you add up all of the invalid IDs?
+
+
+def part1(input):
+    id_ranges = [[int(x) for x in strings.split("-")] for strings in input]
+
+    valid_ids = []
+    for min, max in id_ranges:
+        values_in_range = [str(x) for x in list(range(min, max + 1))]
+        valid_ids = valid_ids + [
+            x for x in values_in_range if x[: int(len(x) / 2)] == x[int(len(x) / 2) :]
+        ]
+
+    sum_of_valid = sum([int(x) for x in valid_ids])
+
+    return sum_of_valid
+
+
+print(part1(input))
+
+# -- Part 2 ------------------------
+
+# What do you get if you add up all of the invalid IDs using these new rules?
+
+
+def part2(input):
+    id_ranges = [[int(x) for x in strings.split("-")] for strings in input]
+
+    valid_ids = []
+    for min, max in id_ranges:
+        values_in_range = [str(x) for x in list(range(min, max + 1))]
+        valid_ids = valid_ids + [x for x in values_in_range if x in (x * 2)[1:-1]]
+
+    sum_of_valid = sum([int(x) for x in valid_ids])
+
+    return sum_of_valid
+
+
+print(part2(input))
