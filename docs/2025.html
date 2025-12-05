@@ -188,7 +188,6 @@ p a:hover {
 <div class="cell">
 <div class="cell-output-display">
 <style>#panelset_001_day-4 {color: #D63131 !important;}
-#panelset_001_day-5 {color: #D63131 !important;}
 #panelset_001_day-6 {color: #D63131 !important;}
 #panelset_001_day-7 {color: #D63131 !important;}
 #panelset_001_day-8 {color: #D63131 !important;}
@@ -424,6 +423,74 @@ p a:hover {
 </section>
 <section id="day-5" class="level1 panel-name panel">
 <h1 class="panel-name">Day 5</h1>
+<section id="part-1-3" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-3">Part 1</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_05"</span>, <span class="st">"input_day05.txt"</span>)).read()</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    ing_ranges, ingr_ids <span class="op">=</span> <span class="bu">input</span>.split(<span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    ing_ranges <span class="op">=</span> [[<span class="bu">int</span>(y) <span class="cf">for</span> y <span class="kw">in</span> x.split(<span class="st">"-"</span>)] <span class="cf">for</span> x <span class="kw">in</span> ing_ranges.splitlines()]</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    ingr_ids <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> ingr_ids.splitlines()]</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    fresh_ings <span class="op">=</span> <span class="bu">len</span>(</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">set</span>([x <span class="cf">for</span> x <span class="kw">in</span> ingr_ids <span class="cf">for</span> y <span class="kw">in</span> ing_ranges <span class="cf">if</span> (x <span class="op">&gt;=</span> y[<span class="dv">0</span>]) <span class="op">&amp;</span> (x <span class="op">&lt;=</span> y[<span class="dv">1</span>])])</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fresh_ings</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>773</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.007 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-3" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-3">Part 2</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_05"</span>, <span class="st">"input_day05.txt"</span>)).read()</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    ing_ranges <span class="op">=</span> <span class="bu">input</span>.split(<span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)[<span class="dv">0</span>]</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    ing_ranges <span class="op">=</span> <span class="bu">sorted</span>(</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        [[<span class="bu">int</span>(y) <span class="cf">for</span> y <span class="kw">in</span> x.split(<span class="st">"-"</span>)] <span class="cf">for</span> x <span class="kw">in</span> ing_ranges.splitlines()]</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    fresh_ing_ids <span class="op">=</span> []</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a, b <span class="kw">in</span> ing_ranges:</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> fresh_ing_ids <span class="kw">or</span> (fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="op">&lt;</span> a <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>            fresh_ing_ids <span class="op">=</span> fresh_ing_ids <span class="op">+</span> [[a, b]]</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>            fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="bu">max</span>(fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>], b)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    num_fresh_ings_ids <span class="op">=</span> <span class="bu">sum</span>(b <span class="op">-</span> a <span class="op">+</span> <span class="dv">1</span> <span class="cf">for</span> a, b <span class="kw">in</span> fresh_ing_ids)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num_fresh_ings_ids</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>332067203034711</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.002 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-6" class="level1 panel-name panel">
 <h1 class="panel-name">Day 6</h1>

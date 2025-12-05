@@ -212,6 +212,40 @@ print(f"{time.time() - start_time:.3f} seconds elapsed")
 
 # Day 5 {.panel-name}
 
+## Part 1
+
+```{python, code=readLines("./2025/day_05/script_day05_pt1.py")}
+#| label: code-day05pt1
+#| eval: false
+```
+
+```{python}
+#| label: day05pt1
+#| echo: false
+#| cache: true
+
+start_time = time.time()
+exec(open("./2025/day_05/script_day05_pt1.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
+## Part 2
+
+```{python, code=readLines("./2025/day_05/script_day05_pt2.py")}
+#| label: code-day05pt2
+#| eval: false
+```
+
+```{python}
+#| label: day05pt2
+#| echo: false
+#| cache: true
+
+start_time = time.time()
+exec(open("./2025/day_05/script_day05_pt2.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
 :::
 
 ::: {.panel}
