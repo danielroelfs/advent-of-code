@@ -9,13 +9,15 @@ def part2(input):
     )
 
     fresh_ing_ids = []
-    for a, b in ing_ranges:
-        if not fresh_ing_ids or (fresh_ing_ids[-1][1] < a - 1):
-            fresh_ing_ids = fresh_ing_ids + [[a, b]]
+    for min_val, max_val in ing_ranges:
+        if not fresh_ing_ids or (fresh_ing_ids[-1][1] < min_val - 1):
+            fresh_ing_ids = fresh_ing_ids + [[min_val, max_val]]
         else:
-            fresh_ing_ids[-1][1] = max(fresh_ing_ids[-1][1], b)
+            fresh_ing_ids[-1][1] = max(fresh_ing_ids[-1][1], max_val)
 
-    num_fresh_ings_ids = sum(b - a + 1 for a, b in fresh_ing_ids)
+    num_fresh_ings_ids = sum(
+        max_val - min_val + 1 for min_val, max_val in fresh_ing_ids
+    )
 
     return num_fresh_ings_ids
 

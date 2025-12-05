@@ -469,18 +469,20 @@ p a:hover {
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    fresh_ing_ids <span class="op">=</span> []</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a, b <span class="kw">in</span> ing_ranges:</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> fresh_ing_ids <span class="kw">or</span> (fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="op">&lt;</span> a <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>            fresh_ing_ids <span class="op">=</span> fresh_ing_ids <span class="op">+</span> [[a, b]]</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> min_val, max_val <span class="kw">in</span> ing_ranges:</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> fresh_ing_ids <span class="kw">or</span> (fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="op">&lt;</span> min_val <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>            fresh_ing_ids <span class="op">=</span> fresh_ing_ids <span class="op">+</span> [[min_val, max_val]]</span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>            fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="bu">max</span>(fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>], b)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>            fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="bu">max</span>(fresh_ing_ids[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>], max_val)</span>
 <span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    num_fresh_ings_ids <span class="op">=</span> <span class="bu">sum</span>(b <span class="op">-</span> a <span class="op">+</span> <span class="dv">1</span> <span class="cf">for</span> a, b <span class="kw">in</span> fresh_ing_ids)</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num_fresh_ings_ids</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    num_fresh_ings_ids <span class="op">=</span> <span class="bu">sum</span>(</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>        max_val <span class="op">-</span> min_val <span class="op">+</span> <span class="dv">1</span> <span class="cf">for</span> min_val, max_val <span class="kw">in</span> fresh_ing_ids</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num_fresh_ings_ids</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
