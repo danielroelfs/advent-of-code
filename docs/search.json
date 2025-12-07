@@ -558,5 +558,19 @@
     "title": "My 2025 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_05\", \"input_day05.txt\")).read()\n\ndef part2(input):\n    ing_ranges = input.split(\"\\n\\n\")[0]\n    ing_ranges = sorted(\n        [[int(y) for y in x.split(\"-\")] for x in ing_ranges.splitlines()]\n    )\n\n    fresh_ing_ids = []\n    for min_val, max_val in ing_ranges:\n        if not fresh_ing_ids or (fresh_ing_ids[-1][1] &lt; min_val - 1):\n            fresh_ing_ids = fresh_ing_ids + [[min_val, max_val]]\n        else:\n            fresh_ing_ids[-1][1] = max(fresh_ing_ids[-1][1], max_val)\n\n    num_fresh_ings_ids = sum(\n        max_val - min_val + 1 for min_val, max_val in fresh_ing_ids\n    )\n\n    return num_fresh_ings_ids\n\n\nprint(part2(input))\n\n\n\n332067203034711\n\n\n0.002 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-1-4",
+    "href": "2025.html#part-1-4",
+    "title": "My 2025 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\nimport math\n\ninput = open(os.path.join(\"2025\", \"day_06\", \"input_day06.txt\")).read().splitlines()\n\ndef part1(input):\n    values = [[int(y) for y in x.split(\" \") if len(y) &gt; 0] for x in input[:-1]]\n    operators = [x for x in input[-1].split(\" \") if len(x) &gt; 0]\n\n    assert len(operators) == len(values[0])\n\n    answers = []\n    for i in range(len(values[0])):\n        values_of_interest = [values[i] for values in values]\n        answers = answers + [\n            (\n                sum(values_of_interest)\n                if operators[i] == \"+\"\n                else math.prod(values_of_interest)\n            )\n        ]\n\n    grand_total = sum(answers)\n\n    return grand_total\n\n\nprint(part1(input))\n\n\n\n4693419406682\n\n\n0.003 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-2-4",
+    "href": "2025.html#part-2-4",
+    "title": "My 2025 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\nimport math\n\ninput = open(os.path.join(\"2025\", \"day_06\", \"input_day06.txt\")).read().splitlines()\n\ndef part2(input):\n\n    rev_values = [x[::-1] for x in input]\n\n    grand_total = 0\n    transposed_values = []\n    for x in zip(*rev_values):\n        try:\n            transposed_values = transposed_values + [int(\"\".join(x[:-1]))]\n        except ValueError:\n            continue\n        if x[-1] == \"+\":\n            grand_total += sum(transposed_values)\n            transposed_values = []\n        elif x[-1] == \"*\":\n            grand_total += math.prod(transposed_values)\n            transposed_values = []\n\n    return grand_total\n\n\nprint(part2(input))\n\n\n\n9029931401920\n\n\n0.003 seconds elapsed"
   }
 ]
