@@ -188,7 +188,6 @@ p a:hover {
 <div class="cell">
 <div class="cell-output-display">
 <style>#panelset_001_day-4 {color: #D63131 !important;}
-#panelset_001_day-7 {color: #D63131 !important;}
 #panelset_001_day-8 {color: #D63131 !important;}
 #panelset_001_day-9 {color: #D63131 !important;}
 #panelset_001_day-10 {color: #D63131 !important;}
@@ -579,6 +578,89 @@ p a:hover {
 </section>
 <section id="day-7" class="level1 panel-name panel">
 <h1 class="panel-name">Day 7</h1>
+<p>Accidentally solved part 2 as part of part 1 processing</p>
+<section id="part-1-5" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-5">Part 1</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_07"</span>, <span class="st">"input_day07.txt"</span>)).read().splitlines()</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_tachyon_manifold_diagram(<span class="bu">input</span>):</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="bu">len</span>(<span class="bu">input</span>[<span class="dv">0</span>])</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    beams <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> width</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    beams[<span class="bu">input</span>[<span class="dv">0</span>].index(<span class="st">"S"</span>)] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    n_splits <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> manifold_row <span class="kw">in</span> <span class="bu">input</span>[<span class="dv">1</span>:]:</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> manifold_col <span class="kw">in</span> <span class="bu">range</span>(width):</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> manifold_row[manifold_col] <span class="op">==</span> <span class="st">"^"</span> <span class="kw">and</span> beams[manifold_col] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>                beams[manifold_col <span class="op">-</span> <span class="dv">1</span>] <span class="op">+=</span> beams[manifold_col]</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>                beams[manifold_col <span class="op">+</span> <span class="dv">1</span>] <span class="op">+=</span> beams[manifold_col]</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>                n_splits <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>                beams[manifold_col] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_splits, beams</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>    n_splits, _ <span class="op">=</span> process_tachyon_manifold_diagram(<span class="bu">input</span>)</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_splits</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>1553</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.002 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-5" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-5">Part 2</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_07"</span>, <span class="st">"input_day07.txt"</span>)).read().splitlines()</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_tachyon_manifold_diagram(<span class="bu">input</span>):</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="bu">len</span>(<span class="bu">input</span>[<span class="dv">0</span>])</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    beams <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> width</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    beams[<span class="bu">input</span>[<span class="dv">0</span>].index(<span class="st">"S"</span>)] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    n_splits <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> manifold_row <span class="kw">in</span> <span class="bu">input</span>[<span class="dv">1</span>:]:</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> manifold_col <span class="kw">in</span> <span class="bu">range</span>(width):</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> manifold_row[manifold_col] <span class="op">==</span> <span class="st">"^"</span> <span class="kw">and</span> beams[manifold_col] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>                beams[manifold_col <span class="op">-</span> <span class="dv">1</span>] <span class="op">+=</span> beams[manifold_col]</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>                beams[manifold_col <span class="op">+</span> <span class="dv">1</span>] <span class="op">+=</span> beams[manifold_col]</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>                n_splits <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>                beams[manifold_col] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_splits, beams</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    _, beams <span class="op">=</span> process_tachyon_manifold_diagram(<span class="bu">input</span>)</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>    n_timelines <span class="op">=</span> <span class="bu">sum</span>(beams)</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_timelines</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>15811946526915</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.002 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-8" class="level1 panel-name panel">
 <h1 class="panel-name">Day 8</h1>

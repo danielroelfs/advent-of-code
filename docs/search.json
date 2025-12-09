@@ -572,5 +572,19 @@
     "title": "My 2025 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nimport os\nimport math\n\ninput = open(os.path.join(\"2025\", \"day_06\", \"input_day06.txt\")).read().splitlines()\n\ndef part2(input):\n\n    rev_values = [x[::-1] for x in input]\n\n    grand_total = 0\n    transposed_values = []\n    for x in zip(*rev_values):\n        try:\n            transposed_values = transposed_values + [int(\"\".join(x[:-1]))]\n        except ValueError:\n            continue\n        if x[-1] == \"+\":\n            grand_total += sum(transposed_values)\n            transposed_values = []\n        elif x[-1] == \"*\":\n            grand_total += math.prod(transposed_values)\n            transposed_values = []\n\n    return grand_total\n\n\nprint(part2(input))\n\n\n\n9029931401920\n\n\n0.003 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-1-5",
+    "href": "2025.html#part-1-5",
+    "title": "My 2025 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_07\", \"input_day07.txt\")).read().splitlines()\n\ndef process_tachyon_manifold_diagram(input):\n    width = len(input[0])\n    beams = [0] * width\n    beams[input[0].index(\"S\")] = 1\n\n    n_splits = 0\n    for manifold_row in input[1:]:\n        for manifold_col in range(width):\n            if manifold_row[manifold_col] == \"^\" and beams[manifold_col] &gt; 0:\n                beams[manifold_col - 1] += beams[manifold_col]\n                beams[manifold_col + 1] += beams[manifold_col]\n                n_splits += 1\n                beams[manifold_col] = 0\n\n    return n_splits, beams\n\ndef part1(input):\n    n_splits, _ = process_tachyon_manifold_diagram(input)\n\n    return n_splits\n\n\nprint(part1(input))\n\n\n\n1553\n\n\n0.002 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-2-5",
+    "href": "2025.html#part-2-5",
+    "title": "My 2025 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_07\", \"input_day07.txt\")).read().splitlines()\n\ndef process_tachyon_manifold_diagram(input):\n    width = len(input[0])\n    beams = [0] * width\n    beams[input[0].index(\"S\")] = 1\n\n    n_splits = 0\n    for manifold_row in input[1:]:\n        for manifold_col in range(width):\n            if manifold_row[manifold_col] == \"^\" and beams[manifold_col] &gt; 0:\n                beams[manifold_col - 1] += beams[manifold_col]\n                beams[manifold_col + 1] += beams[manifold_col]\n                n_splits += 1\n                beams[manifold_col] = 0\n\n    return n_splits, beams\n\ndef part2(input):\n    _, beams = process_tachyon_manifold_diagram(input)\n\n    n_timelines = sum(beams)\n\n    return n_timelines\n\n\nprint(part2(input))\n\n\n\n15811946526915\n\n\n0.002 seconds elapsed"
   }
 ]
