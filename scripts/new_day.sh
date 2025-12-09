@@ -7,7 +7,7 @@ fi
 
 if [ "$#" -lt 2 ]; then
     echo -e "\nI'm assuming you're planning to do this in Python\n"
-    suffix=`echo py`
+    suffix="py"
 else
     suffix=${2}
 fi
@@ -19,7 +19,8 @@ mkdir -p ./${year}/day_${day}
 touch ./${year}/day_${day}/input_day${day}.txt
 touch ./${year}/day_${day}/test_input_day${day}.txt
 
-echo """### ADVENT OF CODE - DAY ${1} ########################
+if [ ${suffix} = "py" ]; then
+    echo """### ADVENT OF CODE - DAY ${1} ########################
 
 # -- Libraries -------------------------
 
@@ -39,6 +40,29 @@ input = open(os.path.join(\"${year}\", \"day_${day}\", \"input_day${day}.txt\"))
 # 
 
 """ > ./${year}/day_${day}/script_day${day}.${suffix}
+else
+    echo """### ADVENT OF CODE - DAY ${1} ########################
+
+# -- Libraries -------------------------
+
+library(tidyverse)
+
+# -- Load data ------------------------
+
+input <- read_delim(
+  here::here(\"${year}\", \"day_${day}\", \"input_day${day}.txt\"),
+)
+
+# -- Part 1 ------------------------
+
+# 
+
+# -- Part 2 ------------------------
+
+#
+
+""" > ./${year}/day_${day}/script_day${day}.${suffix}
+fi
 
 echo """# Advent of Code - Day ${1}
 
