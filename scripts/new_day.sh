@@ -51,6 +51,7 @@ library(tidyverse)
 
 input <- read_delim(
   here::here(\"${year}\", \"day_${day}\", \"input_day${day}.txt\"),
+  col_names=FALSE,
 )
 
 # -- Part 1 ------------------------
