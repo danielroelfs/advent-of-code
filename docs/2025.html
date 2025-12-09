@@ -189,7 +189,6 @@ p a:hover {
 <div class="cell-output-display">
 <style>#panelset_001_day-4 {color: #D63131 !important;}
 #panelset_001_day-8 {color: #D63131 !important;}
-#panelset_001_day-9 {color: #D63131 !important;}
 #panelset_001_day-10 {color: #D63131 !important;}
 #panelset_001_day-11 {color: #D63131 !important;}
 #panelset_001_day-12 {color: #D63131 !important;}</style>
@@ -667,6 +666,76 @@ p a:hover {
 </section>
 <section id="day-9" class="level1 panel-name panel">
 <h1 class="panel-name">Day 9</h1>
+<section id="part-1-6" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-6">Part 1</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.geometry <span class="im">import</span> Polygon</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_09"</span>, <span class="st">"input_day09.txt"</span>)).read().splitlines()</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(<span class="bu">input</span>):</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    coords <span class="op">=</span> [[<span class="bu">int</span>(y) <span class="cf">for</span> y <span class="kw">in</span> x.split(<span class="st">","</span>)] <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>]</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    areas <span class="op">=</span> []</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xmin, ymin <span class="kw">in</span> coords:</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> xmax, ymax <span class="kw">in</span> coords:</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>            areas.append((<span class="bu">abs</span>(xmax <span class="op">-</span> xmin) <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> (<span class="bu">abs</span>(ymax <span class="op">-</span> ymin) <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    largest_area <span class="op">=</span> <span class="bu">max</span>(areas)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> largest_area</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part1(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>4777967538</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.045 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2-6" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-6">Part 2</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.geometry <span class="im">import</span> Polygon</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">input</span> <span class="op">=</span> <span class="bu">open</span>(os.path.join(<span class="st">"2025"</span>, <span class="st">"day_09"</span>, <span class="st">"input_day09.txt"</span>)).read().splitlines()</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(<span class="bu">input</span>):</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    coords <span class="op">=</span> [[<span class="bu">int</span>(y) <span class="cf">for</span> y <span class="kw">in</span> x.split(<span class="st">","</span>)] <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>]</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    initial_area <span class="op">=</span> Polygon(coords)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    areas <span class="op">=</span> []</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xmin, ymin <span class="kw">in</span> coords:</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> xmax, ymax <span class="kw">in</span> coords:</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>            rectangle <span class="op">=</span> Polygon(</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>                [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)]</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> initial_area.contains(rectangle):</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>                areas.append((<span class="bu">abs</span>(xmax <span class="op">-</span> xmin) <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> (<span class="bu">abs</span>(ymax <span class="op">-</span> ymin) <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    largest_area <span class="op">=</span> <span class="bu">max</span>(areas)</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> largest_area</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(part2(<span class="bu">input</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>1439894345</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.058 seconds elapsed</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="day-10" class="level1 panel-name panel">
 <h1 class="panel-name">Day 10</h1>

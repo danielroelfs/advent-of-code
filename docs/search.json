@@ -586,5 +586,19 @@
     "title": "My 2025 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_07\", \"input_day07.txt\")).read().splitlines()\n\ndef process_tachyon_manifold_diagram(input):\n    width = len(input[0])\n    beams = [0] * width\n    beams[input[0].index(\"S\")] = 1\n\n    n_splits = 0\n    for manifold_row in input[1:]:\n        for manifold_col in range(width):\n            if manifold_row[manifold_col] == \"^\" and beams[manifold_col] &gt; 0:\n                beams[manifold_col - 1] += beams[manifold_col]\n                beams[manifold_col + 1] += beams[manifold_col]\n                n_splits += 1\n                beams[manifold_col] = 0\n\n    return n_splits, beams\n\ndef part2(input):\n    _, beams = process_tachyon_manifold_diagram(input)\n\n    n_timelines = sum(beams)\n\n    return n_timelines\n\n\nprint(part2(input))\n\n\n\n15811946526915\n\n\n0.002 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-1-6",
+    "href": "2025.html#part-1-6",
+    "title": "My 2025 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\nfrom shapely.geometry import Polygon\n\ninput = open(os.path.join(\"2025\", \"day_09\", \"input_day09.txt\")).read().splitlines()\n\ndef part1(input):\n    coords = [[int(y) for y in x.split(\",\")] for x in input]\n\n    areas = []\n    for xmin, ymin in coords:\n        for xmax, ymax in coords:\n            areas.append((abs(xmax - xmin) + 1) * (abs(ymax - ymin) + 1))\n\n    largest_area = max(areas)\n\n    return largest_area\n\n\nprint(part1(input))\n\n\n\n4777967538\n\n\n0.045 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-2-6",
+    "href": "2025.html#part-2-6",
+    "title": "My 2025 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\nfrom shapely.geometry import Polygon\n\ninput = open(os.path.join(\"2025\", \"day_09\", \"input_day09.txt\")).read().splitlines()\n\ndef part2(input):\n    coords = [[int(y) for y in x.split(\",\")] for x in input]\n\n    initial_area = Polygon(coords)\n\n    areas = []\n    for xmin, ymin in coords:\n        for xmax, ymax in coords:\n            rectangle = Polygon(\n                [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)]\n            )\n            if initial_area.contains(rectangle):\n                areas.append((abs(xmax - xmin) + 1) * (abs(ymax - ymin) + 1))\n\n    largest_area = max(areas)\n\n    return largest_area\n\n\nprint(part2(input))\n\n\n\n1439894345\n\n\n5.058 seconds elapsed"
   }
 ]
