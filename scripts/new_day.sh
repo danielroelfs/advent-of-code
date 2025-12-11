@@ -22,7 +22,7 @@ touch ./${year}/day_${day}/test_input_day${day}.txt
 if [ ${suffix} = "py" ]; then
     echo """### ADVENT OF CODE - DAY ${1} ########################
 
-# -- Libraries -------------------------
+# -- Libraries ------------------------
 
 import os
 
@@ -43,7 +43,7 @@ input = open(os.path.join(\"${year}\", \"day_${day}\", \"input_day${day}.txt\"))
 else
     echo """### ADVENT OF CODE - DAY ${1} ########################
 
-# -- Libraries -------------------------
+# -- Libraries ------------------------
 
 library(tidyverse)
 
