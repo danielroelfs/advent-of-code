@@ -522,14 +522,14 @@
     "href": "2025.html#part-1-1",
     "title": "My 2025 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part1(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min_val, max_val in id_ranges:\n        values_in_range = [str(x) for x in list(range(min_val, max_val + 1))]\n        valid_ids = valid_ids + [\n            x for x in values_in_range if x[: int(len(x) / 2)] == x[int(len(x) / 2) :]\n        ]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part1(input))\n\n\n\n44854383294\n\n\n0.310 seconds elapsed"
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part1(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min_val, max_val in id_ranges:\n        values_in_range = [str(x) for x in list(range(min_val, max_val + 1))]\n        valid_ids = valid_ids + [\n            x for x in values_in_range if x[: int(len(x) / 2)] == x[int(len(x) / 2) :]\n        ]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part1(input))\n\n\n\n44854383294\n\n\n0.287 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-2-1",
     "href": "2025.html#part-2-1",
     "title": "My 2025 Attempts",
     "section": "Part 2",
-    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part2(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min_val, max_val in id_ranges:\n        values_in_range = [str(x) for x in list(range(min_val, max_val + 1))]\n        valid_ids = valid_ids + [x for x in values_in_range if x in (x * 2)[1:-1]]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part2(input))\n\n\n\n55647141923\n\n\n0.238 seconds elapsed"
+    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_02\", \"input_day02.txt\")).read().split(\",\")\n\ndef part2(input):\n    id_ranges = [[int(x) for x in strings.split(\"-\")] for strings in input]\n\n    valid_ids = []\n    for min_val, max_val in id_ranges:\n        values_in_range = [str(x) for x in list(range(min_val, max_val + 1))]\n        valid_ids = valid_ids + [x for x in values_in_range if x in (x * 2)[1:-1]]\n\n    sum_of_valid = sum([int(x) for x in valid_ids])\n\n    return sum_of_valid\n\n\nprint(part2(input))\n\n\n\n55647141923\n\n\n0.244 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-1-2",
@@ -543,14 +543,14 @@
     "href": "2025.html#part-2-2",
     "title": "My 2025 Attempts",
     "section": "Part 2",
-    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_03\", \"input_day03.txt\")).read().splitlines()\n\ndef part2(input):\n    total_joltage = 0\n    for bank in input:\n        list_of_digits = [int(x) for x in bank]\n\n        joltage = [[0 for _ in range(12 + 1)] for _ in range(len(list_of_digits) + 1)]\n\n        for i in range(len(list_of_digits)):\n            for j in range(12 + 1):\n                joltage[i + 1][j] = max(joltage[i + 1][j], joltage[i][j])\n                if j &lt; 12:\n                    joltage[i + 1][j + 1] = max(\n                        joltage[i + 1][j + 1], 10 * joltage[i][j] + list_of_digits[i]\n                    )\n\n            total_joltage += joltage[len(list_of_digits)][12]\n\n    return total_joltage\n\n\nprint(part2(input))\n\n\n\n170025781683941\n\n\n0.038 seconds elapsed"
+    "text": "Part 2\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_03\", \"input_day03.txt\")).read().splitlines()\n\ndef part2(input):\n    total_joltage = 0\n    for bank in input:\n        list_of_digits = [int(x) for x in bank]\n\n        joltage = [[0 for _ in range(12 + 1)] for _ in range(len(list_of_digits) + 1)]\n\n        for i in range(len(list_of_digits)):\n            for j in range(12 + 1):\n                joltage[i + 1][j] = max(joltage[i + 1][j], joltage[i][j])\n                if j &lt; 12:\n                    joltage[i + 1][j + 1] = max(\n                        joltage[i + 1][j + 1], 10 * joltage[i][j] + list_of_digits[i]\n                    )\n\n            total_joltage += joltage[len(list_of_digits)][12]\n\n    return total_joltage\n\n\nprint(part2(input))\n\n\n\n170025781683941\n\n\n0.037 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-1-3",
     "href": "2025.html#part-1-3",
     "title": "My 2025 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_05\", \"input_day05.txt\")).read()\n\ndef part1(input):\n    ing_ranges, ingr_ids = input.split(\"\\n\\n\")\n\n    ing_ranges = [[int(y) for y in x.split(\"-\")] for x in ing_ranges.splitlines()]\n\n    ingr_ids = [int(x) for x in ingr_ids.splitlines()]\n\n    fresh_ings = len(\n        set([x for x in ingr_ids for y in ing_ranges if (x &gt;= y[0]) & (x &lt;= y[1])])\n    )\n\n    return fresh_ings\n\n\nprint(part1(input))\n\n\n\n773\n\n\n0.007 seconds elapsed"
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_04\", \"input_day04.txt\")).read().splitlines()\ninput = [list(x) for x in input]\n\ndef get_neighbors(coordinates_of_interest, diagram):\n    x, y = coordinates_of_interest\n    neighbors = []\n    if x &lt; len(diagram[0]) - 1:\n        neighbors.append(diagram[y][x + 1])\n    if x &gt; 0:\n        neighbors.append(diagram[y][x - 1])\n    if y &lt; len(diagram) - 1:\n        neighbors.append(diagram[y + 1][x])\n    if y &gt; 0:\n        neighbors.append(diagram[y - 1][x])\n    if x &lt; len(diagram[0]) - 1 and y &gt; 0:\n        neighbors.append(diagram[y - 1][x + 1])\n    if x &gt; 0 and y &gt; 0:\n        neighbors.append(diagram[y - 1][x - 1])\n    if x &lt; len(diagram[0]) - 1 and y &lt; len(diagram) - 1:\n        neighbors.append(diagram[y + 1][x + 1])\n    if x &gt; 0 and y &lt; len(diagram) - 1:\n        neighbors.append(diagram[y + 1][x - 1])\n\n    n_rolls_inaccessible = len([x for x in neighbors if x == \"@\"])\n\n    return n_rolls_inaccessible\n\n\ndef part1(input):\n    solution = 0\n    for y in range(len(input)):\n        for x in range(len(input[0])):\n            if (input[y][x] == \"@\") & (get_neighbors([x, y], input) &lt; 4):\n                solution += 1\n\n    return solution\n\n\nprint(part1(input))\n\n\n\n1376\n\n\n0.013 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-2-3",
@@ -564,7 +564,7 @@
     "href": "2025.html#part-1-4",
     "title": "My 2025 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\nimport math\n\ninput = open(os.path.join(\"2025\", \"day_06\", \"input_day06.txt\")).read().splitlines()\n\ndef part1(input):\n    values = [[int(y) for y in x.split(\" \") if len(y) &gt; 0] for x in input[:-1]]\n    operators = [x for x in input[-1].split(\" \") if len(x) &gt; 0]\n\n    assert len(operators) == len(values[0])\n\n    answers = []\n    for i in range(len(values[0])):\n        values_of_interest = [values[i] for values in values]\n        answers = answers + [\n            (\n                sum(values_of_interest)\n                if operators[i] == \"+\"\n                else math.prod(values_of_interest)\n            )\n        ]\n\n    grand_total = sum(answers)\n\n    return grand_total\n\n\nprint(part1(input))\n\n\n\n4693419406682\n\n\n0.003 seconds elapsed"
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_05\", \"input_day05.txt\")).read()\n\ndef part1(input):\n    ing_ranges, ingr_ids = input.split(\"\\n\\n\")\n\n    ing_ranges = [[int(y) for y in x.split(\"-\")] for x in ing_ranges.splitlines()]\n\n    ingr_ids = [int(x) for x in ingr_ids.splitlines()]\n\n    fresh_ings = len(\n        set([x for x in ingr_ids for y in ing_ranges if (x &gt;= y[0]) & (x &lt;= y[1])])\n    )\n\n    return fresh_ings\n\n\nprint(part1(input))\n\n\n\n773\n\n\n0.007 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-2-4",
@@ -578,7 +578,7 @@
     "href": "2025.html#part-1-5",
     "title": "My 2025 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_07\", \"input_day07.txt\")).read().splitlines()\n\ndef process_tachyon_manifold_diagram(input):\n    width = len(input[0])\n    beams = [0] * width\n    beams[input[0].index(\"S\")] = 1\n\n    n_splits = 0\n    for manifold_row in input[1:]:\n        for manifold_col in range(width):\n            if manifold_row[manifold_col] == \"^\" and beams[manifold_col] &gt; 0:\n                beams[manifold_col - 1] += beams[manifold_col]\n                beams[manifold_col + 1] += beams[manifold_col]\n                n_splits += 1\n                beams[manifold_col] = 0\n\n    return n_splits, beams\n\ndef part1(input):\n    n_splits, _ = process_tachyon_manifold_diagram(input)\n\n    return n_splits\n\n\nprint(part1(input))\n\n\n\n1553\n\n\n0.002 seconds elapsed"
+    "text": "Part 1\n\nimport os\nimport math\n\ninput = open(os.path.join(\"2025\", \"day_06\", \"input_day06.txt\")).read().splitlines()\n\ndef part1(input):\n    values = [[int(y) for y in x.split(\" \") if len(y) &gt; 0] for x in input[:-1]]\n    operators = [x for x in input[-1].split(\" \") if len(x) &gt; 0]\n\n    assert len(operators) == len(values[0])\n\n    answers = []\n    for i in range(len(values[0])):\n        values_of_interest = [values[i] for values in values]\n        answers = answers + [\n            (\n                sum(values_of_interest)\n                if operators[i] == \"+\"\n                else math.prod(values_of_interest)\n            )\n        ]\n\n    grand_total = sum(answers)\n\n    return grand_total\n\n\nprint(part1(input))\n\n\n\n4693419406682\n\n\n0.003 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-2-5",
@@ -592,11 +592,25 @@
     "href": "2025.html#part-1-6",
     "title": "My 2025 Attempts",
     "section": "Part 1",
-    "text": "Part 1\n\nimport os\nfrom shapely.geometry import Polygon\n\ninput = open(os.path.join(\"2025\", \"day_09\", \"input_day09.txt\")).read().splitlines()\n\ndef part1(input):\n    coords = [[int(y) for y in x.split(\",\")] for x in input]\n\n    areas = []\n    for xmin, ymin in coords:\n        for xmax, ymax in coords:\n            areas.append((abs(xmax - xmin) + 1) * (abs(ymax - ymin) + 1))\n\n    largest_area = max(areas)\n\n    return largest_area\n\n\nprint(part1(input))\n\n\n\n4777967538\n\n\n0.045 seconds elapsed"
+    "text": "Part 1\n\nimport os\n\ninput = open(os.path.join(\"2025\", \"day_07\", \"input_day07.txt\")).read().splitlines()\n\ndef process_tachyon_manifold_diagram(input):\n    width = len(input[0])\n    beams = [0] * width\n    beams[input[0].index(\"S\")] = 1\n\n    n_splits = 0\n    for manifold_row in input[1:]:\n        for manifold_col in range(width):\n            if manifold_row[manifold_col] == \"^\" and beams[manifold_col] &gt; 0:\n                beams[manifold_col - 1] += beams[manifold_col]\n                beams[manifold_col + 1] += beams[manifold_col]\n                n_splits += 1\n                beams[manifold_col] = 0\n\n    return n_splits, beams\n\ndef part1(input):\n    n_splits, _ = process_tachyon_manifold_diagram(input)\n\n    return n_splits\n\n\nprint(part1(input))\n\n\n\n1553\n\n\n0.002 seconds elapsed"
   },
   {
     "objectID": "2025.html#part-2-6",
     "href": "2025.html#part-2-6",
+    "title": "My 2025 Attempts",
+    "section": "Part 2",
+    "text": "Part 2\n\nimport os\nfrom shapely.geometry import Polygon\n\ninput = open(os.path.join(\"2025\", \"day_09\", \"input_day09.txt\")).read().splitlines()\n\ndef part2(input):\n    coords = [[int(y) for y in x.split(\",\")] for x in input]\n\n    initial_area = Polygon(coords)\n\n    areas = []\n    for xmin, ymin in coords:\n        for xmax, ymax in coords:\n            rectangle = Polygon(\n                [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)]\n            )\n            if initial_area.contains(rectangle):\n                areas.append((abs(xmax - xmin) + 1) * (abs(ymax - ymin) + 1))\n\n    largest_area = max(areas)\n\n    return largest_area\n\n\nprint(part2(input))\n\n\n\n1439894345\n\n\n5.019 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-1-7",
+    "href": "2025.html#part-1-7",
+    "title": "My 2025 Attempts",
+    "section": "Part 1",
+    "text": "Part 1\n\nimport os\nfrom shapely.geometry import Polygon\n\ninput = open(os.path.join(\"2025\", \"day_09\", \"input_day09.txt\")).read().splitlines()\n\ndef part1(input):\n    coords = [[int(y) for y in x.split(\",\")] for x in input]\n\n    areas = []\n    for xmin, ymin in coords:\n        for xmax, ymax in coords:\n            areas.append((abs(xmax - xmin) + 1) * (abs(ymax - ymin) + 1))\n\n    largest_area = max(areas)\n\n    return largest_area\n\n\nprint(part1(input))\n\n\n\n4777967538\n\n\n0.041 seconds elapsed"
+  },
+  {
+    "objectID": "2025.html#part-2-7",
+    "href": "2025.html#part-2-7",
     "title": "My 2025 Attempts",
     "section": "Part 2",
     "text": "Part 2\n\nimport os\nfrom shapely.geometry import Polygon\n\ninput = open(os.path.join(\"2025\", \"day_09\", \"input_day09.txt\")).read().splitlines()\n\ndef part2(input):\n    coords = [[int(y) for y in x.split(\",\")] for x in input]\n\n    initial_area = Polygon(coords)\n\n    areas = []\n    for xmin, ymin in coords:\n        for xmax, ymax in coords:\n            rectangle = Polygon(\n                [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)]\n            )\n            if initial_area.contains(rectangle):\n                areas.append((abs(xmax - xmin) + 1) * (abs(ymax - ymin) + 1))\n\n    largest_area = max(areas)\n\n    return largest_area\n\n\nprint(part2(input))\n\n\n\n1439894345\n\n\n5.058 seconds elapsed"

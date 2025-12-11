@@ -206,6 +206,23 @@ print(f"{time.time() - start_time:.3f} seconds elapsed")
 
 # Day 4 {.panel-name}
 
+## Part 1
+
+```{python, code=readLines("./2025/day_04/script_day04_pt1.py")}
+#| label: code-day04pt1
+#| eval: false
+```
+
+```{python}
+#| label: day04pt1
+#| echo: false
+#| cache: true
+
+start_time = time.time()
+exec(open("./2025/day_04/script_day04_pt1.py").read())
+print(f"{time.time() - start_time:.3f} seconds elapsed")
+```
+
 :::
 
 ::: {.panel}
